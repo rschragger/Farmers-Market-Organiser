@@ -1,3 +1,4 @@
 # Farmers-Market-Organiser
-## Dog sitting application
-### Readme.updated
+
+App to run a farmer's market to sell stall space to vendors and advertise to general public
+
