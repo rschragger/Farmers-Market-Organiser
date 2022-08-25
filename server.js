@@ -1,6 +1,7 @@
 const path = require('path');
 const express = require('express');
 const exphbs = require('express-handlebars');
+const mysql = require('mysql2');
 
 const routes = require('./controllers');
 const sequelize = require('./config/connection');
