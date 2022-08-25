@@ -16,4 +16,6 @@ https://docs.google.com/spreadsheets/d/1t7GKvso2bQnpYJlBrBRKctt6dYRlMB_lfyoPtKiD
 #### Project Proposal
 https://docs.google.com/document/d/15uM59lG_IFAnnzR704ZaZzd6UkXbxvM-6bwfZcpk2Zk/edit?usp=sharing
 
+#### Heroku and mysql
+https://coding-boot-camp.github.io/full-stack/heroku/deploy-with-heroku-and-mysql
 
