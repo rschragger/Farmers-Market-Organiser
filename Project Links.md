@@ -13,7 +13,13 @@ https://app.diagrams.net/#G1D-auKNGSjG5zYR__J-e2U8asyyuv92FP
 - Google sheet
 https://docs.google.com/spreadsheets/d/1t7GKvso2bQnpYJlBrBRKctt6dYRlMB_lfyoPtKiDfDg/edit#gid=0
 
+#### View Wireframe
+Flowchart https://app.diagrams.net/#G1rdeoQxnCY7nzcPpVFAU7Bg2xMuqNGYjg
+
+
 #### Project Proposal
 https://docs.google.com/document/d/15uM59lG_IFAnnzR704ZaZzd6UkXbxvM-6bwfZcpk2Zk/edit?usp=sharing
 
+#### Heroku and mysql
+https://coding-boot-camp.github.io/full-stack/heroku/deploy-with-heroku-and-mysql
 
