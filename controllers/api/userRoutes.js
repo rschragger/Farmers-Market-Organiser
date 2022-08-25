@@ -3,7 +3,7 @@ const { User } = require('../../models');
 
 router.get('/', async(req,res)=>{
 try {
-   /*
+   
     const userData = await User.findAll()
     if (!userData) {
         res
@@ -11,8 +11,8 @@ try {
           .json({ message: 'Incorrect email or password, please try again' });
         return;
       }
-      */
-res.status(200).json({message:"Test working!"})
+      
+res.status(200).json(userData);//{message:"Test working!"})
 } catch (err) {
     res.status(400).json(err);
 }
