@@ -2,9 +2,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Location extends Model {}
+class Product extends Model {}
 
-Location.init(
+Product.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -12,40 +12,43 @@ Location.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    market_name: {
+    name: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         len: [0,32],
         },
     },
-    address: {
+    description: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
       validate: {
-        len:[0,30],
-      },
-    },
-    website: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-          isUrl:true,
+        len:[0,64],
       },
     },
     image: {
-        type: DataTypes.STRING,
-        allowNull: true,
-        len: [0,32],
+		type: DataTypes.STRING,
+		allowNull: true,
+		validate: {
+			len:[0,32],
+		},
+    },
+	stallholder_id: {
+        type: DataTypes.INTEGER,
+		allowNull: false,
+        references: {
+			model: 'location',
+			key: 'id',
+		},
     },
   },
   {
     sequelize,
-    timestamps: false,
+    timestamps: true,
     freezeTableName: true,
     underscored: true,
-    modelName: 'location',
+    modelName: 'product',
   }
 );
 
-module.exports = Location;
+module.exports = Product;
