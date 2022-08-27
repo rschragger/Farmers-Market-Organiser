@@ -5,7 +5,7 @@ const { User, Stallholder, Location } = require('../../models');
 router.get('/', async (req, res) => {
   try {
     const users = await User.findAll({
-      include: [{ model: Stallholder }],//{ model: Location }],
+      include: [{ model: Stallholder }, { model: Location }],
     });
     res.status(200).json({
       data: users
