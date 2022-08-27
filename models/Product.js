@@ -29,9 +29,9 @@ Product.init(
     image: {
 		type: DataTypes.STRING,
 		allowNull: true,
-		validate: {
-			len:[0,32],
-		},
+		// validate: {
+		// 	len:[0,32],
+		// },
     },
 	stallholder_id: {
         type: DataTypes.INTEGER,

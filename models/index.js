@@ -2,6 +2,10 @@ const User = require('./User');
 const Stallholder = require('./Stallholder');
 const Location = require('./Location');
 const Stall = require('./Stall');
+const Product = require('./Product');
+//const Booking = require('./Booking');
+//const Event = require('./Event');
+
 
 // Belongs to and has many etc. initialisations
 // User belongsTo Stallholder
@@ -25,7 +29,7 @@ User.belongsTo(Stallholder, {
 
 
 
-module.exports = { User , Stallholder , Location ,Stall};
+module.exports = { User , Stallholder , Location ,Stall, Event, Product};//, Booking };
 
 // Note below config doesn't work as it can only module.exports once
 // module.exports = { User };
