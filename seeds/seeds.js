@@ -11,6 +11,7 @@ const seedDatabase = async () => {
     {
       individualHooks: true,
       returning: true,
+
     })
     .catch(err => console.log(err));
 

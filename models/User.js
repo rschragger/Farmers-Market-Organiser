@@ -16,6 +16,20 @@ User.init(
       primaryKey: true,
       autoIncrement: true,
     },
+    stallholder_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'stallholder',
+        key: 'id',
+      },
+    },
+    location_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'location',
+        key: 'id',
+      },
+    },
     //We validate on username (and allow email addresses) because a user might want 2 'identites' and cannot use a unique email twice
     username: {
       type: DataTypes.STRING,
