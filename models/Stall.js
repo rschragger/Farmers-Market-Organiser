@@ -46,8 +46,8 @@ Stall.init(
     timestamps: true,
     freezeTableName: true,
     underscored: true,
-    modelName: 'location',
+    modelName: 'stall',
   }
 );
 
-module.exports = Location;
+module.exports = Stall;
