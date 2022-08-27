@@ -1,3 +1,20 @@
-<div>
-    Hello World!
-</div>
+<table>
+    <tr>
+        <th>id</th>
+        <th>first_name</th>
+        <th>last_name</th>
+        <th>username</th>
+        <th>email</th>
+        <th>role type</th>
+    </tr>
+    {{#each users as |user|}}
+    <tr>
+        <td>{{user.id}}</td>
+        <td>{{user.first_name}}</td>
+        <td>{{user.last_name}}</td>
+        <td>{{user.username}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.role_type}}</td>
+    </tr>
+    {{/each}}
+</table>
