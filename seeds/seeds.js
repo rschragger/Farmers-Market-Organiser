@@ -1,9 +1,10 @@
 const sequelize = require('../config/connection');
-const { User, Stallholder, Location } = require('../models');
+const { User, Stallholder, Location , Stall} = require('../models');
 
 const userSeedData = require('./userSeedData.json');
 const stallholderSeedData = require('./stallholderSeedData.json');
 const locationSeedData = require('./locationSeedData.json');
+const stallSeedData = require('./stallSeedData.json');
 
 const randomId = (obj) => {
   return obj[Math.floor(Math.random() * obj.length)].id
@@ -39,7 +40,16 @@ const seedDatabase = async () => {
       .catch(err => console.log(err))
   };
 
-
+  for (const stall of stallSeedData) {
+    const newStall = await Stall.create(
+      {
+        ...stall,
+        location_id: randomId(location),
+        individualHooks: true,
+        returning: true,
+      })
+      .catch(err => console.log(err))
+  };
 
   process.exit(0);
 };
