@@ -1,11 +1,12 @@
 const router = require('express').Router();
-const { User, Role } = require('../../models');
+const { User, Stallholder, Location } = require('../../models');
 
 // Retrieve all the users
 router.get('/', async (req, res) => {
   try {
-    const users = await User.findAll();
-    
+    const users = await User.findAll({
+      include: [{ model: Stallholder }],//{ model: Location }],
+    });
     res.status(200).json({
       data: users
     });
@@ -21,7 +22,7 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   try {
     const user = await User.findByPk(req.params.id);
-    
+
     res.status(200).json({
       data: user
     });
@@ -43,11 +44,11 @@ router.post('/', async (req, res) => {
       },
       individualHooks: true,
     });
-    
+
     if (!userData) {
       // The user doesn't exist so create a new user
       const newUser = await User.create(req.body);
-    
+
       res.status(200).json({
         data: newUser
       });
@@ -72,40 +73,40 @@ router.post('/login', async (req, res) => {
         email: req.body.email
       }
     });
-    
+
     if (!userData) {
       // No user with that email address was found
       res.status(400).json({
         message: "The user doesn't exist!"
       });
-      
+
       return;
     }
-    
+
     // The user exists so now check if the password matches what is in the db
     const isValidPassword = userData.checkPassword(req.body.password);
-    
+
     if (!isValidPassword) {
       // The password is incorrect
       res.status(400).json({
         message: "The email or password is incorrect!"
       });
-      
+
       return;
     }
-    
+
     // // Password is correct. Save the data
     req.session.save(() => {
       req.session.userId = userData.id;
       req.session.loggedIn = true;
-      
+
       res.status(200).json({
         data: userData,
         message: "You are now logged in!"
       })
     });
-    
-    
+
+
   }
   catch (err) {
     res.status(400).json({
@@ -137,16 +138,16 @@ router.put('/:id', async (req, res) => {
       },
       individualHooks: true,
     });
-    
+
     if (!updatedUser[0]) {
       // No user exists with this id
       res.status(404).json({
         message: "No user with this id exists!"
       });
-      
+
       return;
     }
-    
+
     // the user exists and has been updated
     res.status(200).json({
       data: updatedUser,

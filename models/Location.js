@@ -21,7 +21,7 @@ Location.init(
     },
     address: {
       type: DataTypes.STRING,
-      allowNull: false,
+      //allowNull: false,
       validate: {
         len:[0,30],
       },
