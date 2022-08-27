@@ -11,7 +11,7 @@ const seedDatabase = async () => {
     {
       individualHooks: true,
       returning: true,
-    } );
+    });
 
   const stallholder = await Stallholder.bulkCreate(stallholderSeedData, {
     individualHooks: true,

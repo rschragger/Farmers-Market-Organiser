@@ -4,7 +4,7 @@
 		"email": "user1@user.com",
 		"password": "password2",
 		"first_name": "Joan",
-		"last_Name":"Jett",
+		"last_name":"Jett",
 		"role_type":"Stallholder",
 		"Mobile":"0423276555"
 	},
@@ -13,7 +13,7 @@
 		"email": "user2@user.com",
 		"password": "password3",
 		"first_name": "Eddy",
-		"last_Name":"Vedder",
+		"last_name":"Vedder",
 		"role_type":"Organiser",
 		"Mobile":"0423276777"
 	},
@@ -22,7 +22,7 @@
 		"email": "db@starman.com",
 		"password": "password5",
 		"first_name": "David",
-		"last_Name":"Bowie",
+		"last_name":"Bowie",
 		"role_type":"Stallholder",
 		"Mobile":"0423276000"
 	}
