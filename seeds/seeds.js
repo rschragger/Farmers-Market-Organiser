@@ -11,12 +11,14 @@ const seedDatabase = async () => {
     {
       individualHooks: true,
       returning: true,
-    } );
+    })
+    .catch(err => console.log(err));
 
   const stallholder = await Stallholder.bulkCreate(stallholderSeedData, {
     individualHooks: true,
     returning: true,
-  });
+  })
+  .catch(err => console.log(err));
 
   process.exit(0);
 };
