@@ -6,7 +6,7 @@
 		"first_name": "Joan",
 		"last_name":"Jett",
 		"role_type":"Stallholder",
-		"Mobile":"0423276555"
+		"mobile":"0423276555"
 	},
     {
 		"username": "user2",
@@ -15,7 +15,7 @@
 		"first_name": "Eddy",
 		"last_name":"Vedder",
 		"role_type":"Organiser",
-		"Mobile":"0423276777"
+		"mobile":"0423276777"
 	},
 	{
 		"username": "Bowie",
@@ -24,6 +24,6 @@
 		"first_name": "David",
 		"last_name":"Bowie",
 		"role_type":"Stallholder",
-		"Mobile":"0423276000"
+		"mobile":"0423276000"
 	}
 ]
