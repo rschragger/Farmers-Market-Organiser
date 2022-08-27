@@ -1,29 +1,29 @@
 [
 	{
-		"username": "user1",
+		"username": "Joan1",
 		"email": "user1@user.com",
 		"password": "password2",
 		"first_name": "Joan",
-		"last_name":"Jett",
-		"role_type":"Stallholder",
-		"mobile":"0423276555"
+		"last_name": "Jett",
+		"role_type": "Stallholder",
+		"mobile": "0423276555"
 	},
-    {
-		"username": "user2",
+	{
+		"username": "Eddy2",
 		"email": "user2@user.com",
 		"password": "password3",
 		"first_name": "Eddy",
-		"last_name":"Vedder",
-		"role_type":"Organiser",
-		"mobile":"0423276777"
+		"last_name": "Vedder",
+		"role_type": "Organiser",
+		"mobile": "0423276777"
 	},
 	{
 		"username": "Bowie",
 		"email": "db@starman.com",
 		"password": "password5",
 		"first_name": "David",
-		"last_name":"Bowie",
-		"role_type":"Stallholder",
-		"mobile":"0423276000"
+		"last_name": "Bowie",
+		"role_type": "Stallholder",
+		"mobile": "0423276000"
 	}
 ]

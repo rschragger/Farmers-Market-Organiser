@@ -12,7 +12,7 @@ Location.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    marketname_name: {
+    market_name: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
@@ -21,7 +21,7 @@ Location.init(
     },
     address: {
       type: DataTypes.STRING,
-      allowNull: false,
+      //allowNull: false,
       validate: {
         len:[0,30],
       },
