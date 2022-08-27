@@ -2,11 +2,28 @@
 	{
 		"username": "user1",
 		"email": "user1@user.com",
-		"password": "password1"
+		"password": "password2",
+		"first_name": "Joan",
+		"last_Name":"Jett",
+		"role_type":"Stallholder",
+		"Mobile":"0423276555"
 	},
     {
 		"username": "user2",
 		"email": "user2@user.com",
-		"password": "password2"
+		"password": "password3",
+		"first_name": "Eddy",
+		"last_Name":"Vedder",
+		"role_type":"Organiser",
+		"Mobile":"0423276777"
+	},
+	{
+		"username": "Bowie",
+		"email": "db@starman.com",
+		"password": "password5",
+		"first_name": "David",
+		"last_Name":"Bowie",
+		"role_type":"Stallholder",
+		"Mobile":"0423276000"
 	}
 ]
