@@ -48,7 +48,7 @@ const seedDatabase = async () => {
     const newStall = await Stall.create(
       {
         ...stall,
-        location_id: randomId(location),
+        //location_id: randomId(location), //We are no longer randomising this data and will be fed by seeds
         individualHooks: true,
         returning: true,
       })
