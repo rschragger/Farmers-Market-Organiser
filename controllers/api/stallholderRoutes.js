@@ -1,11 +1,11 @@
 const router = require('express').Router();
-const { Stallholder, User, Booking } = require('../../models');
+const { Stallholder, User, Product , Booking } = require('../../models');
 
 router.get('/', async (req, res) => {
   try {
 
     const stallholderData = await Stallholder.findAll({
-      include: [{ model: User }],
+      include: [{ model: User },{model:Product}],
 
     })
     if (!stallholderData) {

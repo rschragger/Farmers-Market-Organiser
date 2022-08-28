@@ -17,12 +17,18 @@ User.belongsTo(Stallholder, {
     foreignKey:'stallholder_id',
   });
 
-
   User.belongsTo(Location, {
     foreignKey: 'location_id',
   });
   Location.hasMany(User,{
     foreignKey:'location_id',
+  });
+
+  Product.belongsTo(Stallholder, {
+    foreignKey: 'stallholder_id',
+  });
+  Stallholder.hasMany(Product,{
+    foreignKey:'stallholder_id',
   });
 
 
