@@ -35,7 +35,7 @@ User.belongsTo(Stallholder, {
 
 
 
-module.exports = { User , Stallholder , Location ,Stall, Event, Product};//, Booking };
+module.exports = { User , Stallholder , Location ,Stall, Product};//, Event, Booking };
 
 // Note below config doesn't work as it can only module.exports once
 // module.exports = { User };
