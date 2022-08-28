@@ -5,6 +5,7 @@ const bcrypt = require('bcrypt');
 
 //Phone validation from https://stackoverflow.com/questions/67250004/check-if-the-value-is-phone-number-in-model-sequelize/67250175#67250175
 const phoneValidationRegex = /\d{3}-\d{3}-\d{4}/ ;
+
 const roleType = ( userData )=>{
   return !userData.location_id ? 'stallholder' : 'organiser'
 }
@@ -86,12 +87,12 @@ User.init(
   {
     hooks: {
       beforeCreate: async (newUserData) => {
-        newUserData.role_type = roleType(newUserData) ;
+        newUserData.role_type = await roleType(newUserData) ;
         newUserData.password = await bcrypt.hash(newUserData.password, 10);
         return newUserData;
       },
       beforeUpdate: async (updatedUserData) => {
-        updatedUserData.role_type = roleType(updatedUserData) ;
+        updatedUserData.role_type = await roleType(updatedUserData) ;
         if (updatedUserData.password) {
           updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
         }

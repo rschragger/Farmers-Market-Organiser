@@ -6,6 +6,7 @@
         <th>username</th>
         <th>email</th>
         <th>role type</th>
+        <th>company</th>
     </tr>
     {{#each users as |user|}}
     <tr>
@@ -15,6 +16,12 @@
         <td>{{user.username}}</td>
         <td>{{user.email}}</td>
         <td>{{user.role_type}}</td>
+
+        {{!-- Quick example of adding foriegn linked data --}}
+        <td>
+            {{stallholder.company_name}}
+            <span style="color:red">{{location.market_name}}</span>
+        </td>
     </tr>
     {{/each}}
 </table>
