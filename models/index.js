@@ -8,6 +8,14 @@ const Product = require('./Product');
 
 
 // Belongs to and has many etc. initialisations
+Stall.belongsTo(Location, {
+  foreignKey: 'location_id',
+});
+Location.hasMany(Stall,{
+  foreignKey:'location_id',
+});
+
+
 // User belongsTo Stallholder
 User.belongsTo(Stallholder, {
     foreignKey: 'stallholder_id',

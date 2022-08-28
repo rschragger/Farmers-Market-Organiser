@@ -1,121 +1,254 @@
-[{
-	"stall_name": "Stall2",
-	"description": "Business-focused multi-tasking superstructure",
-	"price": 89.19
-  }, {
-	"stall_name": "Stall2",
-	"description": "Face to face system-worthy portal",
-	"price": 59.66
-  }, {
-	"stall_name": "Stall2",
-	"description": "Down-sized impactful workforce",
-	"price": 79.49
-  }, {
-	"stall_name": "Stall4",
-	"description": "Distributed needs-based interface",
-	"price": 34.51
-  }, {
-	"stall_name": "Stall7",
-	"description": "Grass-roots systemic array",
-	"price": 33.46
-  }, {
-	"stall_name": "Stall0",
-	"description": "Optimized systematic methodology",
-	"price": 39.34
-  }, {
-	"stall_name": "Stall3",
-	"description": "User-friendly bottom-line local area network",
-	"price": 88.88
-  }, {
-	"stall_name": "Stall6",
-	"description": "Managed eco-centric monitoring",
-	"price": 30.4
-  }, {
-	"stall_name": "Stall0",
-	"description": "User-friendly empowering database",
-	"price": 71.67
-  }, {
-	"stall_name": "Stall2",
-	"description": "Realigned eco-centric projection",
-	"price": 84.84
-  }, {
-	"stall_name": "Stall1",
-	"description": "Integrated scalable encryption",
-	"price": 40.77
-  }, {
-	"stall_name": "Stall7",
-	"description": "Upgradable dedicated portal",
-	"price": 45.84
-  }, {
-	"stall_name": "Stall2",
-	"description": "Quality-focused dynamic protocol",
-	"price": 51.96
-  }, {
-	"stall_name": "Stall0",
-	"description": "Stand-alone upward-trending system engine",
-	"price": 56.0
-  }, {
-	"stall_name": "Stall6",
-	"description": "Reverse-engineered analyzing function",
-	"price": 80.04
-  }, {
-	"stall_name": "Stall3",
-	"description": "Fundamental secondary firmware",
-	"price": 71.21
-  }, {
-	"stall_name": "Stall0",
-	"description": "Team-oriented dynamic monitoring",
-	"price": 67.68
-  }, {
-	"stall_name": "Stall9",
-	"description": "Streamlined transitional adapter",
-	"price": 72.49
-  }, {
-	"stall_name": "Stall7",
-	"description": "Synergized heuristic intranet",
-	"price": 41.14
-  }, {
-	"stall_name": "Stall8",
-	"description": "Innovative web-enabled orchestration",
-	"price": 64.19
-  }, {
-	"stall_name": "Stall8",
-	"description": "Team-oriented dynamic internet solution",
-	"price": 55.18
-  }, {
-	"stall_name": "Stall3",
-	"description": "Profound local conglomeration",
-	"price": 55.75
-  }, {
-	"stall_name": "Stall9",
-	"description": "Enterprise-wide incremental infrastructure",
-	"price": 31.49
-  }, {
-	"stall_name": "Stall5",
-	"description": "Operative exuding throughput",
-	"price": 89.79
-  }, {
-	"stall_name": "Stall4",
-	"description": "Object-based full-range info-mediaries",
-	"price": 88.57
-  }, {
-	"stall_name": "Stall0",
-	"description": "Upgradable optimal strategy",
-	"price": 40.43
-  }, {
-	"stall_name": "Stall4",
-	"description": "Open-source non-volatile initiative",
-	"price": 37.52
-  }, {
-	"stall_name": "Stall1",
-	"description": "Fully-configurable hybrid knowledge base",
-	"price": 78.98
-  }, {
-	"stall_name": "Stall8",
-	"description": "Centralized 6th generation software",
-	"price": 75.88
-  }, {
-	"stall_name": "Stall0",
-	"description": "Multi-tiered needs-based concept",
-	"price": 42.86
-  }]
+[
+	{
+	  "stall_name": "Stall1",
+	  "description": "3x3m Stall",
+	  "price": 30,
+	  "location_id": 1
+	},
+	{
+	  "stall_name": "Stall2",
+	  "description": "3x3m Stall",
+	  "price": 30,
+	  "location_id": 1
+	},
+	{
+	  "stall_name": "Stall3",
+	  "description": "3x3m Stall",
+	  "price": 30,
+	  "location_id": 1
+	},
+	{
+	  "stall_name": "Stall4",
+	  "description": "3x3m Stall",
+	  "price": 30,
+	  "location_id": 1
+	},
+	{
+	  "stall_name": "Stall5",
+	  "description": "3x5m Stall",
+	  "price": 45,
+	  "location_id": 1
+	},
+	{
+	  "stall_name": "Stall6",
+	  "description": "3x5m Stall",
+	  "price": 45,
+	  "location_id": 1
+	},
+	{
+	  "stall_name": "Stall7",
+	  "description": "3x5m Stall",
+	  "price": 45,
+	  "location_id": 1
+	},
+	{
+	  "stall_name": "Stall8",
+	  "description": "3x5m Stall",
+	  "price": 45,
+	  "location_id": 1
+	},
+	{
+	  "stall_name": "Stall9",
+	  "description": "3x5m Stall",
+	  "price": 45,
+	  "location_id": 1
+	},
+	{
+	  "stall_name": "Stall10",
+	  "description": "3x5m Stall",
+	  "price": 45,
+	  "location_id": 1
+	},
+	{
+	  "stall_name": "Stall11",
+	  "description": "4x5m Stall",
+	  "price": 50,
+	  "location_id": 1
+	},
+	{
+	  "stall_name": "Stall12",
+	  "description": "4x5m Stall",
+	  "price": 50,
+	  "location_id": 1
+	},
+	{
+	  "stall_name": "Stall13",
+	  "description": "4x5m Stall",
+	  "price": 50,
+	  "location_id": 1
+	},
+	{
+	  "stall_name": "Stall14",
+	  "description": "3x8m Stall",
+	  "price": 55,
+	  "location_id": 1
+	},
+	{
+	  "stall_name": "Stall15",
+	  "description": "3x8m Stall",
+	  "price": 55,
+	  "location_id": 1
+	},
+	{
+	  "stall_name": "Shop16",
+	  "description": "Café - electricity, water",
+	  "price": 120,
+	  "location_id": 1
+	},
+	{
+	  "stall_name": "Shop17",
+	  "description": "Vegetable Shop - electricity, water",
+	  "price": 100,
+	  "location_id": 1
+	},
+	{
+	  "stall_name": "Shop18",
+	  "description": "Butcher - Refrigeration, electricity, water",
+	  "price": 120,
+	  "location_id": 1
+	},
+	{
+	  "stall_name": "Shop19",
+	  "description": "Misc - Electricity",
+	  "price": 90,
+	  "location_id": 1
+	},
+	{
+	  "stall_name": "Shop20",
+	  "description": "Café",
+	  "price": 120,
+	  "location_id": 1
+	},
+	{
+	  "stall_name": "Shop21",
+	  "description": "Misc - Electricity",
+	  "price": 90,
+	  "location_id": 1
+	},
+	{
+	  "stall_name": "Tent1",
+	  "description": "3x2m Tent",
+	  "price": 25,
+	  "location_id": 2
+	},
+	{
+	  "stall_name": "Tent2",
+	  "description": "3x3m Tent",
+	  "price": 25,
+	  "location_id": 2
+	},
+	{
+	  "stall_name": "Tent3",
+	  "description": "3x3m Tent",
+	  "price": 25,
+	  "location_id": 2
+	},
+	{
+	  "stall_name": "Tent4",
+	  "description": "3x3m Tent",
+	  "price": 25,
+	  "location_id": 2
+	},
+	{
+	  "stall_name": "Tent5",
+	  "description": "3x5m Tent",
+	  "price": 40,
+	  "location_id": 2
+	},
+	{
+	  "stall_name": "Tent6",
+	  "description": "3x5m Tent",
+	  "price": 40,
+	  "location_id": 2
+	},
+	{
+	  "stall_name": "Tent7",
+	  "description": "3x5m Tent",
+	  "price": 40,
+	  "location_id": 2
+	},
+	{
+	  "stall_name": "Tent8",
+	  "description": "3x5m Tent",
+	  "price": 40,
+	  "location_id": 2
+	},
+	{
+	  "stall_name": "Tent9",
+	  "description": "3x5m Tent",
+	  "price": 40,
+	  "location_id": 2
+	},
+	{
+	  "stall_name": "Tent10",
+	  "description": "3x5m Tent",
+	  "price": 40,
+	  "location_id": 2
+	},
+	{
+	  "stall_name": "Tent11",
+	  "description": "4x5m Tent",
+	  "price": 45,
+	  "location_id": 2
+	},
+	{
+	  "stall_name": "Tent12",
+	  "description": "4x5m Tent",
+	  "price": 45,
+	  "location_id": 2
+	},
+	{
+	  "stall_name": "Tent13",
+	  "description": "4x5m Tent",
+	  "price": 45,
+	  "location_id": 2
+	},
+	{
+	  "stall_name": "Tent14",
+	  "description": "3x8m Tent",
+	  "price": 50,
+	  "location_id": 2
+	},
+	{
+	  "stall_name": "Tent15",
+	  "description": "3x8m Tent",
+	  "price": 50,
+	  "location_id": 2
+	},
+	{
+	  "stall_name": "Trailer16",
+	  "description": "Café",
+	  "price": 115,
+	  "location_id": 2
+	},
+	{
+	  "stall_name": "Trailer17",
+	  "description": "FoodTruck1",
+	  "price": 95,
+	  "location_id": 2
+	},
+	{
+	  "stall_name": "Trailer18",
+	  "description": "FoodTruck2",
+	  "price": 115,
+	  "location_id": 2
+	},
+	{
+	  "stall_name": "Trailer19",
+	  "description": "Misc - Electricity",
+	  "price": 85,
+	  "location_id": 2
+	},
+	{
+	  "stall_name": "Trailer20",
+	  "description": "IceCream Van",
+	  "price": 115,
+	  "location_id": 2
+	},
+	{
+	  "stall_name": "Trailer21",
+	  "description": "Misc - Electricity",
+	  "price": 85,
+	  "location_id": 2
+	}
+   ]

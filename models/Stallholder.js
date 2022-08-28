@@ -16,7 +16,7 @@ Stallholder.init(
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [0,15],
+        len: [0,32],
         },
     },
     website: {
@@ -37,7 +37,7 @@ Stallholder.init(
     image: {
         type: DataTypes.STRING,
         allowNull: true,
-        len: [0,32],
+        len: [0,200],
     },
   },
   {

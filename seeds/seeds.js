@@ -1,5 +1,5 @@
 const sequelize = require('../config/connection');
-const { User, Stallholder, Location , Stall, Product} = require('../models');
+const { User, Stallholder, Location, Stall, Product } = require('../models'); //Event, Booking
 
 const userSeedData = require('./userSeedData.json');
 const stallholderSeedData = require('./stallholderSeedData.json');
@@ -29,14 +29,15 @@ const seedDatabase = async () => {
     .catch(err => console.log(err));
 
   for (const user of userSeedData) {
-    let stallOrOrg = Math.floor(Math.random() * 2); //can be either a stallholder or an organiser seeding
-    let shId = (stallOrOrg === 0) ? null : randomId(stallholder);
-    let orgId = (stallOrOrg === 1) ? null : randomId(location);
+    let stallOrOrg = Math.floor(Math.random() * 6); //can be either a stallholder or an organiser seeding
+    let shId = (stallOrOrg >= 1) ? randomId(stallholder) : null; // We want 5 times as many stallholders as organisers
+    let orgId = (stallOrOrg === 0) ? randomId(location) : null;
     const newUser = await User.create(
       {
         ...user,
         stallholder_id: shId,
         location_id: orgId,
+        role_type: !orgId ? 'stallholder' : 'organiser',
         individualHooks: true,
         returning: true,
       })
@@ -47,7 +48,7 @@ const seedDatabase = async () => {
     const newStall = await Stall.create(
       {
         ...stall,
-        location_id: randomId(location),
+        //location_id: randomId(location), //We are no longer randomising this data and will be fed by seeds
         individualHooks: true,
         returning: true,
       })

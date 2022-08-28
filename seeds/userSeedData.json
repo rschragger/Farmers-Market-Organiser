@@ -1,29 +1,211 @@
-[
-	{
-		"username": "Joan1",
-		"email": "user1@user.com",
-		"password": "password2",
-		"first_name": "Joan",
-		"last_name": "Jett",
-		"role_type": "Stallholder",
-		"mobile": "0423276555"
-	},
-	{
-		"username": "Eddy2",
-		"email": "user2@user.com",
-		"password": "password3",
-		"first_name": "Eddy",
-		"last_name": "Vedder",
-		"role_type": "Organiser",
-		"mobile": "0423276777"
-	},
-	{
-		"username": "Bowie",
-		"email": "db@starman.com",
-		"password": "password5",
-		"first_name": "David",
-		"last_name": "Bowie",
-		"role_type": "Stallholder",
-		"mobile": "0423276000"
-	}
-]
+[{
+  "first_name": "Winslow",
+  "last_name": "Ondrak",
+  "email": "wondrak0@unc.edu",
+  "username": "wondrak0",
+  "mobile": "761-247-8261",
+  "password": "p9ycMZcEEdmz"
+}, {
+  "first_name": "Frank",
+  "last_name": "Ashburner",
+  "email": "fashburner1@qq.com",
+  "username": "fashburner1",
+  "mobile": "312-108-4523",
+  "password": "MgKPCCOaTK"
+}, {
+  "first_name": "Bengt",
+  "last_name": "Croy",
+  "email": "bcroy2@geocities.jp",
+  "username": "bcroy2",
+  "mobile": "868-924-7376",
+  "password": "SE6uj2Gf"
+}, {
+  "first_name": "Charyl",
+  "last_name": "Marjot",
+  "email": "cmarjot3@yahoo.co.jp",
+  "username": "cmarjot3",
+  "mobile": "286-179-0690",
+  "password": "VOpWxuVVSgL3"
+}, {
+  "first_name": "Lucita",
+  "last_name": "Learie",
+  "email": "llearie4@php.net",
+  "username": "llearie4",
+  "mobile": "688-732-2970",
+  "password": "BTqEkBt6rnkY"
+}, {
+  "first_name": "Phedra",
+  "last_name": "Laxson",
+  "email": "plaxson5@163.com",
+  "username": "plaxson5",
+  "mobile": "453-495-3746",
+  "password": "Y7M8cKN"
+}, {
+  "first_name": "Maddie",
+  "last_name": "De Cruze",
+  "email": "mdecruze6@hibu.com",
+  "username": "mdecruze6",
+  "mobile": "696-804-1112",
+  "password": "QbQ7lzKUkB"
+}, {
+  "first_name": "Lindsay",
+  "last_name": "McNerlin",
+  "email": "lmcnerlin7@hibu.com",
+  "username": "lmcnerlin7",
+  "mobile": "718-532-9476",
+  "password": "HpF6GsIfZ9P"
+}, {
+  "first_name": "Keenan",
+  "last_name": "Zienkiewicz",
+  "email": "kzienkiewicz8@cmu.edu",
+  "username": "kzienkiewicz8",
+  "mobile": "679-228-5696",
+  "password": "eMdXIxye"
+}, {
+  "first_name": "Alisha",
+  "last_name": "Walbrook",
+  "email": "awalbrook9@dell.com",
+  "username": "awalbrook9",
+  "mobile": "647-726-6261",
+  "password": "sQadJJSQE7"
+}, {
+  "first_name": "Barbabra",
+  "last_name": "Kingsnoad",
+  "email": "bkingsnoada@google.com.au",
+  "username": "bkingsnoada",
+  "mobile": "898-466-7089",
+  "password": "WtX2U4"
+}, {
+  "first_name": "Ned",
+  "last_name": "Simunek",
+  "email": "nsimunekb@google.nl",
+  "username": "nsimunekb",
+  "mobile": "546-731-0358",
+  "password": "kbAN7PFKE"
+}, {
+  "first_name": "Karrah",
+  "last_name": "Judgkins",
+  "email": "kjudgkinsc@unesco.org",
+  "username": "kjudgkinsc",
+  "mobile": "610-748-6628",
+  "password": "3CldGe0E"
+}, {
+  "first_name": "Shandeigh",
+  "last_name": "Furminger",
+  "email": "sfurmingerd@wsj.com",
+  "username": "sfurmingerd",
+  "mobile": "490-407-5703",
+  "password": "hHBa7M"
+}, {
+  "first_name": "Jodee",
+  "last_name": "Birchner",
+  "email": "jbirchnere@mapy.cz",
+  "username": "jbirchnere",
+  "mobile": "438-580-1077",
+  "password": "FW8nkiPpoXX"
+}, {
+  "first_name": "Lela",
+  "last_name": "Tatam",
+  "email": "ltatamf@unblog.fr",
+  "username": "ltatamf",
+  "mobile": "520-903-1705",
+  "password": "aLAzzG"
+}, {
+  "first_name": "Tab",
+  "last_name": "Frayne",
+  "email": "tfrayneg@economist.com",
+  "username": "tfrayneg",
+  "mobile": "339-272-8249",
+  "password": "AgXDVW"
+}, {
+  "first_name": "Melita",
+  "last_name": "Haizelden",
+  "email": "mhaizeldenh@ask.com",
+  "username": "mhaizeldenh",
+  "mobile": "144-340-3988",
+  "password": "NCOBxoOwzR5"
+}, {
+  "first_name": "Win",
+  "last_name": "McCromley",
+  "email": "wmccromleyi@boston.com",
+  "username": "wmccromleyi",
+  "mobile": "269-963-6193",
+  "password": "bou1QNRRb676"
+}, {
+  "first_name": "Brittne",
+  "last_name": "Gregoletti",
+  "email": "bgregolettij@wikimedia.org",
+  "username": "bgregolettij",
+  "mobile": "168-221-0856",
+  "password": "sTXUvh"
+}, {
+  "first_name": "Nyssa",
+  "last_name": "Gonneau",
+  "email": "ngonneauk@facebook.com",
+  "username": "ngonneauk",
+  "mobile": "918-200-8632",
+  "password": "gFZZOx"
+}, {
+  "first_name": "Brett",
+  "last_name": "Starton",
+  "email": "bstartonl@ocn.ne.jp",
+  "username": "bstartonl",
+  "mobile": "184-271-1646",
+  "password": "Q4Y9rGeJV"
+}, {
+  "first_name": "Marla",
+  "last_name": "Okenden",
+  "email": "mokendenm@wired.com",
+  "username": "mokendenm",
+  "mobile": "675-787-1722",
+  "password": "ZeCj1vL"
+}, {
+  "first_name": "Auroora",
+  "last_name": "Dovermann",
+  "email": "adovermannn@angelfire.com",
+  "username": "adovermannn",
+  "mobile": "887-810-4899",
+  "password": "rODMIEbIi"
+}, {
+  "first_name": "Sergio",
+  "last_name": "Iacovone",
+  "email": "siacovoneo@list-manage.com",
+  "username": "siacovoneo",
+  "mobile": "329-181-3488",
+  "password": "Ha2cFMa"
+}, {
+  "first_name": "Ezra",
+  "last_name": "Bunce",
+  "email": "ebuncep@blog.com",
+  "username": "ebuncep",
+  "mobile": "403-246-7828",
+  "password": "ex2iwRwyG"
+}, {
+  "first_name": "Dur",
+  "last_name": "Fibbens",
+  "email": "dfibbensq@gmpg.org",
+  "username": "dfibbensq",
+  "mobile": "955-127-6412",
+  "password": "4NwSUQ3J"
+}, {
+  "first_name": "Pietra",
+  "last_name": "Karppi",
+  "email": "pkarppir@google.nl",
+  "username": "pkarppir",
+  "mobile": "829-915-2494",
+  "password": "tS9xeJN6RHLj"
+}, {
+  "first_name": "Ammamaria",
+  "last_name": "Shorto",
+  "email": "ashortos@mozilla.com",
+  "username": "ashortos",
+  "mobile": "117-645-0266",
+  "password": "349eVIb"
+}, {
+  "first_name": "Merissa",
+  "last_name": "Merigot",
+  "email": "mmerigott@eventbrite.com",
+  "username": "mmerigott",
+  "mobile": "193-581-8649",
+  "password": "oksUsYFDA3D"
+}]

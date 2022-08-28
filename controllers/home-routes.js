@@ -1,9 +1,11 @@
 const router = require('express').Router();
-const { User } = require('../models');
+const { User, Stallholder, Location } = require('../models');
 
 router.get('/', async (req, res) => {
   // Test to check if connection from models to controllers to views all work
-  const userData = await User.findAll()
+  const userData = await User.findAll({
+    include:[{model:Stallholder},{model:Location}]
+  })
   .catch(err => console.log(err));
   
   const users = userData.map((user) => user.get({plain: true}));
