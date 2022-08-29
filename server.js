@@ -19,11 +19,13 @@ const hbs = exphbs.create({});
 // Configure and link a session object with the sequelize store
 const sess = {
   secret: 'Farmers Market secret',
-  cookie: {},
+  cookie: { },
   resave: false,
   saveUninitialized: true,
   store: new SequelizeStore({
-    db: sequelize
+    db: sequelize,
+    checkExpirationInterval: 15 * 60 * 1000, //15 minutes refresh on usage
+    expiration: 9 * 60 * 60 * 60 * 1000 //9 hours max
   })
 };
 
