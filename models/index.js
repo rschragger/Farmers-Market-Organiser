@@ -55,7 +55,7 @@ Events.hasMany(Booking, {
   foreignKey: 'event_id',
 });
 
-module.exports = { User, Stallholder, Location, Stall, Product, Events ,Booking };;
+module.exports = { User, Stallholder, Location, Stall, Product, Events , Booking };
 
 // Note below config doesn't work as it can only module.exports once
 // module.exports = { User };
