@@ -99,6 +99,7 @@ router.post('/login', async (req, res) => {
     req.session.save(() => {
       req.session.userId = userData.id;
       req.session.loggedIn = true;
+      req.session.role_type = userData.role_type;
 
       res.status(200).json({
         data: userData,
