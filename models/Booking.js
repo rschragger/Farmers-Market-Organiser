@@ -36,10 +36,21 @@ Booking.init(
 			key: 'id',
 		},
     },
+    timestamp_start: {
+        type: DataTypes.DATE,
+        allowNull: false,
+    },
+    timestamp_end: {
+        type: DataTypes.DATE,
+        allowNull: false,
+        validate: {
+            isAfter: this.timestamp_start,
+        }
+    },
   },
   {
     sequelize,
-    timestamps: false,
+    timestamps: true,
     freezeTableName: true,
     underscored: true,
     modelName: 'booking',
