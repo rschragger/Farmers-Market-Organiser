@@ -7,6 +7,7 @@ const Booking = require('./Booking');
 const Events = require('./Events');
 
 
+
 // Belongs to and has many etc. initialisations
 Stall.belongsTo(Location, {
   foreignKey: 'location_id',
