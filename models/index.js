@@ -5,7 +5,7 @@ const Stall = require('./Stall');
 const Product = require('./Product');
 const Booking = require('./Booking');
 const Events = require('./Events');
-const Event = require('./Event');
+
 
 
 // Belongs to and has many etc. initialisations
@@ -48,10 +48,10 @@ Stallholder.hasMany(Product, {
   foreignKey: 'stallholder_id',
 });
 
-Booking.belongsTo(Event, {
+Booking.belongsTo(Events, {
   foreignKey: 'event_id',
 });
-Event.hasMany(Booking, {
+Events.hasMany(Booking, {
   foreignKey: 'event_id',
 });
 

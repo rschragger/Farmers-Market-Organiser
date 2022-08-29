@@ -16,7 +16,7 @@ Booking.init(
         type: DataTypes.INTEGER,
 		allowNull: false,
         references: {
-			model: 'event',
+			model: 'events',
 			key: 'id',
 		},
     },
