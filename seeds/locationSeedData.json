@@ -6,6 +6,10 @@
 	{
 		"market_name": "Southern Farmers Market",
 		"website":"www.southernmarket.com.au"
+	},
+	{
+		"market_name": "Eastern Farmers Market",
+		"website":"www.easternmarket.com.au"
 	}
 	
 ]
