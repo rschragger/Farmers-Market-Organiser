@@ -3,8 +3,9 @@ const Stallholder = require('./Stallholder');
 const Location = require('./Location');
 const Stall = require('./Stall');
 const Product = require('./Product');
-//const Booking = require('./Booking');
+const Booking = require('./Booking');
 const Events = require('./Events');
+const Event = require('./Event');
 
 
 // Belongs to and has many etc. initialisations
@@ -47,11 +48,14 @@ Stallholder.hasMany(Product, {
   foreignKey: 'stallholder_id',
 });
 
+Booking.belongsTo(Event, {
+  foreignKey: 'event_id',
+});
+Event.hasMany(Booking, {
+  foreignKey: 'event_id',
+});
 
-
-
-
-module.exports = { User, Stallholder, Location, Stall, Product, Events };//, Booking };
+module.exports = { User, Stallholder, Location, Stall, Product, Events ,Booking };;
 
 // Note below config doesn't work as it can only module.exports once
 // module.exports = { User };

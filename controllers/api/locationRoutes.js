@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Location, User, Stall, Events } = require('../../models'); //, Booking
+const { Location, User, Stall, Events, Booking } = require('../../models');
 
 router.get('/', async (req, res) => {
     try {
@@ -8,7 +8,8 @@ router.get('/', async (req, res) => {
             include: [
                 { model: User },
                 { model: Stall }, 
-                {model:Events},
+                {model: Events},
+                {model: Booking},
             ],
             exclude:["stallholder_id"]
         })
