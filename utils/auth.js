@@ -1,3 +1,17 @@
+const withAuth = (req, res, next) => {
+  // If the user isn't logged in, redirect them to the login route
+  if (!req.session.logged_in) {
+    res.redirect('/login');
+  }
+  else {
+    next();
+  }
+};
+
+module.exports = { withAuth };
+
+/* Might not want to use these, just make a withAuth and use res.session.isOrganiser 
+
 const withAuthOrganiser = (req, res, next) => {
   // If the user isn't logged in, redirect them to the login route
   if (!req.session.logged_in) {
@@ -14,8 +28,8 @@ const withAuthOrganiser = (req, res, next) => {
 
 const withAuthStallholder = (req, res, next) => {
   // If the user isn't logged in, redirect them to the login route
-  console.log(req.session.logged_in + '\n'+ req.session.role_type)
-  if (!req.session.logged_in) {
+  // console.log(req.session.loggedIn + '\n'+ req.session.role_type)
+  if (!req.session.loggedIn) {
     res.redirect('/login');
   }
   if (req.session.role_type != "Stallholder") {
@@ -26,6 +40,5 @@ const withAuthStallholder = (req, res, next) => {
   }
 };
 
-
-
 module.exports = { withAuthOrganiser, withAuthStallholder };
+*/
