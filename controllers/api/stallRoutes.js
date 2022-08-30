@@ -33,11 +33,16 @@ router.get('/', async (req, res) => {
 // Retrieve a stall
 router.get('/:id', async (req, res) => {
   try {
-    const stall = await Stall.findByPk(req.params.id);
+    const dbStallsData = await Stall.findByPk(req.params.id);
 
-    res.status(200).json({
-      data: stall
+    // res.status(200).json({
+    //   data: stall
+    // });
+    const stall = dbStallsData.get({ plain: true });
+    res.render('stall-edit', {
+      stall,
     });
+
   }
   catch (err) {
     res.status(500).json({
