@@ -1,12 +1,26 @@
 const router = require('express').Router();
-const { Stall } = require('../../models');
+const { Stall, Location } = require('../../models');
 
 // Retrieve all the Stalls
 router.get('/', async (req, res) => {
   try {
-    const stalls = await Stall.findAll();
-    res.status(200).json({
-      data: stalls
+    const dbStallsData = await Stall.findAll({
+        include:[
+            {
+                model: Location,
+                attributes: ['market_name', 'address'],
+            },
+        ],
+    });
+    // res.status(200).json({
+    //   data: stalls
+    // });
+    const stalls = dbStallsData.map((stall) =>
+      stall.get({ plain: true })
+    );
+
+    res.render('stalls', {
+      stalls,
     });
   }
   catch (err) {
@@ -19,11 +33,23 @@ router.get('/', async (req, res) => {
 // Retrieve a stall
 router.get('/:id', async (req, res) => {
   try {
-    const stall = await Stall.findByPk(req.params.id);
-
-    res.status(200).json({
-      data: stall
+    const dbStallsData = await Stall.findByPk(req.params.id,{
+        include:[
+            {
+                model: Location,
+                attributes: ['id','market_name', 'address'],
+            },
+        ],
     });
+
+    // res.status(200).json({
+    //   data: stall
+    // });
+    const stall = dbStallsData.get({ plain: true });
+    res.render('stall-edit', {
+      stall,
+    });
+
   }
   catch (err) {
     res.status(500).json({
