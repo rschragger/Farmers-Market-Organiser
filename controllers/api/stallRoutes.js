@@ -33,7 +33,14 @@ router.get('/', async (req, res) => {
 // Retrieve a stall
 router.get('/:id', async (req, res) => {
   try {
-    const dbStallsData = await Stall.findByPk(req.params.id);
+    const dbStallsData = await Stall.findByPk(req.params.id,{
+        include:[
+            {
+                model: Location,
+                attributes: ['id','market_name', 'address'],
+            },
+        ],
+    });
 
     // res.status(200).json({
     //   data: stall
@@ -72,7 +79,7 @@ router.put('/:id', async (req, res) => {
       where: {
         id: req.params.id
       },
-      //individualHooks: true,
+      individualHooks: true,
     });
 
     if (!updatedStall[0]) {
