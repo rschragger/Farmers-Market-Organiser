@@ -11,12 +11,11 @@
   <tbody>
   {{#each stalls as |stall|}}
     <tr>
-      <td>{{stall_name}}</td>
+      <td><a href="../stalls/{{id}}">{{stall_name}}</a></td>
       <td>{{description}}</td>
       <td>{{price}}</td>
       <td>{{location.market_name}}</td>
     </tr>
-   {{!-- {{> stall-details}} --}}
   {{/each}}
   </tbody>
 </table>
