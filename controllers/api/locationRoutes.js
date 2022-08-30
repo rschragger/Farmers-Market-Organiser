@@ -7,11 +7,11 @@ router.get('/', async (req, res) => {
         const locationData = await Location.findAll({
             include: [
                 { model: User },
-                { model: Stall }, 
-                {model: Events},
-                {model: Booking},
+                { model: Stall },
+                { model: Events },
+                { model: Booking },
             ],
-            exclude:["stallholder_id"]
+            exclude: ["stallholder_id"]
         })
         if (!locationData) {
             res
@@ -27,6 +27,5 @@ router.get('/', async (req, res) => {
 
 
 })
-
 
 module.exports = router;

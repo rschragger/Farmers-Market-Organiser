@@ -1,5 +1,7 @@
 const router = require('express').Router();
 const { User, Stallholder, Location } = require('../../models');
+//const { isOrganiser, isStallholder } = require('../../utils/helpers')
+
 
 // Retrieve all the users
 router.get('/', async (req, res) => {
