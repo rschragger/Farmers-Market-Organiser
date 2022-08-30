@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { User, Stallholder, Location } = require('../models');
 const { withAuth } = require('../utils/auth')
-const { isOrganiser, isStallholder } = require('../utils/helpers')
+//const { isOrganiser, isStallholder } = require('../utils/helpers')
 
 
 router.get('/', async (req, res) => {
@@ -11,7 +11,6 @@ router.get('/', async (req, res) => {
   })
     .catch(err => console.log(err));
 
-  //console.log('Is sh:' +  isStallholder);
 
   const users = userData.map((user) => user.get({ plain: true }));
   res.render('homepage', {
