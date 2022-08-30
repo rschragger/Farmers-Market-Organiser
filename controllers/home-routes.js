@@ -10,6 +10,7 @@ router.get('/', async (req, res) => {
   })
     .catch(err => console.log(err));
 
+
   const users = userData.map((user) => user.get({ plain: true }));
   res.render('homepage', {
     users

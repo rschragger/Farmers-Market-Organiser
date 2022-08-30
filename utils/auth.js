@@ -8,6 +8,9 @@ const withAuth = (req, res, next) => {
   }
 };
 
+module.exports = { withAuth };
+
+/* below have been put into helpers, rather than auth
 // This is not a helper as it does not have a next()
 // It is used to simply identify true or false
 const isOrganiser = (req, res ) => {
@@ -18,6 +21,7 @@ const isOrganiser = (req, res ) => {
     return false
   }
 };
+
 
 // This is not a helper as it does not have a next()
 // It is used to simply identify true or false
@@ -31,7 +35,7 @@ const isStallholder = (req, res ) => {
 };
 
 module.exports = { withAuth, isOrganiser, isStallholder };
-
+*/
 /* Might not want to use these, just make a withAuth and use res.session.isOrganiser 
 
 const withAuthOrganiser = (req, res, next) => {
