@@ -1,12 +1,26 @@
 const router = require('express').Router();
-const { Stall } = require('../../models');
+const { Stall, Location } = require('../../models');
 
 // Retrieve all the Stalls
 router.get('/', async (req, res) => {
   try {
-    const stalls = await Stall.findAll();
-    res.status(200).json({
-      data: stalls
+    const dbStallsData = await Stall.findAll({
+        include:[
+            {
+                model: Location,
+                attributes: ['market_name', 'address'],
+            },
+        ],
+    });
+    // res.status(200).json({
+    //   data: stalls
+    // });
+    const stalls = dbStallsData.map((stall) =>
+      stall.get({ plain: true })
+    );
+
+    res.render('stalls', {
+      stalls,
     });
   }
   catch (err) {
@@ -53,7 +67,7 @@ router.put('/:id', async (req, res) => {
       where: {
         id: req.params.id
       },
-      individualHooks: true,
+      //individualHooks: true,
     });
 
     if (!updatedStall[0]) {
