@@ -2,20 +2,35 @@
 	<div class="card-body">
 		<h5 class="card-title text-center">Sign In</h5>
 		<hr />
-		<form id="login-form">
+		<form id="login-form" novalidate>
 			<div class="row">
 				<div class="col">
 					<label for="login-username" class="form-label">Username</label>
 					<input type="text" class="form-control" id="login-username" required>
+					<div class="valid-feedback">
+						Looks good!
+					</div>
+					<div class="invalid-feedback">
+						Please type your username
+					</div>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col">
 					<label for="login-password" class="form-label">Password</label>
 					<input type="password" class="form-control" id="login-password" required>
+					<div class="valid-feedback">
+						Looks good!
+					</div>
+					<div class="invalid-feedback">
+						Please type your password
+					</div>
 				</div>
 			</div>
 			<button type="submit" class="btn btn-primary btn-form btn-center">SIGN IN</button>
+			<div class="invalid-username-password-feedback text-danger">
+				Incorrect username or password
+			</div>
 		</form>
   	</div>
    	<hr />

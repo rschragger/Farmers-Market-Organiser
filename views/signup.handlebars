@@ -1,46 +1,97 @@
 <div class="card custom-card-form">
 	<div class="card-body">
     	<h5 class="card-title text-center">Sign Up</h5>
-		<form id="signup-form">
+		<form id="signup-form" novalidate>
 			<hr />
 			<div class="row">
 				<div class="col">
-					<label for="login-username" class="form-label">Username</label>
-					<input type="text" class="form-control" id="login-username" required>
+					<label for="signup-username" class="form-label">Username</label>
+					<input type="text" class="form-control" id="signup-username" required>
+					<div class="valid-feedback">
+						Looks good!
+					</div>
+					<div class="invalid-feedback">
+						Please type your username
+					</div>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col">
-					<label for="login-password" class="form-label">Password</label>
-					<input type="password" class="form-control" id="login-password" required>
+					<label for="signup-password" class="form-label">Password</label>
+					<input type="password" class="form-control" id="signup-password" required>
+					<div class="valid-feedback">
+						Looks good!
+					</div>
+					<div class="invalid-feedback">
+						Please type your password
+					</div>
 				</div>
 			</div>
-			<div class="row">
+			{{!-- <div class="row">
 				<div class="col">
-					<label for="login-password-confirm" class="form-label">Confirm Password</label>
-					<input type="password" class="form-control" id="login-password-confirm" required>
+					<label for="signup-password-confirm" class="form-label">Confirm Password</label>
+					<input type="password" class="form-control" id="signup-password-confirm" required>
 				</div>
-			</div>
+			</div> --}}
 			<div class="row">
 				<div class="col-sm-12 col-md-6">
-					<label for="login-first-name" class="form-label">First Name</label>
-					<input type="text" class="form-control" id="login-first-name" required>
+					<label for="signup-first-name" class="form-label">First Name</label>
+					<input type="text" class="form-control" id="signup-first-name" required>
+					<div class="valid-feedback">
+						Looks good!
+					</div>
+					<div class="invalid-feedback">
+						Please type your first name
+					</div>
 				</div>
 				<div class="col-sm-12 col-md-6">
-					<label for="login-last-name" class="form-label">Last Name</label>
-					<input type="text" class="form-control" id="login-last-name" required>
+					<label for="signup-last-name" class="form-label">Last Name</label>
+					<input type="text" class="form-control" id="signup-last-name" required>
+					<div class="valid-feedback">
+						Looks good!
+					</div>
+					<div class="invalid-feedback">
+						Please type your last name
+					</div>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col">
-					<label for="login-email" class="form-label">Email</label>
-					<input type="text" class="form-control" id="login-email" required>
+					<label for="signup-email" class="form-label">Email</label>
+					<input type="text" class="form-control" id="signup-email" required>
+					<div class="valid-feedback">
+						Looks good!
+					</div>
+					<div class="invalid-feedback">
+						Please type your email
+					</div>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col">
-					<label for="login-mobile" class="form-label">Mobile</label>
-					<input type="text" class="form-control" id="login-mobile" required>
+					<label for="signup-mobile" class="form-label">Mobile</label>
+					<input type="text" class="form-control" id="signup-mobile" required>
+					<div class="valid-feedback">
+						Looks good!
+					</div>
+					<div class="invalid-feedback">
+						Please type your mobile number
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<select class="form-select" aria-label="Default select example" id="signup-role" required>
+						<option value="Stallholder">Stallholder</option>
+						<option value="Organiser">Organiser</option>
+						{{!-- <option value="User">User</option> --}}
+					</select>
+					<div class="valid-feedback">
+						Looks good!
+					</div>
+					<div class="invalid-feedback">
+						Please select your role
+					</div>
 				</div>
 			</div>
 			<hr />
