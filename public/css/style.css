@@ -1,0 +1,50 @@
+.custom-card-form {
+	width: 18rem;
+	margin: 25px auto;
+	padding: 15px;
+}
+
+.custom-card-form .row {
+	margin-bottom: 15px;
+}
+
+.btn-form {
+	width: 100%;
+}
+
+.new-user {
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+/* Utility */
+
+.text-center {
+	text-align: center;
+}
+
+.btn-center {
+	margin: 0 auto;
+	display: block;
+}
+
+.btn-right {
+	margin-left: auto;
+	display: block;
+}
+
+/* Tablet/Desktop */
+@media (min-width: 768px) {
+	.custom-card-form {
+		width: 40rem;
+	}
+	
+	.btn-form {
+		width: 250px;
+	}
+	
+	.new-user {
+		text-align: center;
+		margin-bottom: 10px;
+	}
+}
