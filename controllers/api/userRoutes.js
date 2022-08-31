@@ -1,11 +1,11 @@
 const router = require('express').Router();
-const { User, Stallholder, Location, Stall} = require('../../models');
+const { User, Stallholder, Location} = require('../../models');
 
 // Retrieve all the users
 router.get('/', async (req, res) => {
   try {
     const users = await User.findAll({
-      include: [{ model: Stallholder }, { model: Location }, { model: Stall }],
+      include: [{ model: Stallholder }, { model: Location }],
     });
     req.session.save(() => {
       req.session.loggedIn = true;

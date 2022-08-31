@@ -83,6 +83,19 @@
 	display: block;
 }
 
+/* Validation */
+.invalid-username-password .invalid-username-password-feedback {
+  display: block;
+  width: 100%;
+  margin-top: 0.25rem;
+  font-size: .865em;
+  text-align: center;
+}
+
+.invalid-username-password-feedback {
+  display: none;
+}
+
 /* Tablet/Desktop */
 @media screen and (min-width: 768px) {
 	.custom-card-form {
