@@ -15,7 +15,11 @@
       <td>{{description}}</td>
       <td>{{price}}</td>
       <td>{{location.market_name}}</td>
+      <td><a href="../stalls/edit/{{id}}">edit</a>
+        <a href="../stalls/{{id}}">Delete</a>
+      </td>
     </tr>
   {{/each}}
   </tbody>
 </table>
+<a href="new">Add New</a>
