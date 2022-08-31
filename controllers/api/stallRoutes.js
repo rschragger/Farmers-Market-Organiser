@@ -1,26 +1,12 @@
 const router = require('express').Router();
-const { Stall, Location } = require('../../models');
+const { Stall} = require('../../models');
 
 // Retrieve all the Stalls
 router.get('/', async (req, res) => {
   try {
-    const dbStallsData = await Stall.findAll({
-        include:[
-            {
-                model: Location,
-                attributes: ['market_name', 'address'],
-            },
-        ],
-    });
-    // res.status(200).json({
-    //   data: stalls
-    // });
-    const stalls = dbStallsData.map((stall) =>
-      stall.get({ plain: true })
-    );
-
-    res.render('stalls', {
-      stalls,
+    const stalls = await Stall.findAll();
+    res.status(200).json({
+      data: stalls
     });
   }
   catch (err) {
@@ -33,24 +19,12 @@ router.get('/', async (req, res) => {
 // Retrieve a stall
 router.get('/:id', async (req, res) => {
   try {
-    const dbStallsData = await Stall.findByPk(req.params.id,{
-        include:[
-            {
-                model: Location,
-                attributes: ['id','market_name', 'address'],
-            },
-        ],
-    });
+    const stall = await Stall.findByPk(req.params.id);
 
-    // res.status(200).json({
-    //   data: stall
-    // });
-    const stall = dbStallsData.get({ plain: true });
-    res.render('stall-view', {
-      stall,
+    res.status(200).json({
+      data: stall
     });
-
-  }
+ }
   catch (err) {
     res.status(500).json({
       message: err
@@ -58,35 +32,8 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// Get the data of the stall to be edited
-router.get('/edit/:id', async (req, res) => {
-    try {
-        const dbStallsData = await Stall.findByPk(req.params.id,{
-            include:[
-                {
-                    model: Location,
-                    attributes: ['id','market_name', 'address'],
-                },
-            ],
-        });
-
-        // res.status(200).json({
-        //   data: stall
-        // });
-        const stall = dbStallsData.get({ plain: true });
-        res.render('stall-edit', {
-        stall,
-        });
-    }
-    catch (err) {
-        res.status(500).json({
-        message: err
-        });
-    }
-});
-
 // Update the Stall
-router.put('/edit/:id', async (req, res) => {
+router.put('/:id', async (req, res) => {
   try {
     const updatedStall = await Stall.update(req.body, {
       where: {
@@ -113,5 +60,24 @@ router.put('/edit/:id', async (req, res) => {
       message: err
     });
   }
+});
+
+//delete stall
+router.delete('/:id', async (req, res) => {
+    try {
+      const stallData = await Stall.destroy({
+        where: {
+          id: req.params.id,
+          //user_id: req.session.user_id,
+        },
+      });
+      if (!stallData) {
+        res.status(404).json({ message: 'No stall found with this id!' });
+        return;
+      }
+      res.status(200).json(stallData);
+    } catch (err) {
+      res.status(500).json(err);
+    }
 });
 module.exports = router;
