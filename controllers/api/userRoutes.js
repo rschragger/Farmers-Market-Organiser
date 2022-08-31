@@ -7,8 +7,12 @@ router.get('/', async (req, res) => {
     const users = await User.findAll({
       include: [{ model: Stallholder }, { model: Location }, { model: Stall }],
     });
-    res.status(200).json({
-      data: users
+    req.session.save(() => {
+      req.session.loggedIn = true;
+
+      res.status(200).json({
+        data: users
+      });
     });
   }
   catch (err) {
@@ -70,7 +74,7 @@ router.post('/login', async (req, res) => {
   try {
     const userData = await User.findOne({
       where: {
-        email: req.body.email
+        username: req.body.username
       }
     });
 
