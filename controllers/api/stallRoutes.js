@@ -46,7 +46,7 @@ router.get('/:id', async (req, res) => {
     //   data: stall
     // });
     const stall = dbStallsData.get({ plain: true });
-    res.render('stall-edit', {
+    res.render('stall-view', {
       stall,
     });
 
@@ -58,22 +58,35 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// Create a new stall
-router.post('/', async (req, res) => {
-  try {
-	const newStall = await Stall.create(req.body);
+// Get the data of the stall to be edited
+router.get('/edit/:id', async (req, res) => {
+    try {
+        const dbStallsData = await Stall.findByPk(req.params.id,{
+            include:[
+                {
+                    model: Location,
+                    attributes: ['id','market_name', 'address'],
+                },
+            ],
+        });
 
-	res.status(200).json({
-	data: newStall
-	});
-  }
-  catch (err) {
-    res.status(400).json(err);
-  }
+        // res.status(200).json({
+        //   data: stall
+        // });
+        const stall = dbStallsData.get({ plain: true });
+        res.render('stall-edit', {
+        stall,
+        });
+    }
+    catch (err) {
+        res.status(500).json({
+        message: err
+        });
+    }
 });
 
 // Update the Stall
-router.put('/:id', async (req, res) => {
+router.put('/edit/:id', async (req, res) => {
   try {
     const updatedStall = await Stall.update(req.body, {
       where: {
@@ -87,10 +100,8 @@ router.put('/:id', async (req, res) => {
       res.status(404).json({
         message: "No Stall with this id found!"
       });
-
       return;
     }
-
     // Succesful update
     res.status(200).json({
       data: updatedStall,
@@ -103,5 +114,4 @@ router.put('/:id', async (req, res) => {
     });
   }
 });
-
 module.exports = router;
