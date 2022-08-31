@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Stallholder, Location, Stall } = require('../models');
+const { User, Stallholder, Location } = require('../models');
 const { withAuth, isOrganiser, isStallholder } = require('../utils/auth')
 
 
