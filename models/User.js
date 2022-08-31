@@ -108,9 +108,9 @@ User.init(
     freezeTableName: true,
     underscored: true,
     modelName: 'user',
-    // defaultScope: {
-    //   attributes: { exclude: ['password'] },
-    // }//This should disallow password from  Sequelize API queries 
+   // defaultScope: {
+   //   attributes: { exclude: ['password'] },
+   // }//This should disallow password from  Sequelize API queries 
    }
 );
 
