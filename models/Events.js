@@ -36,9 +36,9 @@ Events.init(
     timestamp_end: {
       type: DataTypes.DATE,
       allowNull: false,
-       validate: {
-        isAfter: Date(this.timestamp_start),
-       }
+      //  validate: {
+      //   isAfter: Date(this.timestamp_start),
+      //  }
     },
     event_name: {
       type: DataTypes.STRING,
@@ -49,14 +49,14 @@ Events.init(
   },
   {
     hooks: {
-     beforeCreate: async (newEventsData) => {
-      newEventsData.event_name = !newEventsData.event_name  ? await openingString(newEventsData.timestamp_start) : newEventsData.event_name;
-     // newEventsData.event_name = (newEventsData.event_name = null) ? await openingString(newEventsData.timestamp_start) : newEventsData.event_name;
-     return  newEventsData;
-   },
+      beforeCreate: async (newEventsData) => {
+        newEventsData.event_name = !newEventsData.event_name ? await openingString(newEventsData.timestamp_start) : newEventsData.event_name;
+        // newEventsData.event_name = (newEventsData.event_name = null) ? await openingString(newEventsData.timestamp_start) : newEventsData.event_name;
+        return newEventsData;
+      },
       beforeUpdate: async (updatedEventsData) => {
-         updatedEventsData.event_name = !updatedEventsData.event_name ? await openingString(updatedEventsData.timestamp_start) : updatedEventsData.event_name;
-        return  updatedEventsData;
+        updatedEventsData.event_name = !updatedEventsData.event_name ? await openingString(updatedEventsData.timestamp_start) : updatedEventsData.event_name;
+        return updatedEventsData;
       },
     },
     sequelize,

@@ -1,13 +1,14 @@
 const sequelize = require('../config/connection');
-const { User, Stallholder, Location, Stall, Product, Events } = require('../models'); //, Booking
+const { User, Stallholder, Location, Stall, Product, Events , Booking, EventsBooking } = require('../models'); 
 
 const userSeedData = require('./userSeedData.json');
 const stallholderSeedData = require('./stallholderSeedData.json');
 const locationSeedData = require('./locationSeedData.json');
 const stallSeedData = require('./stallSeedData.json');
 const productSeedData = require('./productSeedData.json');
-//const bookingSeedData = require('./bookingSeedData.json');
+const bookingSeedData = require('./bookingSeedData.json');
 const eventsSeedData = require('./eventsSeedData.json');
+const eventsbookingSeedData = require('./eventsbookingSeedData.json');
 
 const randomId = (obj) => {
   return obj[Math.floor(Math.random() * obj.length)].id
@@ -28,12 +29,19 @@ const seedDatabase = async () => {
   })
     .catch(err => console.log(err));
 
-  const events = await Events.bulkCreate(eventsSeedData, {
-    individualHooks: true,
-    returning: true,
-  })
-    .catch(err => console.log(err));
+    const events = await Events.bulkCreate(eventsSeedData, {
+      individualHooks: true,
+      returning: true,
+    })
+      .catch(err => console.log(err));
 
+      const booking = await Booking.bulkCreate(bookingSeedData, {
+        individualHooks: true,
+        returning: true,
+      })
+        .catch(err => console.log(err));
+
+// One by one seeding with functions
   for (const user of userSeedData) {
     let stallOrOrg = Math.floor(Math.random() * 6); //can be either a stallholder or an organiser seeding
     let shId = (stallOrOrg >= 1) ? randomId(stallholder) : null; // We want 5 times as many stallholders as organisers
@@ -72,7 +80,16 @@ const seedDatabase = async () => {
       .catch(err => console.log(err))
   };
 
+  // -- Many to Many
+  const eventsbooking = await EventsBooking.bulkCreate(eventsbookingSeedData, {
+    individualHooks: true,
+    returning: true,
+  })
+    .catch(err => console.log(err));
+
+
   process.exit(0);
 };
+
 
 seedDatabase();

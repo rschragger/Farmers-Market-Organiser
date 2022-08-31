@@ -5,6 +5,7 @@ const Stall = require('./Stall');
 const Product = require('./Product');
 const Booking = require('./Booking');
 const Events = require('./Events');
+const EventsBooking = require('./EventsBooking');
 
 
 
@@ -21,6 +22,13 @@ User.belongsTo(Stallholder, {
   foreignKey: 'stallholder_id',
 });
 Stallholder.hasMany(User, {
+  foreignKey: 'stallholder_id',
+});
+
+Booking.belongsTo(Stallholder, {
+  foreignKey: 'stallholder_id',
+});
+Stallholder.hasMany(Booking, {
   foreignKey: 'stallholder_id',
 });
 
@@ -48,14 +56,28 @@ Stallholder.hasMany(Product, {
   foreignKey: 'stallholder_id',
 });
 
-Booking.belongsTo(Events, {
-  foreignKey: 'event_id',
-});
-Events.hasMany(Booking, {
-  foreignKey: 'event_id',
-});
+// Booking.belongsTo(Events, {
+//   foreignKey: 'event_id',
+// });
+// Events.hasMany(Booking, {
+//   foreignKey: 'event_id',
+// });
 
-module.exports = { User, Stallholder, Location, Stall, Product, Events , Booking };
+// Bookings, Events and Stalls are in a many to many relationship
+Events.belongsToMany(Booking, { through: EventsBooking, })
+Booking.belongsToMany(Events, { through: EventsBooking, })
+
+/*
+Stall.belongsToMany(Booking, { through: EventsBooking, })
+Booking.belongsToMany(Stall, { through: EventsBooking, })
+
+Stall.belongsToMany(Events, { through: EventsBooking, })
+Events.belongsToMany(Stall, { through: EventsBooking, })
+*/
+// --- END Bookings, Events and Stalls are in a many to many relationship -----
+
+
+module.exports = { User, Stallholder, Location, Stall, Product, Events, Booking, EventsBooking };
 
 // Note below config doesn't work as it can only module.exports once
 // module.exports = { User };
