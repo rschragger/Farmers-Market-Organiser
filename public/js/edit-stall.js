@@ -9,7 +9,7 @@ async function editFormHandler(event) {
       window.location.toString().split('/').length - 1
     ];
   
-    const response = await fetch(`/api/stalls/edit/${id}`, {
+    const response = await fetch(`/stalls/edit/${id}`, {
       method: 'PUT',
       body: JSON.stringify({
         stall_name,
@@ -22,7 +22,7 @@ async function editFormHandler(event) {
     });
     //check if the response was successful
     if (response.ok) {
-      document.location.replace(`../edit/${id}`);
+      document.location.replace(`/stalls`);
     } else {
       alert('Failed to edit stall');
     }
