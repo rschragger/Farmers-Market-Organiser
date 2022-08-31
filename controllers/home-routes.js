@@ -32,6 +32,8 @@ router.get('/', async (req, res) => {
       users,
       loggedInUser,
       loggedIn: req.session.loggedIn,
+      title: 'Users Page',
+      layout: 'sidebar',
       
     })
   }
@@ -73,6 +75,8 @@ router.get('/stalls',async(req, res) => {
 
     res.render('stalls', {
       stalls,
+      title: 'Stalls Page',
+      layout: 'sidebar'
     });
   }
   catch (err) {
@@ -100,6 +104,8 @@ router.get('/stalls/:id', async (req, res) => {
     const stall = dbStallsData.get({ plain: true });
     res.render('stall-view', {
       stall,
+      title: 'Edit stall Page',
+      layout: 'sidebar',
     });
 
   }
@@ -128,6 +134,8 @@ router.get('/stalls/edit/:id', async (req, res) => {
       const stall = dbStallsData.get({ plain: true });
       res.render('stall-edit', {
       stall,
+      title: 'Edit Stall Page',
+      layout: 'sidebar',
       });
   }
   catch (err) {
