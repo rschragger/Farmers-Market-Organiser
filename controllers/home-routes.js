@@ -1,8 +1,7 @@
 const router = require('express').Router();
 const { User, Stallholder, Location, Stall, Events } = require('../models');
 const { withAuth, isOrganiser, isStallholder } = require('../utils/auth');
-const { Op } = require("sequelize");
-
+const modelUtility = require('../utils/modelUtility.js');
 
 router.get('/', async (req, res) => {
   try {
@@ -25,26 +24,9 @@ router.get('/', async (req, res) => {
     const loggedInUser = userData?.get({ plain: true }) ?? null;
     
     // Get all the upcoming markets
-    // Using this https://sequelize.org/docs/v6/core-concepts/model-querying-basics/
-    // Search for operators
-    const upcomingMarketsData = await Events.findAll({
-      include: [{ model: Location }],
-      where: {
-        timestamp_start: {
-          [Op.gte]: new Date()
-        }
-      }
-    })
-    .catch(err => {
-      console.log(err);
-    });
+    const upcomingMarkets = await modelUtility.getAllUpcomingMarkets();
     
-    let upcomingMarkets = upcomingMarketsData?.map(upcomingMarket => upcomingMarket.get({ plain: true })) ?? null;
-    
-    // Sort the upcoming markets by their date and only retrieve the first 5
-    upcomingMarkets = upcomingMarkets.sort((a, b) => {
-      return new Date(a.timestamp_start) - new Date(b.timestamp_start);
-    }).slice(0, 5);
+    // Retrieve 
     
     res.render('homepage', {
       loggedInUser,
