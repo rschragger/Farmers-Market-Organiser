@@ -4,7 +4,7 @@ const { EventsBooking, Events, Booking, Stall } = require('../../models'); //, B
 router.get('/', async (req, res) => {
   try {
     const eventsbookingData = await EventsBooking.findAll({
-      //include: [{model:Events},{model:Booking}],
+      include: [{model:Booking},{model:Stall},{model:Events}]
     })
     if (!eventsbookingData) {
       res
