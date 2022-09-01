@@ -43,6 +43,11 @@ Product.init(
     },
   },
   {
+    hooks: {
+      beforeCreate: function(product) {
+        product.name = product.name.toLowerCase();
+      }
+    },
     sequelize,
     timestamps: true,
     freezeTableName: true,

@@ -5,28 +5,10 @@ const modelUtility = require('../utils/modelUtility.js');
 
 router.get('/', async (req, res) => {
   try {
-    let userData = null;
-    
-    // Retrieve the logged in user, if there is one
-    if (req.session.loggedIn) {
-      userData = await User.findOne({
-        include: [{ model: Stallholder }, { model: Location }],
-        where: {
-          id: req.session.userId
-        }
-      })
-      .catch(err => {
-        console.log(err);
-      });
-    }
-    
-    // Just need to be careful when setting this to null and using it in the view
-    const loggedInUser = userData?.get({ plain: true }) ?? null;
+    const loggedInUser = modelUtility.getLoggedInUser(req.session.loggedIn);
     
     // Get all the upcoming markets
     const upcomingMarkets = await modelUtility.getAllUpcomingMarkets();
-    
-    // Retrieve 
     
     res.render('homepage', {
       loggedInUser,
@@ -37,6 +19,23 @@ router.get('/', async (req, res) => {
   catch (err) {
     console.log(err);
   }
+});
+
+router.get('/search/:product', async (req, res) => {
+  const loggedInUser = modelUtility.getLoggedInUser(req.session.loggedIn);
+  // Retrieve all products that are similar to this product
+	const similarProducts = await modelUtility.getSimilarProducts(req.params.product);
+  // Get all the upcoming markets
+  const upcomingMarkets = await modelUtility.getAllUpcomingMarkets();
+	
+	res.render('homepage', {
+    loggedInUser,
+    loggedIn: req.session.loggedIn,
+    upcomingMarkets,
+    products: similarProducts,
+    isSearching: true,
+    searchedProduct: req.params.product
+	});
 });
 
 router.get('/login', (req, res) => {

@@ -1,9 +1,17 @@
 {{!-- The homepage is split into the sidebar and the main body --}}
 <div class="d-flex d-flex-row p-3">
-	{{> home-sidebar upcomingMarkets=upcomingMarkets}}
+	{{> sidebar/home-sidebar upcomingMarkets=upcomingMarkets products=products}}
 	
 	{{!-- The main body --}}
+	{{!-- Display the search results --}}
+	{{#if isSearching}}
+	<div class="container">
+		{{> search-results products=products}}
+	</div>
+	{{else}}
+	{{!-- Display the default content if not searching --}}
 	<div class="container">
 		Display Information about Farmers market organiser
 	</div>
+	{{/if}}
 </div>
