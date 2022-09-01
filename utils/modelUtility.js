@@ -1,4 +1,4 @@
-const {Location, Events, Product, Stallholder } = require('../models');
+const {Location, Events, Product, Stallholder, Stall, User } = require('../models');
 const { Op } = require("sequelize");
 
 // Moved all these functions here in case we want to use them somewhere else
@@ -81,9 +81,18 @@ const getSimilarProducts = async (product) => {
 	return products;
 }
 
+const getMarketById = async (id) => {
+	const marketData = await Location.findByPk(id, {
+		include: [{ model: Events }, { model: Stall }, { model: User }],
+	});
+	
+	return marketData.get({ plain: true });
+}
+
 module.exports = {
 	getLoggedInUser,
 	getAllUpcomingMarkets,
 	getAllProducts,
-	getSimilarProducts
+	getSimilarProducts,
+	getMarketById
 }
