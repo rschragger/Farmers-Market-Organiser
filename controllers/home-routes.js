@@ -5,7 +5,7 @@ const modelUtility = require('../utils/modelUtility.js');
 
 router.get('/', async (req, res) => {
   try {
-    const loggedInUser = await modelUtility.getLoggedInUser(req.session.loggedIn);
+    const loggedInUser = await modelUtility.getLoggedInUser(req.session.loggedIn, req.session.userId);
     
     // Get all the upcoming markets
     const upcomingMarkets = await modelUtility.getAllUpcomingMarkets();
@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
       loggedInUser,
       loggedIn: req.session.loggedIn,
       upcomingMarkets
-    })
+    });
   }
   catch (err) {
     console.log(err);
@@ -22,7 +22,7 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/search/:product', async (req, res) => {
-  const loggedInUser = await modelUtility.getLoggedInUser(req.session.loggedIn);
+  const loggedInUser = await modelUtility.getLoggedInUser(req.session.loggedIn, req.session.userId);
   // Retrieve all products that are similar to this product
 	const similarProducts = await modelUtility.getSimilarProducts(req.params.product);
   // Get all the upcoming markets
