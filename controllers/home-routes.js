@@ -1,40 +1,37 @@
 const router = require('express').Router();
-const { User, Stallholder, Location, Stall } = require('../models');
-const { withAuth, isOrganiser, isStallholder } = require('../utils/auth')
-
+const { User, Stallholder, Location, Stall, Events } = require('../models');
+const { withAuth, isOrganiser, isStallholder } = require('../utils/auth');
+const modelUtility = require('../utils/modelUtility.js');
 
 router.get('/', async (req, res) => {
   try {
+    let userData = null;
+    
     // Retrieve the logged in user, if there is one
-    const userData = await User.findOne({
-      include: [{ model: Stallholder }, { model: Location }],
-      where: {
-        id: req.session.userId
-      }
-    })
-    .catch(err => {
-      console.log(err);
-      return null;
-    });
+    if (req.session.loggedIn) {
+      userData = await User.findOne({
+        include: [{ model: Stallholder }, { model: Location }],
+        where: {
+          id: req.session.userId
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      });
+    }
     
     // Just need to be careful when setting this to null and using it in the view
     const loggedInUser = userData?.get({ plain: true }) ?? null;
     
-    // Test to check if connection from models to controllers to views all work
-    const usersData = await User.findAll({
-      include: [{ model: Stallholder }, { model: Location }]
-    })
-    .catch(err => console.log(err));
-
-    const users = usersData.map((user) => user.get({ plain: true }));
+    // Get all the upcoming markets
+    const upcomingMarkets = await modelUtility.getAllUpcomingMarkets();
+    
+    // Retrieve 
     
     res.render('homepage', {
-      users,
       loggedInUser,
       loggedIn: req.session.loggedIn,
-      title: 'Users Page',
-      layout: 'sidebar',
-      
+      upcomingMarkets
     })
   }
   catch (err) {

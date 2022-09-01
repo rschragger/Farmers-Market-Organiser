@@ -1,10 +1,16 @@
 const router = require('express').Router();
-const { Location } = require('../../models');
+const { Location, Events } = require('../../models');
 
 // Retrieve all the Locations
 router.get('/', async (req, res) => {
   try {
-    const locations = await Location.findAll();
+    const locations = await Location.findAll({
+      include: [{ model: Events }],
+    })
+    .catch(err => {
+      console.log(err);
+    });
+    
     res.status(200).json({
       data: locations
     });
