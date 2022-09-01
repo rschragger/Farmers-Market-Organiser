@@ -1,27 +1,9 @@
-<table>
-    <tr>
-        <th>id</th>
-        <th>first_name</th>
-        <th>last_name</th>
-        <th>username</th>
-        <th>email</th>
-        <th>role type</th>
-        <th>company</th>
-    </tr>
-    {{#each users as |user|}}
-    <tr>
-        <td>{{user.id}}</td>
-        <td>{{user.first_name}}</td>
-        <td>{{user.last_name}}</td>
-        <td>{{user.username}}</td>
-        <td>{{user.email}}</td>
-        <td>{{user.role_type}}</td>
-
-        {{!-- Quick example of adding foriegn linked data --}}
-        <td>
-            {{stallholder.company_name}}
-            <span style="color:red">{{location.market_name}}</span>
-        </td>
-    </tr>
-    {{/each}}
-</table>
+{{!-- The homepage is split into the sidebar and the main body --}}
+<div class="d-flex d-flex-row p-3">
+	{{> home-sidebar upcomingMarkets=upcomingMarkets}}
+	
+	{{!-- The main body --}}
+	<div class="container">
+		Display Information about Farmers market organiser
+	</div>
+</div>

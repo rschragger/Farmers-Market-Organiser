@@ -1,0 +1,11 @@
+<div class="card">
+	<div class="card-body">
+		<h5 class="card-title">Upcoming markets</h5>
+		<hr />
+		<ul class="no-list-style">
+			{{#each upcomingMarkets as |upcomingMarket|}}
+			<li><a href={{generateMarketLink upcomingMarket.location.id}} class="link-primary">{{upcomingMarket.location.market_name}} - {{formatDate upcomingMarket.timestamp_start}}</a></li>
+			{{/each}}
+		</ul>
+	</div>
+</div>

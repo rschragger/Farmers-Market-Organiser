@@ -27,4 +27,12 @@ const isStallholder = () => {
     }
 };
 
-module.exports = { isOrganiser, isStallholder };
+const formatDate = (date) => {
+    return `${new Date(date).getMonth()}/${new Date(date).getDate()}/${new Date(date).getFullYear()}`;
+}
+
+const generateMarketLink = (marketId) => {
+    return `/market/${marketId}`;
+}
+
+module.exports = { isOrganiser, isStallholder, formatDate, generateMarketLink };
