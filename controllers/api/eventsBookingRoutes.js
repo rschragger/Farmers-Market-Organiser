@@ -22,7 +22,7 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   try {
     const eventsbookingData = await EventsBooking.findAll({
-      include: [{ model: Location }],
+      include: [{model:Booking},{model:Stall},{model:Events}],
       where: {
         id: req.params.id
       }
