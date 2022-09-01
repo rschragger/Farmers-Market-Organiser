@@ -5,7 +5,7 @@ const modelUtility = require('../utils/modelUtility.js');
 
 router.get('/:id', async (req, res) => {
   try {
-	const loggedInUser = await modelUtility.getLoggedInUser(req.session.loggedIn);
+	const loggedInUser = await modelUtility.getLoggedInUser(req.session.loggedIn, req.session.userId);
     // Get all the upcoming markets
     const upcomingMarkets = await modelUtility.getAllUpcomingMarkets();
 	// Get the market data

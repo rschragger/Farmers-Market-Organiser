@@ -3,13 +3,13 @@ const { Op } = require("sequelize");
 
 // Moved all these functions here in case we want to use them somewhere else
 
-const getLoggedInUser = async (loggedIn) => {
+const getLoggedInUser = async (loggedIn, userId) => {
 	// Retrieve the logged in user, if there is one
     if (loggedIn) {
 		const userData = await User.findOne({
 			include: [{ model: Stallholder }, { model: Location }],
 			where: {
-			id: req.session.userId
+			id: userId
 			}
 		})
 		.catch(err => {
