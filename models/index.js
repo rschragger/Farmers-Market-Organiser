@@ -56,18 +56,39 @@ Stallholder.hasMany(Product, {
   foreignKey: 'stallholder_id',
 });
 
-// Booking.belongsTo(Events, {
-//   foreignKey: 'event_id',
-// });
-// Events.hasMany(Booking, {
-//   foreignKey: 'event_id',
-// });
+
+EventsBooking.belongsTo(Events, {
+  foreignKey: 'events_id',
+});
+Events.hasMany(EventsBooking, {
+  foreignKey: 'events_id',
+});
+
+
+EventsBooking.belongsTo(Booking, {
+  foreignKey: 'booking_id',
+});
+Booking.hasMany(EventsBooking, {
+  foreignKey: 'booking_id',
+});
+
+
+EventsBooking.belongsTo(Stall, {
+  foreignKey: 'stall_id',
+});
+Stall.hasMany(EventsBooking, {
+  foreignKey: 'stall_id',
+});
+
+
+
+/* https://sequelize.org/docs/v6/advanced-association-concepts/advanced-many-to-many/
 
 // Bookings, Events and Stalls are in a many to many relationship
 Events.belongsToMany(Booking, { through: EventsBooking, })
 Booking.belongsToMany(Events, { through: EventsBooking, })
 
-/*
+//
 Stall.belongsToMany(Booking, { through: EventsBooking, })
 Booking.belongsToMany(Stall, { through: EventsBooking, })
 
