@@ -1,3 +1,17 @@
 {{!-- This is the market page --}}
-{{!-- This is just to test that the data is going through --}}
-{{market.id}}
+<div class="d-flex d-flex-row p-3">
+	{{> sidebar/home-sidebar upcomingMarkets=upcomingMarkets products=products}}
+	
+	{{!-- The main body --}}
+	{{!-- Display the search results --}}
+	{{#if isSearching}}
+	<div class="container">
+		{{> search-results products=products}}
+	</div>
+	{{else}}
+	{{!-- Display the default content if not searching --}}
+	<div class="container">
+		<h1>{{market.market_name}}</h1>
+	</div>
+	{{/if}}
+</div>
