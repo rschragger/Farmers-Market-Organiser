@@ -1,40 +1,55 @@
 const router = require('express').Router();
-const { User, Stallholder, Location, Stall } = require('../models');
-const { withAuth, isOrganiser, isStallholder } = require('../utils/auth')
+const { User, Stallholder, Location, Stall, Events } = require('../models');
+const { withAuth, isOrganiser, isStallholder } = require('../utils/auth');
+const { Op } = require("sequelize");
 
 
 router.get('/', async (req, res) => {
   try {
+    let userData = null;
+    
     // Retrieve the logged in user, if there is one
-    const userData = await User.findOne({
-      include: [{ model: Stallholder }, { model: Location }],
-      where: {
-        id: req.session.userId
-      }
-    })
-    .catch(err => {
-      console.log(err);
-      return null;
-    });
+    if (req.session.loggedIn) {
+      userData = await User.findOne({
+        include: [{ model: Stallholder }, { model: Location }],
+        where: {
+          id: req.session.userId
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      });
+    }
     
     // Just need to be careful when setting this to null and using it in the view
     const loggedInUser = userData?.get({ plain: true }) ?? null;
     
-    // Test to check if connection from models to controllers to views all work
-    const usersData = await User.findAll({
-      include: [{ model: Stallholder }, { model: Location }]
+    // Get all the upcoming markets
+    // Using this https://sequelize.org/docs/v6/core-concepts/model-querying-basics/
+    // Search for operators
+    const upcomingMarketsData = await Events.findAll({
+      include: [{ model: Location }],
+      where: {
+        timestamp_start: {
+          [Op.gte]: new Date()
+        }
+      }
     })
-    .catch(err => console.log(err));
-
-    const users = usersData.map((user) => user.get({ plain: true }));
+    .catch(err => {
+      console.log(err);
+    });
+    
+    let upcomingMarkets = upcomingMarketsData?.map(upcomingMarket => upcomingMarket.get({ plain: true })) ?? null;
+    
+    // Sort the upcoming markets by their date
+    upcomingMarkets = upcomingMarkets.sort((a, b) => {
+      return new Date(a.timestamp_start) - new Date(b.timestamp_start);
+    });
     
     res.render('homepage', {
-      users,
       loggedInUser,
       loggedIn: req.session.loggedIn,
-      title: 'Users Page',
-      layout: 'sidebar',
-      
+      upcomingMarkets
     })
   }
   catch (err) {

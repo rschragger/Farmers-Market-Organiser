@@ -67,6 +67,10 @@
 	margin-bottom: 10px;
 }
 
+.sidebar {
+  width: 350px;
+}
+
 /* Utility */
 
 .text-center {
@@ -81,6 +85,11 @@
 .btn-right {
 	margin-left: auto;
 	display: block;
+}
+
+.no-list-style {
+  list-style: none;
+  padding: 0;
 }
 
 /* Validation */
