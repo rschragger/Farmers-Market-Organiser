@@ -71,6 +71,17 @@
   width: 350px;
 }
 
+.search-result-card {
+  height: 8rem;
+  overflow: hidden;
+}
+
+.search-result-card-image {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+
 /* Utility */
 
 .text-center {
