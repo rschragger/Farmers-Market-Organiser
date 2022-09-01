@@ -41,10 +41,10 @@ router.get('/', async (req, res) => {
     
     let upcomingMarkets = upcomingMarketsData?.map(upcomingMarket => upcomingMarket.get({ plain: true })) ?? null;
     
-    // Sort the upcoming markets by their date
+    // Sort the upcoming markets by their date and only retrieve the first 5
     upcomingMarkets = upcomingMarkets.sort((a, b) => {
       return new Date(a.timestamp_start) - new Date(b.timestamp_start);
-    });
+    }).slice(0, 5);
     
     res.render('homepage', {
       loggedInUser,
