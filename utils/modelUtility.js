@@ -1,5 +1,27 @@
-const {Location, Events } = require('../models');
+const {Location, Events, Product, Stallholder, Stall, User } = require('../models');
 const { Op } = require("sequelize");
+
+// Moved all these functions here in case we want to use them somewhere else
+
+const getLoggedInUser = async (loggedIn, userId) => {
+	// Retrieve the logged in user, if there is one
+    if (loggedIn) {
+		const userData = await User.findOne({
+			include: [{ model: Stallholder }, { model: Location }],
+			where: {
+			id: userId
+			}
+		})
+		.catch(err => {
+			console.log(err);
+			return null;
+		});
+		
+		return userData?.get({ plain: true }) ?? null;
+	}
+	
+	return null;
+}
 
 const getAllUpcomingMarkets = async () => {
 	// Get all the upcoming markets
@@ -33,6 +55,44 @@ const getAllUpcomingMarkets = async () => {
 	}
 }
 
+const getAllProducts = async () => {
+	const productsData = await Product.findAll({
+		include: [{ model: Stallholder }],
+	});
+	
+	const products = productsData.map(product => product.get({ plain: true }));
+	
+	return products;
+}
+
+const getSimilarProducts = async (product) => {
+	// Find all products that include the word product
+	const productsData = await Product.findAll({
+		include: [{ model: Stallholder }],
+		where: {
+			name: {
+				[Op.substring]: product
+			}
+		}
+	});
+	
+	const products = productsData.map(product => product.get({ plain: true }));
+	
+	return products;
+}
+
+const getMarketById = async (id) => {
+	const marketData = await Location.findByPk(id, {
+		include: [{ model: Events }, { model: Stall }, { model: User }],
+	});
+	
+	return marketData.get({ plain: true });
+}
+
 module.exports = {
-	getAllUpcomingMarkets
+	getLoggedInUser,
+	getAllUpcomingMarkets,
+	getAllProducts,
+	getSimilarProducts,
+	getMarketById
 }
