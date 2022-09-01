@@ -1,7 +1,7 @@
 
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
-const { Stall , Events, Booking } = require('./Stall');
+const { Stall , Events, Booking } = require('../models');
 
 class EventsBooking extends Model { }
 
@@ -13,7 +13,7 @@ EventsBooking.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    event_id: {
+    events_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
@@ -51,16 +51,16 @@ EventsBooking.init(
 
    // https://stackoverflow.com/questions/61655553/auto-populated-field-in-a-sequelize-model
     description:{
-        type: DataTypes.VIRTUAL,
-        get() {
-              return `event_id: ${this.event_id} stall_id:${this.stall_id} booking_id: ${this.booking_id}`;
-        }
+        type: DataTypes.STRING,
+        // get() {
+        //       return `events_id: ${this.events_id} stall_id:${this.stall_id} booking_id: ${this.booking_id}`;
+        // }
      },
      cost:{
       type:DataTypes.DECIMAL,
-      get(){
-       return Stall.findByPk(this.stall_id).price
-      }
+      // get(){
+      //  return Stall.findByPk(this.stall_id).price
+      // }
      }
     
   },
