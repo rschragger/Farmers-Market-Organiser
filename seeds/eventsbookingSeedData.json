@@ -1,0 +1,62 @@
+[
+ {
+   "event_id": 1,
+   "stall_id": 1,
+   "booking_id": 1
+ },
+ {
+   "event_id": 2,
+   "stall_id": 1,
+   "booking_id": 1
+ },
+ {
+   "event_id": 3,
+   "stall_id": 1,
+   "booking_id": 1
+ },
+ {
+   "event_id": 2,
+   "stall_id": 2,
+   "booking_id": 2
+ },
+ {
+   "event_id": 21,
+   "stall_id": 21,
+   "booking_id": 3
+ },
+ {
+   "event_id": 22,
+   "stall_id": 21,
+   "booking_id": 3
+ },
+ {
+   "event_id": 23,
+   "stall_id": 21,
+   "booking_id": 3
+ },
+ {
+   "event_id": 22,
+   "stall_id": 22,
+   "booking_id": 4
+ },
+ {
+   "event_id": 41,
+   "stall_id": 41,
+   "booking_id": 5
+ },
+ {
+   "event_id": 42,
+   "stall_id": 41,
+   "booking_id": 5
+ },
+ {
+   "event_id": 43,
+   "stall_id": 41,
+   "booking_id": 5
+ },
+ {
+   "event_id": 42,
+   "stall_id": 42,
+   "booking_id": 6
+ }
+]

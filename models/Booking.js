@@ -12,21 +12,21 @@ Booking.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    event_id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: 'events',
-        key: 'id',
-      },
-    },
+    // event_id: {
+    //   type: DataTypes.INTEGER,
+    //   allowNull: false,
+    //   references: {
+    //     model: 'events',
+    //     key: 'id',
+    //   },
+   // },
     stall_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      references: {
-        model: 'stall',
-        key: 'id',
-      },
+      // references: {
+      //   model: 'stall',
+      //   key: 'id',
+      // },
     },
     stallholder_id: {
       type: DataTypes.INTEGER,
@@ -36,16 +36,16 @@ Booking.init(
         key: 'id',
       },
     },
-    timestamp_start: {
+    lease_start: {
       type: DataTypes.DATE,
       allowNull: false,
     },
-    timestamp_end: {
+    lease_expiry: {
       type: DataTypes.DATE,
       allowNull: false,
-      validate: {
-        isAfter: this.timestamp_start,
-      }
+      // validate: {
+      //   isAfter: this.timestamp_start,
+      // }
     },
   },
   {
