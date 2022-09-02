@@ -3,7 +3,7 @@
 
 // It is used to simply identify true or false
 const isOrganiser = (roleType, options) => {
-    if (roleType === "organiser") {
+    if (roleType?.toLoserCase() === "organiser") {
         return options.fn(this);
     }
     else {
@@ -14,7 +14,7 @@ const isOrganiser = (roleType, options) => {
 // This is not a helper as it does not have a next()
 // It is used to simply identify true or false
 const isStallholder = (roleType, options) => {
-    if (roleType === "stallholder") {
+    if (roleType?.toLowerCase() === "stallholder") {
         return options.fn(this);
     }
     else {
