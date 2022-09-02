@@ -1,10 +1,12 @@
 const router = require('express').Router();
-const { Stall} = require('../../models');
+const { Stall , Location , EventsBooking} = require('../../models');
 
 // Retrieve all the Stalls
 router.get('/', async (req, res) => {
   try {
-    const stalls = await Stall.findAll();
+    const stalls = await Stall.findAll({
+      include:[{model:Location} ,{model: EventsBooking}]
+    });
     res.status(200).json({
       data: stalls
     });
@@ -20,7 +22,9 @@ router.get('/', async (req, res) => {
 // Retrieve a stall
 router.get('/:id', async (req, res) => {
   try {
-    const stall = await Stall.findByPk(req.params.id);
+    const stall = await Stall.findByPk(req.params.id,{
+      include:[{model:Location} ,{model: EventsBooking}]
+    });
 
     res.status(200).json({
       data: stall
