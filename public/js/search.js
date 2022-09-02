@@ -4,8 +4,8 @@ const searchProducts = (e) => {
 		
 		// Go to the search page and pass the value as a query string
 		const product = e.target.value.toLowerCase();
-		window.location.replace(`/search/${product}`);
+		window.location = `/search/${product}`;
 	}
 };
 
-document.getElementById("search-products").addEventListener("keypress", searchProducts);
+document.getElementById("search-products")?.addEventListener("keypress", searchProducts);
