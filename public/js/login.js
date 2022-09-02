@@ -87,7 +87,7 @@ const signupFormHandler = async (event) => {
 			});
 			
 			if (response.ok) {
-				window.location.replace('/');
+				window.location = '/';
 			}
 		}
 		else {
