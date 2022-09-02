@@ -116,6 +116,19 @@
   display: none;
 }
 
+.invalid-email,
+.invalid-mobile,
+.invalid-username,
+.invalid-password,
+.invalid-first-name,
+.invalid-last-name {
+  display: none;
+}
+
+.display-error {
+  display: block !important;
+}
+
 /* Tablet/Desktop */
 @media screen and (min-width: 768px) {
 	.custom-card-form {
