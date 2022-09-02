@@ -1,29 +1,25 @@
-
-<table class="table table-dark">
-  <thead>
-    <tr>
-      <th scope="col">Stall</th>
-      <th scope="col">Description</th>
-      <th scope="col">Price</th>
-      <th scope="col">Location</th>
-    </tr>
-  </thead>
-  <tbody>
-  {{#each stalls as |stall|}}
-    <tr>
-      <td><a href="/stalls/{{id}}">{{stall_name}}</a></td>
-      <td>{{description}}</td>
-      <td>{{price}}</td>
-      <td>{{location.market_name}}</td>
-      <td><a href="../stalls/edit/{{id}}"><i class="fa fa-edit"></i></a></td>
-      <td><form action="../stalls/delete/{{id}}" method="POST">
-          <button type="submit" onclick="return confirm('Are you sure?')"><i class="fa fa-trash fa-fw"></i></button>
-        </form>
-      </td>
-    </tr>
-  {{/each}}
-  </tbody>
-</table>
-<button type="button" class="btn btn-primary float-right"><a href="new" style="color: white;">
-  <i class="fa fa-plus">Add Stall</i></a>
-</button>
+{{!-- The homepage is split into the sidebar and the main body --}}
+<div class="d-flex d-flex-row p-3">
+	{{> sidebar/home-sidebar upcomingMarkets=upcomingMarkets products=products}}
+	{{!-- The main body --}}
+	{{!-- Display the search results --}}
+	{{#if isSearching}}
+	<div class="container">
+		{{> search-results products=products}}
+	</div>
+	{{else}}
+	{{!-- Display the default content if not searching --}}
+	<div class="container">
+		Display Information about Farmers market organiser
+        {{#if stallEdit}}
+		    {{> organiser/stall-edit stalls=stalls}}
+        {{/if}}
+        {{#if stallView}}
+            {{> organiser/stall-view stalls=stalls}}
+        {{/if}}
+        {{#if stallsList}}
+            {{> organiser/stalls-list stalls=stalls}}
+        {{/if}}
+	</div>
+	{{/if}}
+</div>
