@@ -1,0 +1,33 @@
+<div class="card mb-9">
+  <div class="card-body">
+    <div class="row g-3">
+      <div class="form-group col-md-6">
+        <label for="name">Stall Name</label>
+        <input type="text" class="form-control" id="name" name="name" placeholder="Stall Name" value="{{stall.stall_name}}" readonly>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="description">Description</label>
+        <input type="textarea" class="form-control" id="description" name="description" placeholder="Description" value="{{stall.description}}" readonly></textarea>
+      </div>
+    </div>
+    <div class="row g-3">
+      <div class="form-group col-md-6">
+          <label for="price">Price</label>
+          <input type="text" class="form-control" id="price" name="price" placeholder="price" value="{{stall.price}}" readonly>
+      </div>
+      <div class="form-group col-md-6">
+          <label for="lease_expiry">End Lease</label>
+          <input type="date" class="form-control" id="lease_expiry" value="{{stall.lease_expiry}}" readonly>
+      </div>
+    </div>
+    <div class="row g-3">
+      <div class="form-group col-md-6">
+        <label for="location">Location</label>
+        <select id="location" class="form-control" readonly>
+          <option selected>Choose...</option>
+          <option value="{{stall.location.id}}" selected readonly>{{stall.location.market_name}}</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
