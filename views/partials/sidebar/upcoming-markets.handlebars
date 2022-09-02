@@ -4,7 +4,9 @@
 		<hr />
 		<ul class="no-list-style">
 			{{#each upcomingMarkets as |upcomingMarket|}}
-			<li><a href={{generateMarketLink upcomingMarket.location.id}} class="link-primary">{{upcomingMarket.location.market_name}} - {{formatDate upcomingMarket.timestamp_start}}</a></li>
+			<li class="list-item-block">
+				<a href={{generateMarketLink upcomingMarket.location.id}} class=" list-item-block-link">{{upcomingMarket.location.market_name}} - {{formatDate upcomingMarket.timestamp_start}}</a>
+				</li>
 			{{/each}}
 		</ul>
 	</div>
