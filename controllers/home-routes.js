@@ -38,19 +38,29 @@ router.get('/search/:product', async (req, res) => {
 	});
 });
 
-router.get('/login', (req, res) => {
+router.get('/login', async (req, res) => {
   // Display the login page
   if (req.session.loggedIn) {
     res.redirect('/');
     return;
   }
   
-  res.render('login');
+  // Get all the upcoming markets
+  const upcomingMarkets = await modelUtility.getAllUpcomingMarkets();
+  
+  res.render('login', {
+    upcomingMarkets
+  });
 });
 
-router.get('/signup', (req, res) => {
+router.get('/signup', async (req, res) => {
+  // Get all the upcoming markets
+  const upcomingMarkets = await modelUtility.getAllUpcomingMarkets();
+  
   // Display the signup page
-  res.render('signup');
+  res.render('signup', {
+    upcomingMarkets
+  });
 })
 
 //stalls
