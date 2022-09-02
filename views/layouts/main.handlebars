@@ -42,19 +42,24 @@
         </div>
       </div>
     </nav>
-    <div class="d-flex d-flex-row p-3">
-      {{> sidebar/home-sidebar upcomingMarkets=upcomingMarkets products=products}}
-	
-      {{!-- Display the search results --}}
-      {{#if isSearching}}
-      <div class="container">
-        {{> search-results products=products}}
+    <div class="main-container">
+      <div class="row">
+        <div class="col-sm-12 col-md-5 col-xl-3">
+          {{> sidebar/home-sidebar upcomingMarkets=upcomingMarkets products=products}}
+        </div>
+        <div class="col-sm-12 col-md-7 col-xl-9">
+          {{!-- Display the search results --}}
+          {{#if isSearching}}
+          <div class="container">
+            {{> search-results products=products}}
+          </div>
+          {{else}}
+          {{{body}}}
+          {{/if}}
+        </div>
       </div>
-      {{else}}
-      {{{body}}}
-      {{/if}}
     </div>
-    <footer class="container-fluid"></footer>
+    <footer></footer>
     <script src="//cdnjs.cloudflare.com/ajax/libs/validate.js/0.13.1/validate.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
