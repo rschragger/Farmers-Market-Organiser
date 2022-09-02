@@ -27,7 +27,7 @@ router.get('/search/:product', async (req, res) => {
 	const similarProducts = await modelUtility.getSimilarProducts(req.params.product);
   // Get all the upcoming markets
   const upcomingMarkets = await modelUtility.getAllUpcomingMarkets();
-	
+	 
 	res.render('homepage', {
     loggedInUser,
     loggedIn: req.session.loggedIn,

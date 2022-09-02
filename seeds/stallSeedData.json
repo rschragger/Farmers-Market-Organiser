@@ -3,456 +3,342 @@
 	  "stall_name": "Stall1",
 	  "description": "3x3m Stall",
 	  "price": 30,
-	  "location_id": 1,
-	  "FIELD5": "",
-	  "Likely_Stall_ID": 1
+	  "location_id": 1
 	},
 	{
 	  "stall_name": "Stall2",
 	  "description": "3x3m Stall",
 	  "price": 30,
-	  "location_id": 1,
-	  "FIELD5": "",
-	  "Likely_Stall_ID": 2
+	  "location_id": 1
 	},
 	{
 	  "stall_name": "Stall3",
 	  "description": "3x3m Stall",
 	  "price": 30,
-	  "location_id": 1,
-	  "FIELD5": "",
-	  "Likely_Stall_ID": 3
+	  "location_id": 1
 	},
 	{
 	  "stall_name": "Stall4",
 	  "description": "3x3m Stall",
 	  "price": 30,
-	  "location_id": 1,
-	  "FIELD5": "",
-	  "Likely_Stall_ID": 4
+	  "location_id": 1
 	},
 	{
 	  "stall_name": "Stall5",
 	  "description": "3x5m Stall",
 	  "price": 45,
-	  "location_id": 1,
-	  "FIELD5": "",
-	  "Likely_Stall_ID": 5
+	  "location_id": 1
 	},
 	{
 	  "stall_name": "Stall6",
 	  "description": "3x5m Stall",
 	  "price": 45,
-	  "location_id": 1,
-	  "FIELD5": "",
-	  "Likely_Stall_ID": 6
+	  "location_id": 1
 	},
 	{
 	  "stall_name": "Stall7",
 	  "description": "3x5m Stall",
 	  "price": 45,
-	  "location_id": 1,
-	  "FIELD5": "",
-	  "Likely_Stall_ID": 7
+	  "location_id": 1
 	},
 	{
 	  "stall_name": "Stall8",
 	  "description": "3x5m Stall",
 	  "price": 45,
-	  "location_id": 1,
-	  "FIELD5": "",
-	  "Likely_Stall_ID": 8
+	  "location_id": 1
 	},
 	{
 	  "stall_name": "Stall9",
 	  "description": "3x5m Stall",
 	  "price": 45,
-	  "location_id": 1,
-	  "FIELD5": "",
-	  "Likely_Stall_ID": 9
+	  "location_id": 1
 	},
 	{
 	  "stall_name": "Stall10",
 	  "description": "3x5m Stall",
 	  "price": 45,
-	  "location_id": 1,
-	  "FIELD5": "",
-	  "Likely_Stall_ID": 10
+	  "location_id": 1
 	},
 	{
 	  "stall_name": "Stall11",
 	  "description": "4x5m Stall",
 	  "price": 50,
-	  "location_id": 1,
-	  "FIELD5": "",
-	  "Likely_Stall_ID": 11
+	  "location_id": 1
 	},
 	{
 	  "stall_name": "Stall12",
 	  "description": "4x5m Stall",
 	  "price": 50,
-	  "location_id": 1,
-	  "FIELD5": "",
-	  "Likely_Stall_ID": 12
+	  "location_id": 1
 	},
 	{
 	  "stall_name": "Stall13",
 	  "description": "4x5m Stall",
 	  "price": 50,
-	  "location_id": 1,
-	  "FIELD5": "",
-	  "Likely_Stall_ID": 13
+	  "location_id": 1
 	},
 	{
 	  "stall_name": "Stall14",
 	  "description": "3x8m Stall",
 	  "price": 55,
-	  "location_id": 1,
-	  "FIELD5": "",
-	  "Likely_Stall_ID": 14
+	  "location_id": 1
 	},
 	{
 	  "stall_name": "Stall15",
 	  "description": "3x8m Stall",
 	  "price": 55,
-	  "location_id": 1,
-	  "FIELD5": "",
-	  "Likely_Stall_ID": 15
+	  "location_id": 1
 	},
 	{
 	  "stall_name": "Shop16",
 	  "description": "Café - electricity, water",
 	  "price": 120,
-	  "location_id": 1,
-	  "FIELD5": "",
-	  "Likely_Stall_ID": 16
+	  "location_id": 1
 	},
 	{
 	  "stall_name": "Shop17",
 	  "description": "Vegetable Shop - electricity, water",
 	  "price": 100,
-	  "location_id": 1,
-	  "FIELD5": "",
-	  "Likely_Stall_ID": 17
+	  "location_id": 1
 	},
 	{
 	  "stall_name": "Shop18",
 	  "description": "Butcher - Refrigeration, electricity, water",
 	  "price": 120,
-	  "location_id": 1,
-	  "FIELD5": "",
-	  "Likely_Stall_ID": 18
+	  "location_id": 1
 	},
 	{
 	  "stall_name": "Shop19",
 	  "description": "Misc - Electricity",
 	  "price": 90,
-	  "location_id": 1,
-	  "FIELD5": "",
-	  "Likely_Stall_ID": 19
+	  "location_id": 1
 	},
 	{
 	  "stall_name": "Shop20",
 	  "description": "Café",
 	  "price": 120,
-	  "location_id": 1,
-	  "FIELD5": "",
-	  "Likely_Stall_ID": 20
+	  "location_id": 1
 	},
 	{
 	  "stall_name": "Shop21",
 	  "description": "Misc - Electricity",
 	  "price": 90,
-	  "location_id": 1,
-	  "FIELD5": "",
-	  "Likely_Stall_ID": 21
+	  "location_id": 1
 	},
 	{
 	  "stall_name": "Tent1",
 	  "description": "3x2m Tent",
 	  "price": 25,
-	  "location_id": 2,
-	  "FIELD5": "",
-	  "Likely_Stall_ID": 22
+	  "location_id": 2
 	},
 	{
 	  "stall_name": "Tent2",
 	  "description": "3x3m Tent",
 	  "price": 25,
-	  "location_id": 2,
-	  "FIELD5": "",
-	  "Likely_Stall_ID": 23
+	  "location_id": 2
 	},
 	{
 	  "stall_name": "Tent3",
 	  "description": "3x3m Tent",
 	  "price": 25,
-	  "location_id": 2,
-	  "FIELD5": "",
-	  "Likely_Stall_ID": 24
+	  "location_id": 2
 	},
 	{
 	  "stall_name": "Tent4",
 	  "description": "3x3m Tent",
 	  "price": 25,
-	  "location_id": 2,
-	  "FIELD5": "",
-	  "Likely_Stall_ID": 25
+	  "location_id": 2
 	},
 	{
 	  "stall_name": "Tent5",
 	  "description": "3x5m Tent",
 	  "price": 40,
-	  "location_id": 2,
-	  "FIELD5": "",
-	  "Likely_Stall_ID": 26
+	  "location_id": 2
 	},
 	{
 	  "stall_name": "Tent6",
 	  "description": "3x5m Tent",
 	  "price": 40,
-	  "location_id": 2,
-	  "FIELD5": "",
-	  "Likely_Stall_ID": 27
+	  "location_id": 2
 	},
 	{
 	  "stall_name": "Tent7",
 	  "description": "3x5m Tent",
 	  "price": 40,
-	  "location_id": 2,
-	  "FIELD5": "",
-	  "Likely_Stall_ID": 28
+	  "location_id": 2
 	},
 	{
 	  "stall_name": "Tent8",
 	  "description": "3x5m Tent",
 	  "price": 40,
-	  "location_id": 2,
-	  "FIELD5": "",
-	  "Likely_Stall_ID": 29
+	  "location_id": 2
 	},
 	{
 	  "stall_name": "Tent9",
 	  "description": "3x5m Tent",
 	  "price": 40,
-	  "location_id": 2,
-	  "FIELD5": "",
-	  "Likely_Stall_ID": 30
+	  "location_id": 2
 	},
 	{
 	  "stall_name": "Tent10",
 	  "description": "3x5m Tent",
 	  "price": 40,
-	  "location_id": 2,
-	  "FIELD5": "",
-	  "Likely_Stall_ID": 31
+	  "location_id": 2
 	},
 	{
 	  "stall_name": "Tent11",
 	  "description": "4x5m Tent",
 	  "price": 45,
-	  "location_id": 2,
-	  "FIELD5": "",
-	  "Likely_Stall_ID": 32
+	  "location_id": 2
 	},
 	{
 	  "stall_name": "Tent12",
 	  "description": "4x5m Tent",
 	  "price": 45,
-	  "location_id": 2,
-	  "FIELD5": "",
-	  "Likely_Stall_ID": 33
+	  "location_id": 2
 	},
 	{
 	  "stall_name": "Tent13",
 	  "description": "4x5m Tent",
 	  "price": 45,
-	  "location_id": 2,
-	  "FIELD5": "",
-	  "Likely_Stall_ID": 34
+	  "location_id": 2
 	},
 	{
 	  "stall_name": "Tent14",
 	  "description": "3x8m Tent",
 	  "price": 50,
-	  "location_id": 2,
-	  "FIELD5": "",
-	  "Likely_Stall_ID": 35
+	  "location_id": 2
 	},
 	{
 	  "stall_name": "Tent15",
 	  "description": "3x8m Tent",
 	  "price": 50,
-	  "location_id": 2,
-	  "FIELD5": "",
-	  "Likely_Stall_ID": 36
+	  "location_id": 2
 	},
 	{
 	  "stall_name": "Trailer16",
 	  "description": "Café",
 	  "price": 115,
-	  "location_id": 2,
-	  "FIELD5": "",
-	  "Likely_Stall_ID": 37
+	  "location_id": 2
 	},
 	{
 	  "stall_name": "Trailer17",
 	  "description": "FoodTruck1",
 	  "price": 95,
-	  "location_id": 2,
-	  "FIELD5": "",
-	  "Likely_Stall_ID": 38
+	  "location_id": 2
 	},
 	{
 	  "stall_name": "Trailer18",
 	  "description": "FoodTruck2",
 	  "price": 115,
-	  "location_id": 2,
-	  "FIELD5": "",
-	  "Likely_Stall_ID": 39
+	  "location_id": 2
 	},
 	{
 	  "stall_name": "Trailer19",
 	  "description": "Misc - Electricity",
 	  "price": 85,
-	  "location_id": 2,
-	  "FIELD5": "",
-	  "Likely_Stall_ID": 40
+	  "location_id": 2
 	},
 	{
 	  "stall_name": "Trailer20",
 	  "description": "IceCream Van",
 	  "price": 115,
-	  "location_id": 2,
-	  "FIELD5": "",
-	  "Likely_Stall_ID": 41
+	  "location_id": 2
 	},
 	{
 	  "stall_name": "Trailer21",
 	  "description": "Misc - Electricity",
 	  "price": 85,
-	  "location_id": 2,
-	  "FIELD5": "",
-	  "Likely_Stall_ID": 42
+	  "location_id": 2
 	},
 	{
 	  "stall_name": "Tent1",
 	  "description": "3x2m Tent",
 	  "price": 25,
-	  "location_id": 3,
-	  "FIELD5": "",
-	  "Likely_Stall_ID": 43
+	  "location_id": 3
 	},
 	{
 	  "stall_name": "Tent2",
 	  "description": "3x3m Tent",
 	  "price": 25,
-	  "location_id": 3,
-	  "FIELD5": "",
-	  "Likely_Stall_ID": 44
+	  "location_id": 3
 	},
 	{
 	  "stall_name": "Tent3",
 	  "description": "3x3m Tent",
 	  "price": 25,
-	  "location_id": 3,
-	  "FIELD5": "",
-	  "Likely_Stall_ID": 45
+	  "location_id": 3
 	},
 	{
 	  "stall_name": "Tent4",
 	  "description": "3x3m Tent",
 	  "price": 25,
-	  "location_id": 3,
-	  "FIELD5": "",
-	  "Likely_Stall_ID": 46
+	  "location_id": 3
 	},
 	{
 	  "stall_name": "Tent5",
 	  "description": "3x5m Tent",
 	  "price": 40,
-	  "location_id": 3,
-	  "FIELD5": "",
-	  "Likely_Stall_ID": 47
+	  "location_id": 3
 	},
 	{
 	  "stall_name": "Tent6",
 	  "description": "3x5m Tent",
 	  "price": 40,
-	  "location_id": 3,
-	  "FIELD5": "",
-	  "Likely_Stall_ID": 48
+	  "location_id": 3
 	},
 	{
 	  "stall_name": "Tent7",
 	  "description": "3x5m Tent",
 	  "price": 40,
-	  "location_id": 3,
-	  "FIELD5": "",
-	  "Likely_Stall_ID": 49
+	  "location_id": 3
 	},
 	{
 	  "stall_name": "Tent8",
 	  "description": "3x5m Tent",
 	  "price": 40,
-	  "location_id": 3,
-	  "FIELD5": "",
-	  "Likely_Stall_ID": 50
+	  "location_id": 3
 	},
 	{
 	  "stall_name": "Tent9",
 	  "description": "3x5m Tent",
 	  "price": 40,
-	  "location_id": 3,
-	  "FIELD5": "",
-	  "Likely_Stall_ID": 51
+	  "location_id": 3
 	},
 	{
 	  "stall_name": "Tent10",
 	  "description": "3x5m Tent",
 	  "price": 40,
-	  "location_id": 3,
-	  "FIELD5": "",
-	  "Likely_Stall_ID": 52
+	  "location_id": 3
 	},
 	{
 	  "stall_name": "Tent11",
 	  "description": "4x5m Tent",
 	  "price": 45,
-	  "location_id": 3,
-	  "FIELD5": "",
-	  "Likely_Stall_ID": 53
+	  "location_id": 3
 	},
 	{
 	  "stall_name": "Tent12",
 	  "description": "4x5m Tent",
 	  "price": 45,
-	  "location_id": 3,
-	  "FIELD5": "",
-	  "Likely_Stall_ID": 54
+	  "location_id": 3
 	},
 	{
 	  "stall_name": "Tent13",
 	  "description": "4x5m Tent",
 	  "price": 45,
-	  "location_id": 3,
-	  "FIELD5": "",
-	  "Likely_Stall_ID": 55
+	  "location_id": 3
 	},
 	{
 	  "stall_name": "Tent14",
 	  "description": "3x8m Tent",
 	  "price": 50,
-	  "location_id": 3,
-	  "FIELD5": "",
-	  "Likely_Stall_ID": 56
+	  "location_id": 3
 	},
 	{
 	  "stall_name": "Tent15",
 	  "description": "3x8m Tent",
 	  "price": 50,
-	  "location_id": 3,
-	  "FIELD5": "",
-	  "Likely_Stall_ID": 57
+	  "location_id": 3
 	}
    ]

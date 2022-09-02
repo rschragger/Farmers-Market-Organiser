@@ -1,4 +1,20 @@
 [{
+  "first_name": "Joan",
+  "last_name": "Hillman",
+  "email": "joanh0@unc.edu",
+  "username": "joanh1",
+  "mobile": "0400 123 456",
+  "password": "password1",
+  "location_id":1
+},{
+  "first_name": "Eli",
+  "last_name": "Bauer",
+  "email": "elib0@unc.edu",
+  "username": "elibau",
+  "mobile": "0401 123 456",
+  "password": "password2",
+  "stallholder_id":1
+},{
   "first_name": "Winslow",
   "last_name": "Ondrak",
   "email": "wondrak0@unc.edu",
