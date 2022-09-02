@@ -6,6 +6,7 @@ There are a number of items we are using that are cloud based and require access
 [https://farmers-market-organiser.herokuapp.com/](https://farmers-market-organiser.herokuapp.com/) 
 
 - `heroku create farmers-market-organiser` to initialise
+- `heroku git:remote -a farmers-market-organiser` to make it work from your git repository
 - `git push heroku main` to push
 - to seed
 
