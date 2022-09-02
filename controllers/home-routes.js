@@ -12,7 +12,8 @@ router.get('/', async (req, res) => {
     res.render('homepage', {
       loggedInUser,
       loggedIn: req.session.loggedIn,
-      upcomingMarkets
+      upcomingMarkets,
+      roleType: req.session.role_type
     });
   }
   catch (err) {

@@ -12,7 +12,9 @@
 	{{!-- Display the default content if not searching --}}
 	<div class="container">
 		<h1>Farmers Market Organiser!</h1>
-		
+		{{#isStallholder roleType}}
+		I am a stallholder
+		{{/isStallholder}}
 		{{!-- https://swiperjs.com/get-started --}}
 		<!-- Slider main container -->
 		<div class="swiper">
