@@ -1,29 +1,24 @@
 
 // This is not a helper as it does not have a next()
+
 // It is used to simply identify true or false
-const isOrganiser = () => {
-    if (!req.session.role_type) {
-        return false
-    }
-    else if (req.session.role_type === "organiser") {
-        return true
+const isOrganiser = (roleType, options) => {
+    if (roleType === "organiser") {
+        return options.fn(this);
     }
     else {
-        return false
+        return options.inverse(this);
     }
 };
 
 // This is not a helper as it does not have a next()
 // It is used to simply identify true or false
-const isStallholder = () => {
-    if (req.session.role_type === undefined) {
-        return false
-    }
-    else if (req.session.role_type === "stallholder") {
-        return true
+const isStallholder = (roleType, options) => {
+    if (roleType === "stallholder") {
+        return options.fn(this);
     }
     else {
-        return false
+        return options.inverse(this);
     }
 };
 
