@@ -1,25 +1,14 @@
-{{!-- The homepage is split into the sidebar and the main body --}}
-<div class="d-flex d-flex-row p-3">
-	{{> sidebar/home-sidebar upcomingMarkets=upcomingMarkets products=products}}
-	{{!-- The main body --}}
-	{{!-- Display the search results --}}
-	{{#if isSearching}}
-	<div class="container">
-		{{> search-results products=products}}
-	</div>
-	{{else}}
-	{{!-- Display the default content if not searching --}}
-	<div class="container">
-		Display Information about Farmers market organiser
-        {{#if stallEdit}}
-		    {{> organiser/stall-edit stalls=stalls}}
-        {{/if}}
-        {{#if stallView}}
-            {{> organiser/stall-view stalls=stalls}}
-        {{/if}}
-        {{#if stallsList}}
-            {{> organiser/stalls-list stalls=stalls}}
-        {{/if}}
-	</div>
+
+{{!-- Display the default content if not searching --}}
+<div class="container">
+	Display Information about Farmers market organiser
+	{{#if stallEdit}}
+		{{> organiser/stall-edit stalls=stalls}}
+	{{/if}}
+	{{#if stallView}}
+		{{> organiser/stall-view stalls=stalls}}
+	{{/if}}
+	{{#if stallsList}}
+		{{> organiser/stalls-list stalls=stalls}}
 	{{/if}}
 </div>
