@@ -1,0 +1,42 @@
+<div class="card mb-9">
+  <div class="card-body">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Company Name</th>
+          <th scope="col">Description</th>
+          {{!-- <th scope="col">Stall Location</th> --}}
+          {{!-- <th scope="col">Market</th> --}}
+          <th scope="col">Contact</th>
+          <th scope="col">Links</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each stallholderList as |stallholder|}}
+        <tr>
+          <td><a href="/stallholders/{{id}}">{{company_name}}</a></td>
+          <td>{{description}}</td>
+
+          {{!-- <td>{{stall.stall_name}}</td> --}}
+          {{!-- <td>{{location.market_name}}</td> --}}
+          
+          <td><a href="tel:{{mobile}}"></a>{{mobile}}</td>
+          <td><a href="{{website}}" target="_blank">{{website}}</a></td>
+
+
+          {{!-- this is a read only and not a form --}}
+          {{!-- <td><a href="../stallholders/{{id}}"><i class="fa fa-edit"></i></a></td>
+          <td>
+            <form action="../stallholders/delete/{{id}}" method="POST">
+              <button type="submit" onclick="return confirm('Are you sure?')"><i class="fa fa-trash fa-fw"></i></button>
+            </form>
+          </td> --}}
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+    {{!-- <button type="button" class="btn float-right no-padding"><a href="new">
+        <i class="fa fa-plus">Add Stall</i></a>
+    </button> --}}
+  </div>
+</div>

@@ -1,10 +1,10 @@
 const router = require('express').Router();
-const { Stallholder, User, Product  } = require('../../models'); //, Booking
+const { Stallholder, User, Product, Booking  } = require('../../models'); //, Booking
 
 router.get('/', async (req, res) => {
   try {
     const stallholderData = await Stallholder.findAll({
-      include: [{ model: User },{model:Product}],
+      include: [{ model: User },{model:Product},{model:Booking}],
     })
     if (!stallholderData) {
       res
@@ -22,7 +22,7 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   try {
     const stallholderData = await Stallholder.findAll({
-      include: [{ model: User },{model:Product}],
+      include: [{ model: User },{model:Product},{model:Booking}],
       where:{ 
         id: req.params.id}
     })

@@ -1,0 +1,18 @@
+<div class="card mb-9">
+  <div class="card-body">
+    
+        {{#each stallholderList as |stallholder|}}
+        <div>
+          <div><a href="/stallholders/{{id}}">{{company_name}}</a></div>
+          <div>{{description}}</div>
+
+         
+          <div><a href="tel:{{mobile}}"></a>{{mobile}}</div>
+          <div><a href="{{website}}" target="_blank">{{website}}</a>
+          
+          </div>
+
+        {{/each}}
+    
+  </div>
+</div>

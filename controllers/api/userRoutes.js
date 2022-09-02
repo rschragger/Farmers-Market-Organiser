@@ -25,7 +25,9 @@ router.get('/', async (req, res) => {
 // Retrieve one user
 router.get('/:id', async (req, res) => {
   try {
-    const user = await User.findByPk(req.params.id);
+    const user = await User.findByPk(req.params.id,{
+      include: [{ model: Stallholder }, { model: Location }],
+    });
 
     res.status(200).json({
       data: user
