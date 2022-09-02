@@ -42,8 +42,17 @@
         </div>
       </div>
     </nav>
-    <div class="container-fluid">
+    <div class="d-flex d-flex-row p-3">
+      {{> sidebar/home-sidebar upcomingMarkets=upcomingMarkets products=products}}
+	
+      {{!-- Display the search results --}}
+      {{#if isSearching}}
+      <div class="container">
+        {{> search-results products=products}}
+      </div>
+      {{else}}
       {{{body}}}
+      {{/if}}
     </div>
     <footer class="container-fluid"></footer>
     <script src="//cdnjs.cloudflare.com/ajax/libs/validate.js/0.13.1/validate.min.js"></script>
