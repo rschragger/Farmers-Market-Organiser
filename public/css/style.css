@@ -57,22 +57,21 @@ a:hover {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
+}
+
+.used-by-title {
+  margin-bottom: 15px;
 }
 
 .used-by-image {
   width: 150px;
+  margin: 15px;
 }
 
 section {
   margin-top: 50px;
   margin-bottom: 75px;
-}
-
-.what-we-do-icon {
-  font-size: 50px;
-  margin-bottom: 25px;
-  margin-top: 15px;
-  color: var(--light-blue)
 }
 
 button {
@@ -129,6 +128,21 @@ button a {
 
 .what-we-do-card {
   height: 500px;
+}
+
+.what-we-do-card .card-title {
+  margin-bottom: 15px;
+}
+
+.what-we-do-title {
+  margin-bottom: 25px;
+}
+
+.what-we-do-icon {
+  font-size: 50px;
+  margin-bottom: 25px;
+  margin-top: 15px;
+  color: var(--light-blue)
 }
 
 .search-result-card {
@@ -227,6 +241,11 @@ button a {
 
 /* Tablet/Desktop */
 @media screen and (min-width: 768px) {
+  .sidebar {
+    position: sticky;
+    top: 25px;
+  }
+  
 	.btn-form {
 		width: 250px;
 	}
