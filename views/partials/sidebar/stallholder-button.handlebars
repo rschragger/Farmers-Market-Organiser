@@ -1,10 +1,17 @@
-<div class="d-grid gap-2 col-12 mx-auto">
-	<button type="submit" class="btn no-padding" id="stallholders-button"><a href="/stallholder">Stallholder List</a></button>
-	{{!-- <button type="submit" class="btn no-padding" id="stallholders-button"><a href="/stallholder/{{loggedInUser}}">Stallholder List</a></button> --}}
-</div>
-
-<div class="d-grid gap-2 col-12 mx-auto">
-	{{!-- <a href="../stallholders/{{id}}"><i class="fa fa-edit"></i>Edit company</a> --}}
-		<button type="submit" class="btn no-padding" id="stallholders-button"><a href="../stallholder/{{id}}"><i class="fa fa-edit"></i>Edit companyStallholder List</a></button>
-
-</div>
+<ul class="no-list-style">
+	<li class="list-item-block">
+		<div class="d-grid gap-2 col-12 mx-auto">
+			<button type="submit" class="btn no-padding" id="stallholders-button"><a href="/stallholder">Stallholder
+					List</a></button>
+			{{!-- <button type="submit" class="btn no-padding" id="stallholders-button"><a
+					href="/stallholder/{{loggedInUser}}">Stallholder List</a></button> --}}
+		</div>
+	</li>
+	<li class="list-item-block">
+		<div class="d-grid gap-2 col-12 mx-auto">
+			{{!-- <a href="../stallholders/{{id}}"><i class="fa fa-edit"></i>Edit company</a> --}}
+			<button type="submit" class="btn no-padding" id="stallholders-button"><a href="../stallholder/{{id}}"><i
+						class="fa fa-edit"></i>Edit company</a></button>
+		</div>
+	</li>
+</ul>

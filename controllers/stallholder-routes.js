@@ -22,13 +22,14 @@ router.get('/', async (req, res) => {
       const dbStallholderData = await Stallholder.findAll({
         include: [{ model: User }, { model: Product }, { model: Booking }]
       })
-      const stallholderList = dbStallholderData.map((stallholder) =>
+      const stallholderData = dbStallholderData.map((stallholder) =>
         stallholder.get({ plain: true })
       );
       res.render('stallholders', {
+        stallholderData,
         loggedInUser,
         loggedIn: req.session.loggedIn,
-        stallholderList
+        stallholderList:true
       });
     }
   }
@@ -44,17 +45,21 @@ router.get('/:id', async (req, res) => {
     // const loggedInUser = await modelUtility.getLoggedInUser(req.session.loggedIn, req.session.userId);
 
     // Get thisstallholder's data
-    const dbStallholderData = await Stallholder.findAll({
-      where: { id: req.params.id },
+    const dbStallholderData = await Stallholder.findByPk(req.params.id, {
+      // where: { id: req.params.id },
       include: [{ model: User }, { model: Product }, { model: Booking }],
     })
-    const stallholderCard = dbStallholderData.map((stallholder) =>
-      stallholder.get({ plain: true })
-    );
+    // const stallholder = dbStallholderData.map((sh) =>
+    //   sh.get({ plain: true })
+      const stallholderData = dbStallholderData.get({ plain: true })
+    // );
     res.render('stallholders', {
-      loggedInUser,
+      stallholderData,
+      stallholderCard: true,
+     // stallholderList:false,
+      //loggedInUser,
       loggedIn: req.session.loggedIn,
-      stallholderCard
+      
     });
   }
   catch (err) {

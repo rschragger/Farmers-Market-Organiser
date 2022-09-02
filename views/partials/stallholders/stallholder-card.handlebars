@@ -1,18 +1,19 @@
 <div class="card mb-9">
   <div class="card-body">
-    
-        {{#each stallholderList as |stallholder|}}
+    {{!-- {{#each stallholderData as |stallholder|}} --}}
+    <h1>{{stallholderData.company_name}}!</h1>
+        
         <div>
-          <div><a href="/stallholders/{{id}}">{{company_name}}</a></div>
-          <div>{{description}}</div>
+          {{!-- <div><a href="/stallholders/{{id}}">{{company_name}}</a></div> --}}
+          <div>{{stallholderData.description}}</div>
 
          
-          <div><a href="tel:{{mobile}}"></a>{{mobile}}</div>
-          <div><a href="{{website}}" target="_blank">{{website}}</a>
+          <div><a href="tel:{{stallholderData.mobile}}"></a>{{stallholderData.mobile}}</div>
+          <div><a href="{{stallholderData.website}}" target="_blank">{{stallholderData.website}}</a>
           
           </div>
 
-        {{/each}}
+        {{!-- {{/each}} --}}
     
   </div>
 </div>

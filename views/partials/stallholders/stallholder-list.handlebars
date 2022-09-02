@@ -12,16 +12,16 @@
         </tr>
       </thead>
       <tbody>
-        {{#each stallholderList as |stallholder|}}
+        {{#each stallholderData as |stallholder|}}
         <tr>
-          <td><a href="/stallholders/{{id}}">{{company_name}}</a></td>
+          <td><a href="/stallholder/{{id}}">{{company_name}}</a></td>
           <td>{{description}}</td>
 
           {{!-- <td>{{stall.stall_name}}</td> --}}
           {{!-- <td>{{location.market_name}}</td> --}}
           
           <td><a href="tel:{{mobile}}"></a>{{mobile}}</td>
-          <td><a href="{{website}}" target="_blank">{{website}}</a></td>
+          <td><a href="http://{{website}}" target="_blank">{{website}}</a></td>
 
 
           {{!-- this is a read only and not a form --}}
