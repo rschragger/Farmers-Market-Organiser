@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const sequelize = require('../config/connection');
 const { User, Stallholder, Location, Stall, Events } = require('../models');
 const { withAuth, isOrganiser, isStallholder } = require('../utils/auth');
 const modelUtility = require('../utils/modelUtility.js');
@@ -71,18 +72,20 @@ router.get('/stalls',async(req, res) => {
     // Get all the upcoming markets
     const upcomingMarkets = await modelUtility.getAllUpcomingMarkets();
     //stalls info
-    const dbStallsData = await Stall.findAll({
-        include:[
-            {
-                model: Location,
-                attributes: ['market_name', 'address'],
-            },
-        ],
+    const results = await sequelize.query(`SELECT stall.stall_name,stall.description, stall.price ,user.username
+    FROM stall
+    JOIN user
+    ON stall.location_id = user.location_id
+    WHERE user.id=`+req.session.userId,{
+      model: Stall,
+      mapToModel: true
     });
-    const stalls = dbStallsData.map((stall) =>
-      stall.get({ plain: true })
-    );
+     const stalls = results.map((stall) =>
+       stall.get({ plain: true })
+     );
 
+    console.log(stalls);
+  //process.exit();
     res.render('organiser', {
         stalls,
         stallsList: true,
@@ -147,10 +150,6 @@ router.get('/stalls/edit/:id', async (req, res) => {
               },
           ],
       });
-
-      // res.status(200).json({
-      //   data: stall
-      // });
       const stall = dbStallsData.get({ plain: true });
       res.render('organiser', {
         stall,
