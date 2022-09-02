@@ -16,14 +16,14 @@ Product.init(
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [0,32],
+        len: [0,64],
         },
     },
     description: {
       type: DataTypes.STRING,
       allowNull: true,
       validate: {
-        len:[0,64],
+        len:[0,256],
       },
     },
     image: {
@@ -37,12 +37,17 @@ Product.init(
         type: DataTypes.INTEGER,
 		allowNull: false,
         references: {
-			model: 'location',
+			model: 'stallholder',
 			key: 'id',
 		},
     },
   },
   {
+    hooks: {
+      beforeCreate: function(product) {
+        product.name = product.name.toLowerCase();
+      }
+    },
     sequelize,
     timestamps: true,
     freezeTableName: true,

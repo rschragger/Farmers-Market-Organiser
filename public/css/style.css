@@ -1,0 +1,133 @@
+  /** styles and template for main layout from
+  * https://www.w3schools.com/bootstrap/bootstrap_templates.asp
+  */
+  /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+  .row.content {height: 1500px}
+  /* Set gray background color and 100% height */
+  .sidenav {
+    background-color: #f1f1f1;
+    height: 100%;
+  }
+  /* Set black background color, white text and some padding */
+  footer {
+    background-color: #555;
+    color: white;
+    padding: 15px;
+  }
+  /* On small screens, set height to 'auto' for sidenav and grid */
+  @media screen and (max-width: 767px) {
+    .sidenav {
+      height: auto;
+      padding: 15px;
+    }
+    .row.content {height: auto;}
+  }
+  
+    /** styles and template for main layout from
+  * https://www.w3schools.com/bootstrap/bootstrap_templates.asp
+  */
+  /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+  .row.content {height: 1500px}
+  /* Set gray background color and 100% height */
+  .sidenav {
+    background-color: #f1f1f1;
+    height: 100%;
+  }
+  /* Set black background color, white text and some padding */
+  footer {
+    background-color: #555;
+    color: white;
+    padding: 15px;
+  }
+  /* On small screens, set height to 'auto' for sidenav and grid */
+  @media screen and (max-width: 767px) {
+    .sidenav {
+      height: auto;
+      padding: 15px;
+    }
+    .row.content {height: auto;}
+  }
+
+.custom-card-form {
+	width: 18rem;
+	margin: 25px auto;
+	padding: 15px;
+}
+
+.custom-card-form .row {
+	margin-bottom: 15px;
+}
+
+.btn-form {
+	width: 100%;
+}
+
+.new-user {
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+.sidebar {
+  width: 350px;
+}
+
+.search-result-card {
+  height: 8rem;
+  overflow: hidden;
+}
+
+.search-result-card-image {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+
+/* Utility */
+
+.text-center {
+	text-align: center;
+}
+
+.btn-center {
+	margin: 0 auto;
+	display: block;
+}
+
+.btn-right {
+	margin-left: auto;
+	display: block;
+}
+
+.no-list-style {
+  list-style: none;
+  padding: 0;
+}
+
+/* Validation */
+.invalid-username-password .invalid-username-password-feedback {
+  display: block;
+  width: 100%;
+  margin-top: 0.25rem;
+  font-size: .865em;
+  text-align: center;
+}
+
+.invalid-username-password-feedback {
+  display: none;
+}
+
+/* Tablet/Desktop */
+@media screen and (min-width: 768px) {
+	.custom-card-form {
+		width: 40rem;
+	}
+	
+	.btn-form {
+		width: 250px;
+	}
+	
+	.new-user {
+		text-align: center;
+		margin-bottom: 10px;
+	}
+}

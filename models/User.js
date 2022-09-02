@@ -4,13 +4,18 @@ const bcrypt = require('bcrypt');
 
 
 //Phone validation from https://stackoverflow.com/questions/67250004/check-if-the-value-is-phone-number-in-model-sequelize/67250175#67250175
-const phoneValidationRegex = /\d{3}-\d{3}-\d{4}/ ;
-const roleType = ( userData )=>{
+const phoneValidationRegex = /\d{3}-\d{3}-\d{4}/;
+
+const roleType = (userData) => {
   return !userData.location_id ? 'stallholder' : 'organiser'
 }
 
 
-class User extends Model { }
+class User extends Model {
+  checkPassword(loginPw) {
+    return bcrypt.compareSync(loginPw, this.password);
+  }
+ }
 
 User.init(
   {
@@ -22,7 +27,7 @@ User.init(
     },
     stallholder_id: {
       type: DataTypes.INTEGER,
-      allowNull:true,
+      allowNull: true,
       references: {
         model: 'stallholder',
         key: 'id',
@@ -30,7 +35,7 @@ User.init(
     },
     location_id: {
       type: DataTypes.INTEGER,
-      allowNull:true,
+      allowNull: true,
       references: {
         model: 'location',
         key: 'id',
@@ -86,12 +91,12 @@ User.init(
   {
     hooks: {
       beforeCreate: async (newUserData) => {
-        newUserData.role_type = roleType(newUserData) ;
+        newUserData.role_type = !newUserData.role_type ? await roleType(newUserData) : newUserData.role_type;
         newUserData.password = await bcrypt.hash(newUserData.password, 10);
         return newUserData;
       },
       beforeUpdate: async (updatedUserData) => {
-        updatedUserData.role_type = roleType(updatedUserData) ;
+        updatedUserData.role_type = !updatedUserData.role_type ? await roleType(updatedUserData) : updatedUserData.role_type;
         if (updatedUserData.password) {
           updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
         }
@@ -103,10 +108,10 @@ User.init(
     freezeTableName: true,
     underscored: true,
     modelName: 'user',
-    defaultScope: {
-      attributes: { exclude: ['password'] },
-    }//This should disallow password from  Sequelize API queries 
-  }
+   // defaultScope: {
+   //   attributes: { exclude: ['password'] },
+   // }//This should disallow password from  Sequelize API queries 
+   }
 );
 
 module.exports = User;

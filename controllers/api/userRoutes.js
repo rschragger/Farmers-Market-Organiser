@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Stallholder, Location } = require('../../models');
+const { User, Stallholder, Location} = require('../../models');
 
 // Retrieve all the users
 router.get('/', async (req, res) => {
@@ -7,8 +7,12 @@ router.get('/', async (req, res) => {
     const users = await User.findAll({
       include: [{ model: Stallholder }, { model: Location }],
     });
-    res.status(200).json({
-      data: users
+    req.session.save(() => {
+      req.session.loggedIn = true;
+
+      res.status(200).json({
+        data: users
+      });
     });
   }
   catch (err) {
@@ -70,7 +74,7 @@ router.post('/login', async (req, res) => {
   try {
     const userData = await User.findOne({
       where: {
-        email: req.body.email
+        username: req.body.username
       }
     });
 
@@ -84,7 +88,7 @@ router.post('/login', async (req, res) => {
     }
 
     // The user exists so now check if the password matches what is in the db
-    const isValidPassword = userData.checkPassword(req.body.password);
+    const isValidPassword = await userData.checkPassword(req.body.password);
 
     if (!isValidPassword) {
       // The password is incorrect
@@ -99,18 +103,17 @@ router.post('/login', async (req, res) => {
     req.session.save(() => {
       req.session.userId = userData.id;
       req.session.loggedIn = true;
+      req.session.role_type = userData.role_type;
 
       res.status(200).json({
         data: userData,
         message: "You are now logged in!"
       })
     });
-
-
   }
   catch (err) {
     res.status(400).json({
-      message: err
+      message: 'login error: ' + err
     });
   }
 });
@@ -161,4 +164,30 @@ router.put('/:id', async (req, res) => {
   }
 });
 
+// Delete the user data
+router.delete('/:id', async (req, res) => {
+  try {
+    const deletedUser = await User.destroy( {
+      where: {
+        id: req.params.id
+      },
+    });
+    if (!deletedUser) {
+      // No user exists with this id
+      res.status(404).json({
+        message: "No user with this id exists so nothing has been done!"
+      });
+      return;
+    }
+    // the user exists and has been updated
+    res.status(200).json({
+      message: `User ${req.params.id} is deleted!`
+    });
+  }
+  catch (err) {
+    res.status(500).json({
+      message: err
+    });
+  }
+});
 module.exports = router;

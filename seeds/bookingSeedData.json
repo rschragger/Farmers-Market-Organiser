@@ -1,0 +1,38 @@
+[
+  {
+    "stallholder_id": 1,
+    "stall_id": 1,
+    "lease_start": "2022/09/01 9:00",
+    "lease_expiry": "2022/09/03 15:00"
+  },
+  {
+    "stallholder_id": 2,
+    "stall_id": 2,
+    "lease_start": "2022/09/02 9:00",
+    "lease_expiry": "2022/09/02 15:00"
+  },
+  {
+    "stallholder_id": 3,
+    "stall_id": 21,
+    "lease_start": "2022/09/03 8:00",
+    "lease_expiry": "2022/09/10 13:30"
+  },
+  {
+    "stallholder_id": 4,
+    "stall_id": 22,
+    "lease_start": "2022/09/04 8:00",
+    "lease_expiry": "2022/09/04 13:30"
+  },
+  {
+    "stallholder_id": 5,
+    "stall_id": 41,
+    "lease_start": "2022/10/02 7:30",
+    "lease_expiry": "2022/12/04 14:00"
+  },
+  {
+    "stallholder_id": 6,
+    "stall_id": 42,
+    "lease_start": "2022/10/30 7:30",
+    "lease_expiry": "2022/10/30 14:00"
+  }
+ ]
