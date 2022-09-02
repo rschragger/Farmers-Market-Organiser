@@ -19,27 +19,22 @@
     <nav class="navbar navbar-expand-lg">
       <div class="container-fluid">
         <a class="navbar-brand" href="/"><img class="navbar-brand-logo" src="/images/logos/FarmerFreshmarket_Logo.png" /></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
         {{#if loggedIn}}
           <span class="navbar-text welcome-message">
             Welcome {{loggedInUser.first_name}} {{loggedInUser.last_name}}
           </span>
         {{/if}}
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-            {{#if loggedIn}}
-            <li class="nav-item">
-              <a class="nav-link" href="#" id="btn-logout"><i class="fa-solid fa-right-from-bracket"></i> Log out</a>
-            </li>
-            {{else}}
-            <li class="nav-item">
-              <a class="nav-link" href="/login"><i class="fa-solid fa-right-to-bracket"></i> Login</a>
-            </li>
-            {{/if}}
-          </ul>
-        </div>
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          {{#if loggedIn}}
+          <li class="nav-item">
+            <a class="nav-link" href="#" id="btn-logout"><i class="fa-solid fa-right-from-bracket"></i> Log out</a>
+          </li>
+          {{else}}
+          <li class="nav-item">
+            <a class="nav-link" href="/login"><i class="fa-solid fa-right-to-bracket"></i> Login</a>
+          </li>
+          {{/if}}
+        </ul>
       </div>
     </nav>
     <div class="main-container">
@@ -50,21 +45,20 @@
         <div class="col-sm-12 col-md-8 col-xl-9">
           {{!-- Display the search results --}}
           {{#if isSearching}}
-          <div class="container">
-            {{> search-results products=products}}
-          </div>
+          {{> search-results products=products}}
           {{else}}
           {{{body}}}
           {{/if}}
         </div>
       </div>
-    </div>
-    <footer>
+      <footer>
       Developed By Sean, Reeve and Nancy
-    </footer>
+      </footer>
+    </div>
     <script src="//cdnjs.cloudflare.com/ajax/libs/validate.js/0.13.1/validate.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
     <script src="/js/index.js"></script>
     {{#if loggedIn}}
       <script src="/js/logout.js"></script>

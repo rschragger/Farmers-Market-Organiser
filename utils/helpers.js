@@ -1,5 +1,4 @@
-
-// This is not a helper as it does not have a next()
+const moment = require('moment');
 
 // It is used to simply identify true or false
 const isOrganiser = (roleType, options) => {
@@ -23,7 +22,11 @@ const isStallholder = (roleType, options) => {
 };
 
 const formatDate = (date) => {
-    return `${new Date(date).getMonth()}/${new Date(date).getDate()}/${new Date(date).getFullYear()}`;
+    const dateObj = moment().format('Do MMM YYYY, h:mm a');
+    
+    return dateObj;
+    
+    //return `${new Date(date).getMonth()}/${new Date(date).getDate()}/${new Date(date).getFullYear()}`;
 }
 
 const generateMarketLink = (marketId) => {
