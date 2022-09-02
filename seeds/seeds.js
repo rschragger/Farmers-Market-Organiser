@@ -11,7 +11,7 @@ const eventsSeedData = require('./eventsSeedData.json');
 const eventsbookingSeedData = require('./eventsbookingSeedData.json');
 
 const randomId = (obj) => {
-  return obj[Math.floor(Math.random() * obj.length)].id
+  return !obj.id ? obj[Math.floor(Math.random() * obj.length)].id : obj.id;
 }
 
 const seedDatabase = async () => {
@@ -43,9 +43,17 @@ const seedDatabase = async () => {
 
   // One by one seeding with functions
   for (const user of userSeedData) {
-    let stallOrOrg = Math.floor(Math.random() * 6); //can be either a stallholder or an organiser seeding
-    let shId = (stallOrOrg >= 1) ? randomId(stallholder) : null; // We want 5 times as many stallholders as organisers
-    let orgId = (stallOrOrg === 0) ? randomId(location) : null;
+    let shId
+    let orgId
+    if (user.stallholder_id || user.location_id) {
+      shId = user.stallholder_id;
+      orgId = user.location_id;
+    } else {
+
+      let stallOrOrg = Math.floor(Math.random() * 6); //can be either a stallholder or an organiser seeding
+      shId = (stallOrOrg >= 1) ? randomId(stallholder) : null; // We want 5 times as many stallholders as organisers
+      orgId = (stallOrOrg === 0) ? randomId(location) : null;
+    }
     const newUser = await User.create(
       {
         ...user,
@@ -73,7 +81,7 @@ const seedDatabase = async () => {
     const newProduct = await Product.create(
       {
         ...product,
-        stallholder_id: randomId(stallholder),
+        stallholder_id: !product.stallholder_id? randomId(stallholder):product.stallholder_id,
         individualHooks: true,
         returning: true,
       })
