@@ -1,59 +1,47 @@
-  /** styles and template for main layout from
-  * https://www.w3schools.com/bootstrap/bootstrap_templates.asp
-  */
-  /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
-  .row.content {height: 1500px}
-  /* Set gray background color and 100% height */
+/** styles and template for main layout from
+* https://www.w3schools.com/bootstrap/bootstrap_templates.asp
+*/
+/* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+.row.content {height: 1500px}
+/* Set gray background color and 100% height */
+.sidenav {
+  background-color: #f1f1f1;
+  height: 100%;
+}
+/* Set black background color, white text and some padding */
+footer {
+  background-color: #555;
+  color: white;
+  padding: 15px;
+}
+/* On small screens, set height to 'auto' for sidenav and grid */
+@media screen and (max-width: 767px) {
   .sidenav {
-    background-color: #f1f1f1;
-    height: 100%;
-  }
-  /* Set black background color, white text and some padding */
-  footer {
-    background-color: #555;
-    color: white;
+    height: auto;
     padding: 15px;
   }
-  /* On small screens, set height to 'auto' for sidenav and grid */
-  @media screen and (max-width: 767px) {
-    .sidenav {
-      height: auto;
-      padding: 15px;
-    }
-    .row.content {height: auto;}
-  }
-  
-    /** styles and template for main layout from
-  * https://www.w3schools.com/bootstrap/bootstrap_templates.asp
-  */
-  /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
-  .row.content {height: 1500px}
-  /* Set gray background color and 100% height */
-  .sidenav {
-    background-color: #f1f1f1;
-    height: 100%;
-  }
-  /* Set black background color, white text and some padding */
-  footer {
-    background-color: #555;
-    color: white;
-    padding: 15px;
-  }
-  /* On small screens, set height to 'auto' for sidenav and grid */
-  @media screen and (max-width: 767px) {
-    .sidenav {
-      height: auto;
-      padding: 15px;
-    }
-    .row.content {height: auto;}
-  }
+  .row.content {height: auto;}
+}
   
 body {
   font-family: 'Josefin Sans', sans-serif;
 }
 
+footer {
+  margin-top: 100px;
+}
+
+.main-container {
+  margin: 50px 15px 25px 15px;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
 .custom-card-form {
-	width: 18rem;
+	width: 100%;
 	margin: 25px auto;
 	padding: 15px;
 }
@@ -71,10 +59,6 @@ body {
 	margin-bottom: 10px;
 }
 
-.sidebar {
-  width: 350px;
-}
-
 .search-result-card {
   height: 8rem;
   overflow: hidden;
@@ -87,13 +71,13 @@ body {
 }
 
 .swiper {
-  width: 100%;
-  height: 600px;
   border-radius: 15px;
 }
 
 .swiper-img {
   width: 100%;
+  height: 200px;
+  object-fit: cover;
 }
 
 /* Utility */
@@ -145,10 +129,6 @@ body {
 
 /* Tablet/Desktop */
 @media screen and (min-width: 768px) {
-	.custom-card-form {
-		width: 40rem;
-	}
-	
 	.btn-form {
 		width: 250px;
 	}
@@ -156,5 +136,21 @@ body {
 	.new-user {
 		text-align: center;
 		margin-bottom: 10px;
+	}
+}
+
+/* Desktop Only */
+@media screen and (min-width: 1200px) {
+  .swiper {
+    width: 80%;
+    height: 400px;
+  }
+  
+  .swiper-img {
+    height: 400px;
+  }
+  
+  .custom-card-form {
+		width: 40rem;
 	}
 }
