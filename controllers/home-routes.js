@@ -5,7 +5,7 @@ const modelUtility = require('../utils/modelUtility.js');
 
 router.get('/', async (req, res) => {
   try {
-    const loggedInUser = await modelUtility.getLoggedInUser(req.session.loggedIn, req.session.userId);
+    const loggedInUser = await modelUtility.getLoggedInUser(req.session.loggedIn, req.session.userId, req.session.role_type);
     // Get all the upcoming markets
     const upcomingMarkets = await modelUtility.getAllUpcomingMarkets();
     
@@ -83,7 +83,7 @@ router.get('/stalls',async(req, res) => {
       stall.get({ plain: true })
     );
 
-    res.render('stalls', {
+    res.render('organiser', {
         stalls,
         stallsList: true,
         loggedInUser,
@@ -117,7 +117,7 @@ router.get('/stalls/:id', async (req, res) => {
     //   data: stall
     // });
     const stall = dbStallsData.get({ plain: true });
-    res.render('stalls', {
+    res.render('organiser', {
       stall,
       stallView: true,
       loggedInUser,
@@ -152,7 +152,7 @@ router.get('/stalls/edit/:id', async (req, res) => {
       //   data: stall
       // });
       const stall = dbStallsData.get({ plain: true });
-      res.render('stalls', {
+      res.render('organiser', {
         stall,
         stallEdit: true,
         loggedInUser,
