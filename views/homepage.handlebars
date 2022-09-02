@@ -1,28 +1,20 @@
 {{!-- The homepage is split into the sidebar and the main body --}}
 {{!-- Display the default content if not searching --}}
 <div class="container">
-	<h1 class="title">Farmers Market Organiser!</h1>
-	{{!-- https://swiperjs.com/get-started --}}
-	<!-- Slider main container -->
-	<div class="swiper">
-		<!-- required wrapper -->
-		<div class="swiper-wrapper">
-			<!-- Slides -->
-			
-			<div class="swiper-slide"><img src="/images/fmo_img1.jpg" class="swiper-img" /></div>
-			{{!-- https://www.tripadvisor.com.au/Attraction_Review-g255364-d7374589-Reviews-Bunbury_Farmers_Market-Bunbury_Western_Australia.html --}}
-			<div class="swiper-slide"><img src="/images/fmo_img2.jpg" class="swiper-img" /></div>
-			{{!-- https://melbournefoodfestivals.com.au/event/yarraville-village-farmers-market/ --}}
-			<div class="swiper-slide"><img src="/images/fmo_img3.jpg" class="swiper-img" /></div>
-		</div>
-		<!-- pagination -->
-		<div class="swiper-pagination"></div>
-
-		<!-- navigation buttons -->
-		<div class="swiper-button-prev"></div>
-		<div class="swiper-button-next"></div>
-
-		<!-- scrollbar -->
-		<div class="swiper-scrollbar"></div>
+	<div class="heading">
+		<h1 class="title text-center"><span class="green">F</span>armers <span class="green">M</span>arket <span class="green">O</span>rganiser<span class="orange">!</span></h1>
+		<h3 class="subheading text-center">Fresh produce at your fingertips</h2>
 	</div>
+	
+	<section>
+		{{> home-carousel}}
+	</section>
+	
+	<section>
+		{{> what-we-do}}
+	</section>
+	
+	<section>
+		{{> used-by}}
+	</section>
 </div>
