@@ -1,15 +1,20 @@
 [
 	{
 		"market_name": "Central Farmers Market",
-		"website":"www.centralmarket.com.au"
+		"website":"www.centralmarket.com.au",
+		"logo_filename":"CentralFarmersMarket_Logo.png"
 	},
 	{
 		"market_name": "Southern Farmers Market",
-		"website":"www.southernmarket.com.au"
+		"website":"www.southernmarket.com.au",
+		"logo_filename":"SouthernFarmersMarket_Logo.png"
+	
 	},
 	{
 		"market_name": "Eastern Farmers Market",
-		"website":"www.easternmarket.com.au"
+		"website":"www.easternmarket.com.au",
+		"logo_filename":"EasternFarmersMarket_Logo.png"
+	
 	}
 	
 ]

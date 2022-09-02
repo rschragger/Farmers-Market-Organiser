@@ -38,6 +38,10 @@ Location.init(
         allowNull: true,
         len: [0,32],
     },
+    logo_filename: {
+      type: DataTypes.STRING,
+      //allowNull: false,
+    },
   },
   {
     sequelize,

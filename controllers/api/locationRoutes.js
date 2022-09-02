@@ -1,11 +1,11 @@
 const router = require('express').Router();
-const { Location, Events } = require('../../models');
+const { Location, Events, Stall } = require('../../models');
 
 // Retrieve all the Locations
 router.get('/', async (req, res) => {
   try {
     const locations = await Location.findAll({
-      include: [{ model: Events }],
+      include: [{ model: Events },{model:Stall}],
     })
     .catch(err => {
       console.log(err);
@@ -25,7 +25,9 @@ router.get('/', async (req, res) => {
 // Retrieve one location
 router.get('/:id', async (req, res) => {
   try {
-    const location = await Location.findByPk(req.params.id);
+    const location = await Location.findByPk(req.params.id,{
+      include: [{ model: Events },{model:Stall}],
+    });
 
     res.status(200).json({
       data: location
@@ -83,5 +85,7 @@ router.put('/:id', async (req, res) => {
     });
   }
 });
+
+//Do not add a DELETE as this would be a bit catastrophic and not required. You would want to retain historical info
 
 module.exports = router;

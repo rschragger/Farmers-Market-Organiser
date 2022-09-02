@@ -4,7 +4,7 @@ const { Booking , EventsBooking, Events,  Stall , Stallholder   } = require('../
 router.get('/', async (req, res) => {
   try {
     const bookingData = await Booking.findAll({
-      include: [{model:Stallholder}]//,{model:EventsBooking}]
+      include: [{model:Stallholder},{model:EventsBooking}]
     })
     if (!bookingData) {
       res
@@ -22,7 +22,7 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   try {
     const bookingData = await Booking.findAll({
-      include: [{model:Stallholder},{model:Events}],
+      include:  [{model:Stallholder},{model:EventsBooking}],
       where:{ 
         id: req.params.id}
     })
@@ -45,7 +45,8 @@ router.post('/', async (req, res) => {
     const bookingData = await Booking.findOne({
       where: {
         timestamp_start: req.body.timestamp_start,
-        location_id: req.body.location_id,
+        //location_id: req.body.location_id,
+        stall_id:req.body.stall_id,
       },
      individualHooks: true,
     });
