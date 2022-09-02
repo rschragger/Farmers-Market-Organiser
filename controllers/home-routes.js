@@ -6,7 +6,6 @@ const modelUtility = require('../utils/modelUtility.js');
 router.get('/', async (req, res) => {
   try {
     const loggedInUser = await modelUtility.getLoggedInUser(req.session.loggedIn, req.session.userId);
-    
     // Get all the upcoming markets
     const upcomingMarkets = await modelUtility.getAllUpcomingMarkets();
     
@@ -57,6 +56,10 @@ router.get('/signup', (req, res) => {
 // Retrieve all the Stalls
 router.get('/stalls',async(req, res) => {
   try {
+    const loggedInUser = await modelUtility.getLoggedInUser(req.session.loggedIn, req.session.userId);
+    // Get all the upcoming markets
+    const upcomingMarkets = await modelUtility.getAllUpcomingMarkets();
+    //stalls info
     const dbStallsData = await Stall.findAll({
         include:[
             {
@@ -70,9 +73,11 @@ router.get('/stalls',async(req, res) => {
     );
 
     res.render('stalls', {
-      stalls,
-      title: 'Stalls Page',
-      layout: 'sidebar'
+        stalls,
+        stallsList: true,
+        loggedInUser,
+        loggedIn: req.session.loggedIn,
+        upcomingMarkets
     });
   }
   catch (err) {
@@ -85,6 +90,9 @@ router.get('/stalls',async(req, res) => {
 // Retrieve a stall
 router.get('/stalls/:id', async (req, res) => {
   try {
+    const loggedInUser = await modelUtility.getLoggedInUser(req.session.loggedIn, req.session.userId);
+    // Get all the upcoming markets
+    const upcomingMarkets = await modelUtility.getAllUpcomingMarkets();
     const dbStallsData = await Stall.findByPk(req.params.id,{
         include:[
             {
@@ -98,11 +106,13 @@ router.get('/stalls/:id', async (req, res) => {
     //   data: stall
     // });
     const stall = dbStallsData.get({ plain: true });
-    res.render('stall-view', {
+    res.render('stalls', {
       stall,
-      title: 'Edit stall Page',
-      layout: 'sidebar',
-    });
+      stallView: true,
+      loggedInUser,
+      loggedIn: req.session.loggedIn,
+      upcomingMarkets
+  });
 
   }
   catch (err) {
@@ -115,6 +125,9 @@ router.get('/stalls/:id', async (req, res) => {
 // Get the data of the stall to be edited
 router.get('/stalls/edit/:id', async (req, res) => {
   try {
+      const loggedInUser = await modelUtility.getLoggedInUser(req.session.loggedIn, req.session.userId);
+      // Get all the upcoming markets
+      const upcomingMarkets = await modelUtility.getAllUpcomingMarkets();
       const dbStallsData = await Stall.findByPk(req.params.id,{
           include:[
               {
@@ -128,10 +141,12 @@ router.get('/stalls/edit/:id', async (req, res) => {
       //   data: stall
       // });
       const stall = dbStallsData.get({ plain: true });
-      res.render('stall-edit', {
-      stall,
-      title: 'Edit Stall Page',
-      layout: 'sidebar',
+      res.render('stalls', {
+        stall,
+        stallEdit: true,
+        loggedInUser,
+        loggedIn: req.session.loggedIn,
+        upcomingMarkets
       });
   }
   catch (err) {
