@@ -19,6 +19,10 @@ Location.init(
         len: [0,32],
         },
     },
+    description: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+    },
     address: {
       type: DataTypes.STRING,
       //allowNull: false,
