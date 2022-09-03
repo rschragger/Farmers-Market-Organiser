@@ -1,0 +1,7 @@
+<select class="form-select" aria-label="Default select example">
+	{{#each market.events as |event|}}
+	<option value="{{event.timestamp_start}}" {{shouldBeSelectedDate ../currentDate event.timestamp_start}}>{{formatDateMulti event.timestamp_start "dayLong"}} - {{formatDateMulti event.timestamp_end "timeOnly"}}</option>
+	{{/each}}
+	
+	
+</select>
