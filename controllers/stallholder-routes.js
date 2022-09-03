@@ -61,7 +61,7 @@ router.get('/:id', async (req, res) => {
 
     const products = dbProductData.map((pd) =>
       pd.get({ plain: true })
-    );
+    ); 
 
     res.render('stallholders', {
       stallholderData,
