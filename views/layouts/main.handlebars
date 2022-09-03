@@ -38,24 +38,6 @@
         </ul>
       </div>
     </nav>
-    <div class="main-container">
-      <div class="row">
-        <div class="col-sm-12 col-md-4 col-xl-3">
-          {{> sidebar/home-sidebar upcomingMarkets=upcomingMarkets products=products}}
-        </div>
-        <div class="col-sm-12 col-md-8 col-xl-9">
-          {{!-- Display the search results --}}
-          {{#if isSearching}}
-          {{> search-results products=products}}
-
-          {{else}}
-          <li class="nav-item">
-            <a class="nav-link" href="/login"><i class="fa-solid fa-right-to-bracket"></i> Login</a>
-          </li>
-          {{/if}}
-        </ul>
-      </div>
-    </div>
   </nav>
   <div class="main-container">
     <div class="row">
