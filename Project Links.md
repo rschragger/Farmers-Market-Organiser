@@ -40,4 +40,4 @@ https://docs.google.com/document/d/15uM59lG_IFAnnzR704ZaZzd6UkXbxvM-6bwfZcpk2Zk/
 https://coding-boot-camp.github.io/full-stack/heroku/deploy-with-heroku-and-mysql
 
 #### Bootstrap
-https://getbootstrap.com/docs/5.0/components/card/
+https://getbootstrap.com/docs/5.0/

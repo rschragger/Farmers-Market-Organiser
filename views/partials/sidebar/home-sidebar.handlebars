@@ -2,8 +2,11 @@
 	{{> sidebar/upcoming-markets upcomingMarkets=upcomingMarkets}}
 	{{> sidebar/search-sidebar products=products}}
 	 {{#if loggedInUser.role_type }}
-		<span class="navbar-text">
+		<div class="navbar-text">
 			{{> sidebar/stalls-button}}
-		</span>
+		</div>
+		{{!-- <div class="navbar-text"> --}}
+			{{> sidebar/stallholder-button}}
+		{{!-- </div> --}}
 	  {{/if}}
 </div>
