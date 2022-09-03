@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const sequelize = require('../../config/connection');
 const { Location, Events, Stall } = require('../../models');
 
 // Retrieve all the Locations
@@ -43,11 +44,14 @@ router.get('/:id', async (req, res) => {
 // Create a new location
 router.post('/', async (req, res) => {
   try {
-	const newLocation = await Location.create(req.body);
-
-	res.status(200).json({
-	data: newLocation
-	});
+    const newLocation = await Location.create(req.body);
+    const updateUser = sequelize.query(`Update user
+        set location_id =`+newLocation.id +`
+        WHERE
+          user.id = `+req.session.userId);
+    res.status(200).json({
+      data: newLocation
+    });
   }
   catch (err) {
     res.status(400).json(err);
