@@ -10,7 +10,6 @@ const isOrganiser = (roleType, options) => {
     }
 };
 
-// This is not a helper as it does not have a next()
 // It is used to simply identify true or false
 const isStallholder = (roleType, options) => {
     if (roleType?.toLowerCase() === "stallholder") {
@@ -20,6 +19,42 @@ const isStallholder = (roleType, options) => {
         return options.inverse(this);
     }
 };
+
+
+const isResultAProduct = (result, options) => {
+    if (result === "product") {
+        return options.fn(this);
+    }
+    else {
+        return options.inverse(this);
+    }
+};
+
+const isResultAMarket = (result, options) => {
+    if (result === "market") {
+        return options.fn(this);
+    }
+    else {
+        return options.inverse(this);
+    }
+};
+
+const isResultAStallholder = (result, options) => {
+    if (result === "stallholder") {
+        return options.fn(this);
+    }
+    else {
+        return options.inverse(this);
+    }
+};
+
+const generateMarketLogoUrl = (filename) => {
+    return `/images/logos/${filename}`;
+}
+
+const generateMarketByIdUrl = (id) => {
+    return `/market/${id}`;
+}
 
 
 const formatDate = (date) => {
@@ -61,4 +96,21 @@ const generateMarketLink = (marketId) => {
     return index;
   }
 
-module.exports = { isOrganiser, isStallholder, formatDate, formatDateMulti, generateMarketLink, incremented };
+
+
+
+module.exports = {
+    isOrganiser,
+    isStallholder,
+    formatDate,
+    formatDateMulti,
+    incremented,
+    generateMarketLink,
+    isResultAProduct,
+    isResultAMarket,
+    isResultAStallholder,
+    generateMarketLogoUrl,
+    generateMarketByIdUrl };
+
+
+
