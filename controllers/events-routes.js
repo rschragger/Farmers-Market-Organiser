@@ -6,6 +6,7 @@ const helpers = require('../utils/helpers');
 
 
 
+
 router.get('/', async (req, res) => {
 
   try {
@@ -61,11 +62,10 @@ router.get('/:id', async (req, res) => {
     res.render('events', {
       eventsData,
       stallData,
-      eventsCard: true,
+      eventsCard: true, 
       upcomingMarkets,
       //loggedInUser,
       loggedIn: req.session.loggedIn,
-
     });
   }
   catch (err) {

@@ -4,10 +4,15 @@
 			<button type="submit" class="btn no-padding" id="stallholders-button"><a href="/stallholder">Stallholder List</a></button>
 		</div>
 	</li>
+	<li class="list-item-block">
+		<div class="d-grid gap-2 col-12 mx-auto">
+			<button type="submit" class="btn no-padding" id="events-button"><a href="/events">Events List</a></button>
+		</div>
+	</li>
 	{{#if loggedIn}}
 	<li class="list-item-block">
 		<div class="d-grid gap-2 col-12 mx-auto">			
-			<button type="submit" class="btn no-padding" id="stallholders-button"><a href="../stallholder/{{id}}"><i class="fa fa-edit"></i>Edit company</a></button>
+			<button type="submit" class="btn no-padding" id="stallholder-edit-button"><a href="../stallholder/{{id}}"><i class="fa fa-edit"></i>Edit company</a></button>
 		</div>
 	</li>
 	{{/if}}

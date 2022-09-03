@@ -5,8 +5,8 @@
         <tr>
           <th scope="col">Market</th>
           <th scope="col">Event Name</th>
-          <th scope="col">Start</th>
-          <th scope="col">End</th>
+          <th scope="col">Times</th>
+    
         </tr>
       </thead>
       <tbody>
@@ -14,8 +14,7 @@
         <tr>
           <td>{{location.market_name}}</td>
           <td><a href="/events/{{id}}">{{event_name}}</a></td>
-          <td>{{formatDate timestamp_start}}</td>
-          <td>{{formatDate timestamp_end}}</td>
+          <td>{{formatDateMulti timestamp_start "dayLong"}} - {{formatDateMulti timestamp_end "timeOnly"}}</td>
         </tr>
         {{/each}}
       </tbody>

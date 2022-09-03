@@ -1,36 +1,33 @@
 <div class="card mb-3" style="max-width: 700px;">
   <div class="row g-0">
-    <div class="col-md-5">
+    <div class="col-md-3">
       <img src="/images/logos/{{eventsData.location.logo_filename}}" class="img-fluid rounded-start" alt="Logo">
     </div>
     <div class="col-md-7  ">
       <div class="card-body">
-        <h5 class="card-title">{{eventsData.location.market_name}}</h5>
-        <p class="card-text">{{eventsData.timestamp_Start }}</p>
- <p class="card-text">{{eventsData.timestamp_Start }}</p>
+        <h4 class="card-title">{{eventsData.location.market_name}}</h4>
+        <h5>Stall Availability List for:</h5>
+        <p class="card-text">{{formatDateMulti eventsData.timestamp_start "dayLong"}} - {{formatDateMulti eventsData.timestamp_end "timeOnly"}}</p>
 
       </div>
     </div>
   </div>
 </div>
 
-
-
-
 {{#if stallData}}
 <div class="card mb-3">
   <h4>Our Stall List</h4>
-  </div>
+</div>
 {{#each stallData as |stall|}}
 <div class="card search-result-card mb-2">
-	<div class="row g-0">
-		<div class="col-md-10">
-		<div class="card-body">
-			<h5 class="card-title">{{ @index}}. {{stall.stall_name}}</h5>
-			<p class="card-text">{{stall.description}}</p>
-		</div>
-		</div>
-	</div>
+  <div class="row g-0">
+    <div class="col-md-10">
+      <div class="card-body">
+        <h5 class="card-title">{{incremented @index}}. {{stall.stall_name}}</h5>
+        <p class="card-text">{{stall.description}}</p>
+      </div>
+    </div>
+  </div>
 </div>
 {{/each}}
 {{else}}

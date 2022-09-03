@@ -30,8 +30,35 @@ const formatDate = (date) => {
     //return `${new Date(date).getMonth()}/${new Date(date).getDate()}/${new Date(date).getFullYear()}`;
 }
 
+
+https://stackoverflow.com/questions/18580495/format-a-date-from-inside-a-handlebars-template-in-meteor
+var DateFormats = {
+    short: "DD/MM/YYYY",
+    long:'Do MMM YYYY, h:mm a',
+    dayLong:'ddd Do MMM YYYY, h:mm a',
+    timeOnly:'hh:mm a',
+};
+
+const formatDateMulti = (datetime,format) => {
+    if (moment) {
+        // can use other formats like 'lll' too
+        format = DateFormats[format] || format;
+        return moment(datetime).format(format);
+      }
+      else {
+        return datetime;
+      }
+}
+ 
+
 const generateMarketLink = (marketId) => {
     return `/market/${marketId}`;
 }
 
-module.exports = { isOrganiser, isStallholder, formatDate, generateMarketLink };
+// This will help handlebars start an index at 1 insteadmof 0
+  const incremented = (index)=>{
+    index++;
+    return index;
+  }
+
+module.exports = { isOrganiser, isStallholder, formatDate, formatDateMulti, generateMarketLink, incremented };
