@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Stall} = require('../../models');
+const { Stall, User} = require('../../models');
 
 // Retrieve all the Stalls
 router.get('/', async (req, res) => {
@@ -80,4 +80,35 @@ router.delete('/:id', async (req, res) => {
       res.status(500).json(err);
     }
 });
+
+// Create a new stall
+router.post('/', async (req, res) => {
+  try {
+    // Check if the stall already exists
+    const stallData = await Stall.findOne({
+      where: {
+        stall_name: req.body.stall_name
+      },
+      individualHooks: true,
+    });
+    if (!stallData) {
+      // The stall doesn't exist so create a new stall
+      const newStall = await Stall.create(req.body);
+      res.status(200).json({
+        data: newStall
+      });
+    }
+    else {
+      // The stall exists
+      res.status(400).json({
+        message: "The stall name has already been used!"
+      });
+    }
+  }
+  catch (err) {
+    res.status(400).json(err);
+  }
+});
+
+
 module.exports = router;
