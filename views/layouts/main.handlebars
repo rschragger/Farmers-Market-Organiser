@@ -3,44 +3,51 @@
 -->
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <title>Farmers market organiser</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/"><img class="navbar-brand-logo" src="/images/logos/FarmerFreshmarket_Logo.png" /></a>
+        {{#if loggedIn}}
+          <span class="navbar-text welcome-message">
+            Welcome {{loggedInUser.first_name}} {{loggedInUser.last_name}}
+          </span>
+        {{/if}}
 
-<head>
-  <title>Farmers market organiser</title>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
-    integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/style.css" />
-</head>
-
-<body>
-  <nav class="navbar navbar-expand-lg">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="/"><img class="navbar-brand-logo" {{#if market}}
-          src="/images/logos/{{market.logo_filename}}" {{else}} src="/images/logos/FarmerFreshmarket_Logo.png"
-          {{/if}} alt="Logo" /></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      {{#if loggedIn}}
-      <span class="navbar-text welcome-message">
-        Welcome {{loggedInUser.first_name}} {{loggedInUser.last_name}}
-      </span>
-      {{/if}}
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           {{#if loggedIn}}
           <li class="nav-item">
             <a class="nav-link" href="#" id="btn-logout"><i class="fa-solid fa-right-from-bracket"></i> Log out</a>
           </li>
+          {{else}}
+          <li class="nav-item">
+            <a class="nav-link" href="/login"><i class="fa-solid fa-right-to-bracket"></i> Login</a>
+          </li>
+          {{/if}}
+        </ul>
+      </div>
+    </nav>
+    <div class="main-container">
+      <div class="row">
+        <div class="col-sm-12 col-md-4 col-xl-3">
+          {{> sidebar/home-sidebar upcomingMarkets=upcomingMarkets products=products}}
+        </div>
+        <div class="col-sm-12 col-md-8 col-xl-9">
+          {{!-- Display the search results --}}
+          {{#if isSearching}}
+          {{> search-results products=products}}
+
           {{else}}
           <li class="nav-item">
             <a class="nav-link" href="/login"><i class="fa-solid fa-right-to-bracket"></i> Login</a>
@@ -65,22 +72,21 @@
         {{{body}}}
         {{/if}}
       </div>
+
+      <footer>
+      Developed By Sean, Reeve and Nancy
+      </footer>
     </div>
-  </div>
-  <footer>
-    Developed By Sean, Reeve and Nancy
-  </footer>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/validate.js/0.13.1/validate.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
-  <script src="/js/index.js"></script>
-  {{#if loggedIn}}
-  <script src="/js/logout.js"></script>
-  <script src="/js/stalls.js"></script>
-  {{/if}}
-  <script src="/js/search.js"></script>
-</body>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/validate.js/0.13.1/validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+    <script src="/js/index.js"></script>
+    {{#if loggedIn}}
+      <script src="/js/logout.js"></script>
+      <script src="/js/stalls.js"></script>
+    {{/if}}
+    <script src="/js/search.js"></script>
+  </body>
 
 </html>
