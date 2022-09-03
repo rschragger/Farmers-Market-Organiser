@@ -19,6 +19,13 @@ Stallholder.init(
         len: [0,32],
         },
     },
+    description: {
+      type: DataTypes.STRING,
+      // allowNull: false,
+      validate: {
+        len: [0,200],
+        },
+    },
     website: {
       type: DataTypes.STRING,
       allowNull: false,

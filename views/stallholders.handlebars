@@ -1,0 +1,10 @@
+
+{{!-- Display the default content if not searching --}}
+<div class="container">
+	{{#if stallholderList}}
+		{{> stallholders/stallholder-list stallholders=stallholders}}
+	{{/if}}
+	{{#if stallholderCard}}
+		{{> stallholders/stallholder-card stallholders=stallholders}}
+	{{/if}}
+</div>

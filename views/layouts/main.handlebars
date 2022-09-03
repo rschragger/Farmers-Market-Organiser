@@ -24,6 +24,7 @@
             Welcome {{loggedInUser.first_name}} {{loggedInUser.last_name}}
           </span>
         {{/if}}
+
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           {{#if loggedIn}}
           <li class="nav-item">
@@ -46,11 +47,32 @@
           {{!-- Display the search results --}}
           {{#if isSearching}}
           {{> search-results products=products}}
+
           {{else}}
-          {{{body}}}
+          <li class="nav-item">
+            <a class="nav-link" href="/login"><i class="fa-solid fa-right-to-bracket"></i> Login</a>
+          </li>
           {{/if}}
-        </div>
+        </ul>
       </div>
+    </div>
+  </nav>
+  <div class="main-container">
+    <div class="row">
+      <div class="col-sm-12 col-md-4 col-xl-3">
+        {{> sidebar/home-sidebar upcomingMarkets=upcomingMarkets products=products}}
+      </div>
+      <div class="col-sm-12 col-md-8 col-xl-9">
+        {{!-- Display the search results --}}
+        {{#if isSearching}}
+        <div class="container">
+          {{> search-results products=products}}
+        </div>
+        {{else}}
+        {{{body}}}
+        {{/if}}
+      </div>
+
       <footer>
       Developed By Sean, Reeve and Nancy
       </footer>
@@ -66,4 +88,5 @@
     {{/if}}
     <script src="/js/search.js"></script>
   </body>
+
 </html>
