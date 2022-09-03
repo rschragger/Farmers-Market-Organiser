@@ -56,7 +56,7 @@ const generateMarketByIdUrl = (id) => {
 }
 
 const formatDate = (date) => {
-    const dateObj = moment().format('Do MMM YYYY, h:mm a');
+    const dateObj = moment(date).format('Do MMM YYYY, h:mm a');
     
     return dateObj;
     
