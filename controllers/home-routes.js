@@ -21,20 +21,20 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/search/:product', async (req, res) => {
+router.get('/search/:searchTerm', async (req, res) => {
   const loggedInUser = await modelUtility.getLoggedInUser(req.session.loggedIn, req.session.userId);
-  // Retrieve all products that are similar to this product
-	const similarProducts = await modelUtility.getSimilarProducts(req.params.product);
   // Get all the upcoming markets
   const upcomingMarkets = await modelUtility.getAllUpcomingMarkets();
-	 
+  // Get all the search results
+  const searchResults = await modelUtility.searchAll(req.params.searchTerm, req.query);
+  
 	res.render('homepage', {
     loggedInUser,
     loggedIn: req.session.loggedIn,
     upcomingMarkets,
-    products: similarProducts,
+    searchResults,
     isSearching: true,
-    searchedProduct: req.params.product
+    searchedTerm: req.params.searchTerm
 	});
 });
 

@@ -38,23 +38,20 @@
         </ul>
       </div>
     </nav>
-  </nav>
-  <div class="main-container">
-    <div class="row">
-      <div class="col-sm-12 col-md-4 col-xl-3">
-        {{> sidebar/home-sidebar upcomingMarkets=upcomingMarkets products=products}}
-      </div>
-      <div class="col-sm-12 col-md-8 col-xl-9">
-        {{!-- Display the search results --}}
-        {{#if isSearching}}
-        <div class="container">
-          {{> search-results products=products}}
+    <div class="main-container">
+      <div class="row">
+        <div class="col-sm-12 col-md-4 col-xl-3">
+          {{> sidebar/home-sidebar upcomingMarkets=upcomingMarkets}}
         </div>
-        {{else}}
-        {{{body}}}
-        {{/if}}
+        <div class="col-sm-12 col-md-8 col-xl-9">
+          {{!-- Display the search results --}}
+          {{#if isSearching}}
+          {{> search-results}}
+          {{else}}
+          {{{body}}}
+          {{/if}}
+        </div>
       </div>
-
       <footer>
       Developed By Sean, Reeve and Nancy
       </footer>

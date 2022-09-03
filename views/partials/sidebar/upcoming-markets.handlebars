@@ -1,7 +1,7 @@
 <div class="card mb-3">
-	<div class="card-body">
+	<div class="card-body upcoming-markets-body">
 		<h5 class="card-title upcoming-markets-title">Upcoming markets</h5>
-		<hr />
+		<hr class="flex-line" />
 		<ul class="no-list-style">
 			{{#each upcomingMarkets as |upcomingMarket|}}
 			<li class="list-item-block">
@@ -9,5 +9,6 @@
 				</li>
 			{{/each}}
 		</ul>
+		<button id="view-all-markets" class="btn upcoming-markets-view-all-markets no-padding"><a href="/search/all?markets=true">View All Markets</a></button>
 	</div>
 </div>

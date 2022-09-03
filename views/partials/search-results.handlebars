@@ -1,23 +1,60 @@
-{{#if products}}
+{{#if searchResults}}
 <div class="search-result-container">
-	{{#each products as |product|}}
+	{{#each searchResults as |searchResult|}}
+	{{#isResultAProduct searchResult.[0]}}
 	<div class="card search-result-card mb-3">
 		<div class="row g-0">
 			<div class="col-sm-12 col-md-2">
-			<img src={{product.image}} class="img-fluid rounded-start search-result-card-image">
+				<img src={{searchResult.[1].image}} class="img-fluid rounded-start search-result-card-image">
 			</div>
 			<div class="col-sm-12 col-md-10">
 				<div class="card-body">
-					<h5 class="card-title">{{product.name}}</h5>
-					<p class="card-text">{{product.description}}</p>
-					<p class="card-text">Stallholder: {{product.stallholder.company_name}}</p>
+					<h5 class="card-title">Product: {{searchResult.[1].name}}</h5>
+					<p class="card-text">{{searchResult.[1].description}}</p>
+					<p class="card-text">Stallholder: {{searchResult.[1].stallholder.company_name}}</p>
 				</div>
 			</div>
 		</div>
 	</div>
+	{{/isResultAProduct}}
+	{{#isResultAMarket searchResult.[0]}}
+	<a href={{generateMarketByIdUrl searchResult.[1].id}}>
+		<div class="card search-result-card mb-3">
+			<div class="row g-0">
+				<div class="col-sm-12 col-md-2">
+					<img src={{generateMarketLogoUrl searchResult.[1].logo_filename}}
+						class="img-fluid rounded-start search-result-card-logo">
+				</div>
+				<div class="col-sm-12 col-md-10">
+					<div class="card-body">
+						<h5 class="card-title">Market: {{searchResult.[1].market_name}}</h5>
+						{{!-- <p class="card-text">{{searchResult.[1].description}}</p> --}}
+					</div>
+				</div>
+			</div>
+		</div>
+	</a>
+	{{/isResultAMarket}}
+	{{#isResultAStallholder searchResult.[0]}}
+	<div class="card search-result-card mb-3">
+		<div class="row g-0">
+			<div class="col-sm-12 col-md-2">
+				<img src={{searchResult.[1].image}}
+					class="img-fluid rounded-start search-result-card-logo">
+			</div>
+			<div class="col-sm-12 col-md-10">
+				<div class="card-body">
+					<h5 class="card-title">Stallholder: {{searchResult.[1].company_name}}</h5>
+					<p class="card-text">mobile: {{searchResult.[1].mobile}}</p>
+					<p class="card-text"><a href={{searchResult.[1].website}}>{{searchResult.[1].website}}</a></p>
+				</div>
+			</div>
+		</div>
+	</div>
+	{{/isResultAStallholder}}
 	{{/each}}
 	{{else}}
-	Sorry, no products were found containing {{searchedProduct}}
+	Sorry, no products were found containing {{searchedTerm}}
 	{{/if}}
 </div>
 
