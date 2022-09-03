@@ -1,19 +1,57 @@
-<div class="card mb-9">
-  <div class="card-body">
-    {{!-- {{#each stallholderData as |stallholder|}} --}}
-    <h1>{{stallholderData.company_name}}!</h1>
-        
-        <div>
-          {{!-- <div><a href="/stallholders/{{id}}">{{company_name}}</a></div> --}}
-          <div>{{stallholderData.description}}</div>
-
-         
-          <div><a href="tel:{{stallholderData.mobile}}"></a>{{stallholderData.mobile}}</div>
-          <div><a href="{{stallholderData.website}}" target="_blank">{{stallholderData.website}}</a>
-          
-          </div>
-
-        {{!-- {{/each}} --}}
-    
+<div class="card mb-3" style="max-width: 700px;">
+  <div class="row g-0">
+    <div class="col-md-5">
+      <img src="{{stallholderData.image}}" class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-7  ">
+      <div class="card-body">
+        <h5 class="card-title">{{stallholderData.company_name}}</h5>
+        <p class="card-text">{{stallholderData.description}}</p>
+          <p class="card-text"><a href="tel:{{stallholderData.mobile}}"></a>{{stallholderData.mobile}}</p>
+       <p class="card-text"><a href="{{stallholderData.website}}" target="_blank">{{stallholderData.website}}</a></p>
+        {{!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> --}}
+      </div>
+    </div>
   </div>
 </div>
+
+
+{{!-- <div class="card mb-9"> 
+
+      <img src="{{stallholderData.image}}"  class="card-img col-md-6"  alt="Picture describing {{stallholderData.company_name}}">
+
+  <div class="card-body col-md-6">
+
+    <h1>{{stallholderData.company_name}}</h1>
+    <div>
+      <div>{{stallholderData.description}}</div>
+
+      <div><a href="tel:{{stallholderData.mobile}}"></a>{{stallholderData.mobile}}</div>
+      <div><a href="{{stallholderData.website}}" target="_blank">{{stallholderData.website}}</a></div>
+
+    </div>
+  </div> --}}
+
+
+{{#if products}}
+<div class="card mb-3">
+  <h4>Our Product List</h4>
+  </div>
+{{#each products as |product|}}
+<div class="card search-result-card mb-3">
+	<div class="row g-0">
+		<div class="col-md-2">
+		<img src={{product.image}} class="img-fluid rounded-start search-result-card-image">
+		</div>
+		<div class="col-md-10">
+		<div class="card-body">
+			<h5 class="card-title">{{product.name}}</h5>
+			<p class="card-text">{{product.description}}</p>
+		</div>
+		</div>
+	</div>
+</div>
+{{/each}}
+{{else}}
+Sorry, no products were found containing {{searchedProduct}}
+{{/if}}

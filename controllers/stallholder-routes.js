@@ -9,6 +9,7 @@ router.get('/', async (req, res) => {
 
   try {
     const loggedInUser = await modelUtility.getLoggedInUser(req.session.loggedIn, req.session.userId);
+    const upcomingMarkets = await modelUtility.getAllUpcomingMarkets();
 
     // Do not allow logged out users from accessing this data
     if (!loggedInUser) {
@@ -29,7 +30,8 @@ router.get('/', async (req, res) => {
         stallholderData,
         loggedInUser,
         loggedIn: req.session.loggedIn,
-        stallholderList:true
+        upcomingMarkets,
+        stallholderList: true
       });
     }
   }
@@ -43,23 +45,36 @@ router.get('/:id', async (req, res) => {
 
   try {
     // const loggedInUser = await modelUtility.getLoggedInUser(req.session.loggedIn, req.session.userId);
+    const upcomingMarkets = await modelUtility.getAllUpcomingMarkets();
 
     // Get thisstallholder's data
     const dbStallholderData = await Stallholder.findByPk(req.params.id, {
       // where: { id: req.params.id },
       include: [{ model: User }, { model: Product }, { model: Booking }],
     })
-    // const stallholder = dbStallholderData.map((sh) =>
-    //   sh.get({ plain: true })
-      const stallholderData = dbStallholderData.get({ plain: true })
-    // );
+    const stallholderData = dbStallholderData.get({ plain: true })
+
+
+    const dbProductData = await Product.findAll(
+      {
+        where: {
+          stallholder_id: stallholderData.id,
+        }
+      });
+
+    const products = dbProductData.map((pd) =>
+      pd.get({ plain: true })
+    );
+
     res.render('stallholders', {
       stallholderData,
       stallholderCard: true,
-     // stallholderList:false,
+      upcomingMarkets,
+      products,
+      // stallholderList:false,
       //loggedInUser,
       loggedIn: req.session.loggedIn,
-      
+
     });
   }
   catch (err) {
