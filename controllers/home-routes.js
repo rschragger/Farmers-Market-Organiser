@@ -71,6 +71,25 @@ router.get('/stalls',async(req, res) => {
     const loggedInUser = await modelUtility.getLoggedInUser(req.session.loggedIn, req.session.userId);
     // Get all the upcoming markets
     const upcomingMarkets = await modelUtility.getAllUpcomingMarkets();
+    //check if the user has a market already.
+    //stalls info
+    const chekLocation = await sequelize.query(`SELECT
+          count(*) as total
+      FROM
+          USER,
+          location
+      WHERE
+          location.id = USER.location_id AND
+          USER.id =`+req.session.userId,{
+            model: Location,
+            mapToModel: true
+          }
+    );
+    const total = chekLocation.map((location) =>
+    location.get({ plain: true })
+  );
+  //console.log(total[0].total); process.exit();
+  if(total[0].total > 0){
     //stalls info
     const results = await sequelize.query(`SELECT
           *
@@ -96,6 +115,16 @@ router.get('/stalls',async(req, res) => {
         loggedIn: req.session.loggedIn,
         upcomingMarkets
     });
+   }else{
+     //return to home page
+      res.render('organiser', {
+        message: "It seems you dont have a market. Please create a market first.",
+        alertMessage: true,
+        loggedInUser,
+        loggedIn: req.session.loggedIn,
+        upcomingMarkets
+      });
+   }
   }
   catch (err) {
     res.status(500).json({

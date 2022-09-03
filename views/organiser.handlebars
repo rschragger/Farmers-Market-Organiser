@@ -9,4 +9,8 @@
 	{{#if stallsList}}
 		{{> organiser/stalls-list stalls=stalls}}
 	{{/if}}
+	{{!-- alerts messages --}}
+    {{#if alertMessage}}
+        {{> organiser/alert-messages}}
+    {{/if}}
 </div>
