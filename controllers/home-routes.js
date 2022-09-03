@@ -1,11 +1,12 @@
 const router = require('express').Router();
+const sequelize = require('../config/connection');
 const { User, Stallholder, Location, Stall, Events } = require('../models');
 const { withAuth, isOrganiser, isStallholder } = require('../utils/auth');
 const modelUtility = require('../utils/modelUtility.js');
 
 router.get('/', async (req, res) => {
   try {
-    const loggedInUser = await modelUtility.getLoggedInUser(req.session.loggedIn, req.session.userId);
+    const loggedInUser = await modelUtility.getLoggedInUser(req.session.loggedIn, req.session.userId, req.session.role_type);
     // Get all the upcoming markets
     const upcomingMarkets = await modelUtility.getAllUpcomingMarkets();
     
@@ -71,19 +72,24 @@ router.get('/stalls',async(req, res) => {
     // Get all the upcoming markets
     const upcomingMarkets = await modelUtility.getAllUpcomingMarkets();
     //stalls info
-    const dbStallsData = await Stall.findAll({
-        include:[
-            {
-                model: Location,
-                attributes: ['market_name', 'address'],
-            },
-        ],
+    const results = await sequelize.query(`SELECT
+          *
+      FROM
+          stall,
+          USER,
+          location
+      WHERE
+          location.id = USER.location_id AND
+          USER.id =`+req.session.userId +`
+      ORDER BY
+          stall.stall_name ASC`,{
+      model: Stall,
+      mapToModel: true
     });
-    const stalls = dbStallsData.map((stall) =>
-      stall.get({ plain: true })
-    );
-
-    res.render('stalls', {
+     const stalls = results.map((stall) =>
+       stall.get({ plain: true })
+     );
+   res.render('organiser', {
         stalls,
         stallsList: true,
         loggedInUser,
@@ -117,7 +123,7 @@ router.get('/stalls/:id', async (req, res) => {
     //   data: stall
     // });
     const stall = dbStallsData.get({ plain: true });
-    res.render('stalls', {
+    res.render('organiser', {
       stall,
       stallView: true,
       loggedInUser,
@@ -147,12 +153,8 @@ router.get('/stalls/edit/:id', async (req, res) => {
               },
           ],
       });
-
-      // res.status(200).json({
-      //   data: stall
-      // });
       const stall = dbStallsData.get({ plain: true });
-      res.render('stalls', {
+      res.render('organiser', {
         stall,
         stallEdit: true,
         loggedInUser,
@@ -215,6 +217,32 @@ router.post('/delete/:id', async (req, res) => {
   }
 });
 
+router.get('/new', async (req, res) => {
+  const loggedInUser = await modelUtility.getLoggedInUser(req.session.loggedIn, req.session.userId);
+  // Get all the upcoming markets
+  const upcomingMarkets = await modelUtility.getAllUpcomingMarkets();
+  const listLocations = await sequelize.query(`SELECT
+        location.market_name,
+        location.id
+        FROM
+        location,
+        USER
+        WHERE
+        location.id = USER.location_id AND USER.id =`+req.session.userId,{
+        model: Location,
+        mapToModel: true});
+  //const listLocations = await Location.findAll();
+  const locations = listLocations.map((location) =>
+       location.get({ plain: true })
+     );
+  res.render('organiser',{
+    locations,
+    stallNew: true,
+    loggedInUser,
+    loggedIn: req.session.loggedIn,
+    upcomingMarkets
+  });
+});
 
 //Trying to use a withAuth, but need to login from the webPage as insomnia creates a different session
 //   router.get('/',withAuthStallholder, async (req, res) => {
