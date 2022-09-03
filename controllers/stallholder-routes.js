@@ -12,10 +12,10 @@ router.get('/', async (req, res) => {
     const upcomingMarkets = await modelUtility.getAllUpcomingMarkets();
 
     // Do not allow logged out users from accessing this data
-    if (!loggedInUser) {
-      res.status(400).json({ message: "Unauthorised Access" });
-      document.location.replace('/');
-    } else {
+    // if (!loggedInUser) {
+    //   res.status(400).json({ message: "Unauthorised Access" });
+    //   document.location.replace('/');
+    // } else {
 
       // FUTURE FEATURE - search location_id to truncate data to this location
 
@@ -34,7 +34,7 @@ router.get('/', async (req, res) => {
         stallholderList: true
       });
     }
-  }
+  //}
   catch (err) {
     console.log(err);
   }
