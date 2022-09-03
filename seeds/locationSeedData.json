@@ -2,19 +2,20 @@
 	{
 		"market_name": "Central Farmers Market",
 		"website":"www.centralmarket.com.au",
-		"logo_filename":"CentralFarmersMarket_Logo.png"
+		"logo_filename":"CentralFarmersMarket_Logo.png",
+		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum rhoncus finibus lectus at venenatis. Quisque blandit finibus sollicitudin. Donec viverra, justo nec tempus sodales, metus magna efficitur enim, ac porttitor neque magna vel leo. Curabitur augue lorem, sagittis nec tempus sagittis, ultricies sit amet dui. Quisque id erat non nunc eleifend aliquam ut vel diam. Integer tincidunt volutpat ipsum, sit amet fermentum eros pellentesque ut. Duis sapien velit, consequat id ipsum non, hendrerit faucibus lorem. Sed blandit dui urna, non tempus est fringilla nec. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sed luctus dui. Cras ornare, odio quis vestibulum viverra, enim erat condimentum ipsum, rutrum elementum felis justo sit amet ex. Proin sed nisl tellus. Phasellus posuere, metus in volutpat faucibus, neque mi volutpat ligula, id dapibus massa est vitae ipsum. Aliquam erat volutpat."
 	},
 	{
 		"market_name": "Southern Farmers Market",
 		"website":"www.southernmarket.com.au",
-		"logo_filename":"SouthernFarmersMarket_Logo.png"
-	
+		"logo_filename":"SouthernFarmersMarket_Logo.png",
+		"description": "Pellentesque iaculis, turpis eget dignissim laoreet, ligula elit auctor nisl, sit amet suscipit odio magna in metus. Praesent non libero vitae risus sodales ultricies. Nunc tincidunt pellentesque enim, quis tempus ante pellentesque eget. In consequat nulla ut consequat scelerisque. Sed ut dolor ullamcorper, facilisis lorem in, varius ante. Morbi feugiat venenatis vehicula. Nunc facilisis condimentum leo. Phasellus varius consectetur risus at porta. Ut sit amet lobortis dui, ut volutpat metus. Donec commodo euismod eros, et rutrum odio."
 	},
 	{
 		"market_name": "Eastern Farmers Market",
 		"website":"www.easternmarket.com.au",
-		"logo_filename":"EasternFarmersMarket_Logo.png"
-	
+		"logo_filename":"EasternFarmersMarket_Logo.png",
+		"description": "Donec dignissim condimentum urna ut consectetur. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed varius ullamcorper pharetra. In tempus est at urna semper pretium. Donec ac pharetra odio. Curabitur nec posuere nisl, id interdum elit. Praesent elementum nunc eu gravida fringilla. Ut nibh metus, tempus placerat maximus at, sodales in libero. Phasellus dignissim neque tellus, at consequat dui maximus sed. Aenean lacinia feugiat velit, vitae gravida nisl aliquet id. Aenean non felis dictum, feugiat urna quis, iaculis est. Etiam ac pellentesque ipsum. Praesent placerat, nulla at finibus scelerisque, nisi erat blandit ipsum, a tempor justo tellus non ligula."
 	}
 	
 ]
