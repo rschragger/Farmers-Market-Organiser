@@ -72,21 +72,24 @@ router.get('/stalls',async(req, res) => {
     // Get all the upcoming markets
     const upcomingMarkets = await modelUtility.getAllUpcomingMarkets();
     //stalls info
-    const results = await sequelize.query(`SELECT stall.stall_name,stall.description, stall.price ,user.username
-    FROM stall
-    JOIN user
-    ON stall.location_id = user.location_id
-    WHERE user.id=`+req.session.userId,{
+    const results = await sequelize.query(`SELECT
+          *
+      FROM
+          stall,
+          USER,
+          location
+      WHERE
+          location.id = USER.location_id AND
+          USER.id =`+req.session.userId +`
+      ORDER BY
+          stall.stall_name ASC`,{
       model: Stall,
       mapToModel: true
     });
      const stalls = results.map((stall) =>
        stall.get({ plain: true })
      );
-
-    console.log(stalls);
-  //process.exit();
-    res.render('organiser', {
+   res.render('organiser', {
         stalls,
         stallsList: true,
         loggedInUser,
@@ -214,6 +217,32 @@ router.post('/delete/:id', async (req, res) => {
   }
 });
 
+router.get('/new', async (req, res) => {
+  const loggedInUser = await modelUtility.getLoggedInUser(req.session.loggedIn, req.session.userId);
+  // Get all the upcoming markets
+  const upcomingMarkets = await modelUtility.getAllUpcomingMarkets();
+  const listLocations = await sequelize.query(`SELECT
+        location.market_name,
+        location.id
+        FROM
+        location,
+        USER
+        WHERE
+        location.id = USER.location_id AND USER.id =`+req.session.userId,{
+        model: Location,
+        mapToModel: true});
+  //const listLocations = await Location.findAll();
+  const locations = listLocations.map((location) =>
+       location.get({ plain: true })
+     );
+  res.render('organiser',{
+    locations,
+    stallNew: true,
+    loggedInUser,
+    loggedIn: req.session.loggedIn,
+    upcomingMarkets
+  });
+});
 
 //Trying to use a withAuth, but need to login from the webPage as insomnia creates a different session
 //   router.get('/',withAuthStallholder, async (req, res) => {
