@@ -92,16 +92,20 @@ router.get('/stalls',async(req, res) => {
   if(total[0].total > 0){
     //stalls info
     const results = await sequelize.query(`SELECT
-          *
-      FROM
-          stall,
-          USER,
-          location
-      WHERE
-          location.id = USER.location_id AND
-          USER.id =`+req.session.userId +`
-      ORDER BY
-          stall.stall_name ASC`,{
+    stall.id,
+    stall.stall_name,
+    stall.description,
+    stall.price,
+    location.market_name
+ FROM
+     stall,
+     USER,
+     location
+ WHERE
+     location.id = USER.location_id AND
+     USER.id =`+req.session.userId +`
+ ORDER BY
+     stall.stall_name ASC`,{
       model: Stall,
       mapToModel: true
     });
