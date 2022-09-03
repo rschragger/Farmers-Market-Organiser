@@ -1,17 +1,20 @@
 {{!-- The homepage is split into the sidebar and the main body --}}
-<div class="d-flex d-flex-row p-3">
-	{{> sidebar/home-sidebar upcomingMarkets=upcomingMarkets products=products}}
+{{!-- Display the default content if not searching --}}
+<div class="container">
+	<div class="heading">
+		<h1 class="title text-center"><span class="green">F</span>armers <span class="green">M</span>arket <span class="green">O</span>rganiser<span class="orange">!</span></h1>
+		<h3 class="subheading text-center">Fresh produce at your fingertips</h2>
+	</div>
 	
-	{{!-- The main body --}}
-	{{!-- Display the search results --}}
-	{{#if isSearching}}
-	<div class="container">
-		{{> search-results products=products}}
-	</div>
-	{{else}}
-	{{!-- Display the default content if not searching --}}
-	<div class="container">
-		Display Information about Farmers market organiser
-	</div>
-	{{/if}}
+	<section>
+		{{> home-carousel}}
+	</section>
+	
+	<section>
+		{{> what-we-do}}
+	</section>
+	
+	<section>
+		{{> used-by}}
+	</section>
 </div>

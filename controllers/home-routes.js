@@ -1,19 +1,20 @@
 const router = require('express').Router();
+const sequelize = require('../config/connection');
 const { User, Stallholder, Location, Stall, Events } = require('../models');
 const { withAuth, isOrganiser, isStallholder } = require('../utils/auth');
 const modelUtility = require('../utils/modelUtility.js');
 
 router.get('/', async (req, res) => {
   try {
-    const loggedInUser = await modelUtility.getLoggedInUser(req.session.loggedIn, req.session.userId);
-    
+    const loggedInUser = await modelUtility.getLoggedInUser(req.session.loggedIn, req.session.userId, req.session.role_type);
     // Get all the upcoming markets
     const upcomingMarkets = await modelUtility.getAllUpcomingMarkets();
     
     res.render('homepage', {
       loggedInUser,
       loggedIn: req.session.loggedIn,
-      upcomingMarkets
+      upcomingMarkets,
+      roleType: req.session.role_type
     });
   }
   catch (err) {
@@ -21,59 +22,113 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/search/:product', async (req, res) => {
+router.get('/search/:searchTerm', async (req, res) => {
   const loggedInUser = await modelUtility.getLoggedInUser(req.session.loggedIn, req.session.userId);
-  // Retrieve all products that are similar to this product
-	const similarProducts = await modelUtility.getSimilarProducts(req.params.product);
   // Get all the upcoming markets
   const upcomingMarkets = await modelUtility.getAllUpcomingMarkets();
-	
+  // Get all the search results
+  const searchResults = await modelUtility.searchAll(req.params.searchTerm, req.query);
+  
 	res.render('homepage', {
     loggedInUser,
     loggedIn: req.session.loggedIn,
     upcomingMarkets,
-    products: similarProducts,
+    searchResults,
     isSearching: true,
-    searchedProduct: req.params.product
+    searchedTerm: req.params.searchTerm
 	});
 });
 
-router.get('/login', (req, res) => {
+router.get('/login', async (req, res) => {
   // Display the login page
   if (req.session.loggedIn) {
     res.redirect('/');
     return;
   }
   
-  res.render('login');
+  // Get all the upcoming markets
+  const upcomingMarkets = await modelUtility.getAllUpcomingMarkets();
+  
+  res.render('login', {
+    upcomingMarkets
+  });
 });
 
-router.get('/signup', (req, res) => {
+router.get('/signup', async (req, res) => {
+  // Get all the upcoming markets
+  const upcomingMarkets = await modelUtility.getAllUpcomingMarkets();
+  
   // Display the signup page
-  res.render('signup');
+  res.render('signup', {
+    upcomingMarkets
+  });
 })
 
 //stalls
 // Retrieve all the Stalls
 router.get('/stalls',async(req, res) => {
   try {
-    const dbStallsData = await Stall.findAll({
-        include:[
-            {
-                model: Location,
-                attributes: ['market_name', 'address'],
-            },
-        ],
-    });
-    const stalls = dbStallsData.map((stall) =>
-      stall.get({ plain: true })
+    const loggedInUser = await modelUtility.getLoggedInUser(req.session.loggedIn, req.session.userId);
+    // Get all the upcoming markets
+    const upcomingMarkets = await modelUtility.getAllUpcomingMarkets();
+    //check if the user has a market already.
+    //stalls info
+    const chekLocation = await sequelize.query(`SELECT
+          count(*) as total
+      FROM
+          USER,
+          location
+      WHERE
+          location.id = USER.location_id AND
+          USER.id =`+req.session.userId,{
+            model: Location,
+            mapToModel: true
+          }
     );
-
-    res.render('stalls', {
-      stalls,
-      title: 'Stalls Page',
-      layout: 'sidebar'
+    const total = chekLocation.map((location) =>
+    location.get({ plain: true })
+  );
+  //console.log(total[0].total); process.exit();
+  if(total[0].total > 0){
+    //stalls info
+    const results = await sequelize.query(`SELECT
+    stall.id,
+    stall.stall_name,
+    stall.description,
+    stall.price,
+    location.market_name
+ FROM
+     stall,
+     USER,
+     location
+ WHERE
+     location.id = USER.location_id AND
+     USER.id =`+req.session.userId +`
+ ORDER BY
+     stall.stall_name ASC`,{
+      model: Stall,
+      mapToModel: true
     });
+     const stalls = results.map((stall) =>
+       stall.get({ plain: true })
+     );
+   res.render('organiser', {
+        stalls,
+        stallsList: true,
+        loggedInUser,
+        loggedIn: req.session.loggedIn,
+        upcomingMarkets
+    });
+   }else{
+     //return to home page
+      res.render('organiser', {
+        message: "It seems you dont have a market. Please create a market first.",
+        alertMessage: true,
+        loggedInUser,
+        loggedIn: req.session.loggedIn,
+        upcomingMarkets
+      });
+   }
   }
   catch (err) {
     res.status(500).json({
@@ -85,6 +140,9 @@ router.get('/stalls',async(req, res) => {
 // Retrieve a stall
 router.get('/stalls/:id', async (req, res) => {
   try {
+    const loggedInUser = await modelUtility.getLoggedInUser(req.session.loggedIn, req.session.userId);
+    // Get all the upcoming markets
+    const upcomingMarkets = await modelUtility.getAllUpcomingMarkets();
     const dbStallsData = await Stall.findByPk(req.params.id,{
         include:[
             {
@@ -98,11 +156,13 @@ router.get('/stalls/:id', async (req, res) => {
     //   data: stall
     // });
     const stall = dbStallsData.get({ plain: true });
-    res.render('stall-view', {
+    res.render('organiser', {
       stall,
-      title: 'Edit stall Page',
-      layout: 'sidebar',
-    });
+      stallView: true,
+      loggedInUser,
+      loggedIn: req.session.loggedIn,
+      upcomingMarkets
+  });
 
   }
   catch (err) {
@@ -115,6 +175,9 @@ router.get('/stalls/:id', async (req, res) => {
 // Get the data of the stall to be edited
 router.get('/stalls/edit/:id', async (req, res) => {
   try {
+      const loggedInUser = await modelUtility.getLoggedInUser(req.session.loggedIn, req.session.userId);
+      // Get all the upcoming markets
+      const upcomingMarkets = await modelUtility.getAllUpcomingMarkets();
       const dbStallsData = await Stall.findByPk(req.params.id,{
           include:[
               {
@@ -123,15 +186,13 @@ router.get('/stalls/edit/:id', async (req, res) => {
               },
           ],
       });
-
-      // res.status(200).json({
-      //   data: stall
-      // });
       const stall = dbStallsData.get({ plain: true });
-      res.render('stall-edit', {
-      stall,
-      title: 'Edit Stall Page',
-      layout: 'sidebar',
+      res.render('organiser', {
+        stall,
+        stallEdit: true,
+        loggedInUser,
+        loggedIn: req.session.loggedIn,
+        upcomingMarkets
       });
   }
   catch (err) {
@@ -189,6 +250,32 @@ router.post('/delete/:id', async (req, res) => {
   }
 });
 
+router.get('/new', async (req, res) => {
+  const loggedInUser = await modelUtility.getLoggedInUser(req.session.loggedIn, req.session.userId);
+  // Get all the upcoming markets
+  const upcomingMarkets = await modelUtility.getAllUpcomingMarkets();
+  const listLocations = await sequelize.query(`SELECT
+        location.market_name,
+        location.id
+        FROM
+        location,
+        USER
+        WHERE
+        location.id = USER.location_id AND USER.id =`+req.session.userId,{
+        model: Location,
+        mapToModel: true});
+  //const listLocations = await Location.findAll();
+  const locations = listLocations.map((location) =>
+       location.get({ plain: true })
+     );
+  res.render('organiser',{
+    locations,
+    stallNew: true,
+    loggedInUser,
+    loggedIn: req.session.loggedIn,
+    upcomingMarkets
+  });
+});
 
 //Trying to use a withAuth, but need to login from the webPage as insomnia creates a different session
 //   router.get('/',withAuthStallholder, async (req, res) => {

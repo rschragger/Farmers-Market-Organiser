@@ -250,5 +250,95 @@
 	  "description": "Misc - Electricity",
 	  "price": 85,
 	  "location_id": 2
+	},
+	{
+	  "stall_name": "Tent1",
+	  "description": "3x2m Tent",
+	  "price": 25,
+	  "location_id": 3
+	},
+	{
+	  "stall_name": "Tent2",
+	  "description": "3x3m Tent",
+	  "price": 25,
+	  "location_id": 3
+	},
+	{
+	  "stall_name": "Tent3",
+	  "description": "3x3m Tent",
+	  "price": 25,
+	  "location_id": 3
+	},
+	{
+	  "stall_name": "Tent4",
+	  "description": "3x3m Tent",
+	  "price": 25,
+	  "location_id": 3
+	},
+	{
+	  "stall_name": "Tent5",
+	  "description": "3x5m Tent",
+	  "price": 40,
+	  "location_id": 3
+	},
+	{
+	  "stall_name": "Tent6",
+	  "description": "3x5m Tent",
+	  "price": 40,
+	  "location_id": 3
+	},
+	{
+	  "stall_name": "Tent7",
+	  "description": "3x5m Tent",
+	  "price": 40,
+	  "location_id": 3
+	},
+	{
+	  "stall_name": "Tent8",
+	  "description": "3x5m Tent",
+	  "price": 40,
+	  "location_id": 3
+	},
+	{
+	  "stall_name": "Tent9",
+	  "description": "3x5m Tent",
+	  "price": 40,
+	  "location_id": 3
+	},
+	{
+	  "stall_name": "Tent10",
+	  "description": "3x5m Tent",
+	  "price": 40,
+	  "location_id": 3
+	},
+	{
+	  "stall_name": "Tent11",
+	  "description": "4x5m Tent",
+	  "price": 45,
+	  "location_id": 3
+	},
+	{
+	  "stall_name": "Tent12",
+	  "description": "4x5m Tent",
+	  "price": 45,
+	  "location_id": 3
+	},
+	{
+	  "stall_name": "Tent13",
+	  "description": "4x5m Tent",
+	  "price": 45,
+	  "location_id": 3
+	},
+	{
+	  "stall_name": "Tent14",
+	  "description": "3x8m Tent",
+	  "price": 50,
+	  "location_id": 3
+	},
+	{
+	  "stall_name": "Tent15",
+	  "description": "3x8m Tent",
+	  "price": 50,
+	  "location_id": 3
 	}
    ]

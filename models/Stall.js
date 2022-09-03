@@ -35,6 +35,7 @@ Stall.init(
     },
     location_id: {
         type: DataTypes.INTEGER,
+        allowNull: false,
         references: {
 			model: 'location',
 			key: 'id',

@@ -1,0 +1,19 @@
+{{!-- Display the default content if not searching --}}
+<div class="container">
+	{{#if stallNew}}
+		{{> organiser/stall-add stalls=stalls}}
+	{{/if}}
+	{{#if stallEdit}}
+		{{> organiser/stall-edit stalls=stalls}}
+	{{/if}}
+	{{#if stallView}}
+		{{> organiser/stall-view stalls=stalls}}
+	{{/if}}
+	{{#if stallsList}}
+		{{> organiser/stalls-list stalls=stalls}}
+	{{/if}}
+	{{!-- alerts messages --}}
+    {{#if alertMessage}}
+        {{> organiser/alert-messages}}
+    {{/if}}
+</div>

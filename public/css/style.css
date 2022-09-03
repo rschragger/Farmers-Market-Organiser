@@ -1,56 +1,143 @@
-  /** styles and template for main layout from
-  * https://www.w3schools.com/bootstrap/bootstrap_templates.asp
-  */
-  /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
-  .row.content {height: 1500px}
-  /* Set gray background color and 100% height */
-  .sidenav {
-    background-color: #f1f1f1;
-    height: 100%;
-  }
-  /* Set black background color, white text and some padding */
-  footer {
-    background-color: #555;
-    color: white;
-    padding: 15px;
-  }
-  /* On small screens, set height to 'auto' for sidenav and grid */
-  @media screen and (max-width: 767px) {
-    .sidenav {
-      height: auto;
-      padding: 15px;
-    }
-    .row.content {height: auto;}
-  }
+:root {
+  --black: #1D1D1D;
+  --white: #FFF9F9;
+  --light-blue: #2576D3;
+  --green: #6CC16C;
+  --dark-green: #2C642C;
+  --blue: #0F0F7B;
+}
+
+html,
+body {
+  height: 100%;
+}
   
-    /** styles and template for main layout from
-  * https://www.w3schools.com/bootstrap/bootstrap_templates.asp
-  */
-  /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
-  .row.content {height: 1500px}
-  /* Set gray background color and 100% height */
-  .sidenav {
-    background-color: #f1f1f1;
-    height: 100%;
-  }
-  /* Set black background color, white text and some padding */
-  footer {
-    background-color: #555;
-    color: white;
-    padding: 15px;
-  }
-  /* On small screens, set height to 'auto' for sidenav and grid */
-  @media screen and (max-width: 767px) {
-    .sidenav {
-      height: auto;
-      padding: 15px;
-    }
-    .row.content {height: auto;}
-  }
+body {
+  font-family: 'Josefin Sans', sans-serif;
+  color: var(--black);
+  background-color: var(--white);
+}
+
+.main-container {
+  margin: 50px 15px 100px 15px;
+  min-height: 100%;
+  position: relative;
+  padding-bottom: 100px;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  left: -15px;
+  background-color: var(--black);
+  width: calc(100% + 15px);
+  height: 40px;
+  color: var(--white);
+  padding-left: 25px;
+  padding-top: 10px;
+}
+
+a {
+  color: var(--blue);
+  text-decoration: none;
+}
+.navbar {
+  background-color: var(--light-blue);
+}
+
+.navbar-brand {
+  width: 100px;
+}
+
+.navbar-brand-logo {
+  width: 100%;
+  height: 100%;
+}
+
+.navbar-brand,
+.nav-link,
+.welcome-message {
+  color: var(--white);
+}
+
+.navbar-brand:hover,
+.nav-link:hover,
+a:hover {
+  color: var(--green);
+}
+
+.used-by-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.used-by-title {
+  margin-bottom: 15px;
+}
+
+.used-by-image {
+  width: 150px;
+  margin: 15px;
+}
+
+section {
+  margin-top: 50px;
+  margin-bottom: 75px;
+}
+
+button {
+  color: var(--blue) !important;
+  background-color: var(--white) !important;
+  border-color: var(--blue) !important;
+}
+
+button:hover,
+button a:hover {
+  background-color: var(--green) !important;
+  color: var(--white) !important;
+  border-color: var(--dark-green) !important;
+}
+
+button a {
+  display: inline-block;
+  padding: 6px 12px;
+  width: 100%;
+  height: 100%;
+  transition: all .15s;
+}
+
+.heading {
+  color: var(--black);
+}
+
+.title {
+  font-size: 64px;
+}
+
+.upcoming-markets-title {
+  text-align: center;
+}
+
+.upcoming-markets-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.upcoming-markets-view-all-markets {
+  margin-top: 15px;
+}
+
+.search-title {
+  text-align: center;
+}
 
 .custom-card-form {
-	width: 18rem;
-	margin: 25px auto;
+	width: 100%;
+	margin: 50px auto;
 	padding: 15px;
 }
 
@@ -67,22 +154,67 @@
 	margin-bottom: 10px;
 }
 
-.sidebar {
-  width: 350px;
+.what-we-do-card {
+  height: 500px;
+}
+
+.what-we-do-card .card-title {
+  margin-bottom: 15px;
+}
+
+.what-we-do-title {
+  margin-bottom: 25px;
+}
+
+.what-we-do-icon {
+  font-size: 50px;
+  margin-bottom: 25px;
+  margin-top: 15px;
+  color: var(--light-blue)
 }
 
 .search-result-card {
-  height: 8rem;
   overflow: hidden;
 }
 
 .search-result-card-image {
-  width: 200px;
+  width: 400px;
   height: 200px;
   object-fit: cover;
 }
 
+.search-result-card-logo {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper {
+  border-radius: 15px;
+}
+
+.swiper-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.list-item-block {
+  width: 100%;
+  padding: 5px 5px 5px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.list-item-block-link {
+  text-decoration: none;
+}
+
 /* Utility */
+
+.flex-line {
+  width: 100%;
+}
 
 .text-center {
 	text-align: center;
@@ -93,6 +225,10 @@
 	display: block;
 }
 
+.no-padding {
+  padding: 0;
+}
+
 .btn-right {
 	margin-left: auto;
 	display: block;
@@ -101,6 +237,15 @@
 .no-list-style {
   list-style: none;
   padding: 0;
+  margin: 0;
+}
+
+.orange {
+  color: var(--green);
+}
+
+.green {
+  color: var(--light-blue);
 }
 
 /* Validation */
@@ -116,12 +261,26 @@
   display: none;
 }
 
+.invalid-email,
+.invalid-mobile,
+.invalid-username,
+.invalid-password,
+.invalid-first-name,
+.invalid-last-name {
+  display: none;
+}
+
+.display-error {
+  display: block !important;
+}
+
 /* Tablet/Desktop */
 @media screen and (min-width: 768px) {
-	.custom-card-form {
-		width: 40rem;
-	}
-	
+  .sidebar {
+    position: sticky;
+    top: 25px;
+  }
+  
 	.btn-form {
 		width: 250px;
 	}
@@ -129,5 +288,34 @@
 	.new-user {
 		text-align: center;
 		margin-bottom: 10px;
+	}
+  
+  .search-result-card {
+    height: 8rem;
+  }
+  
+  .search-result-container {
+    margin-left: 50px;
+    margin-right: 150px;
+  }
+  
+  .list-item-block {
+    height: 40px;
+  }
+}
+
+/* Desktop Only */
+@media screen and (min-width: 1200px) {
+  .swiper {
+    width: 80%;
+    height: 400px;
+  }
+  
+  .swiper-img {
+    height: 400px;
+  }
+  
+  .custom-card-form {
+		width: 40rem;
 	}
 }

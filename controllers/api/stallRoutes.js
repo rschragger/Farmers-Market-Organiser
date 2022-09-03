@@ -1,10 +1,12 @@
 const router = require('express').Router();
-const { Stall} = require('../../models');
+const { Stall , Location , EventsBooking} = require('../../models');
 
 // Retrieve all the Stalls
 router.get('/', async (req, res) => {
   try {
-    const stalls = await Stall.findAll();
+    const stalls = await Stall.findAll({
+      include:[{model:Location} ,{model: EventsBooking}]
+    });
     res.status(200).json({
       data: stalls
     });
@@ -16,10 +18,13 @@ router.get('/', async (req, res) => {
   }
 });
 
+
 // Retrieve a stall
 router.get('/:id', async (req, res) => {
   try {
-    const stall = await Stall.findByPk(req.params.id);
+    const stall = await Stall.findByPk(req.params.id,{
+      include:[{model:Location} ,{model: EventsBooking}]
+    });
 
     res.status(200).json({
       data: stall
@@ -31,6 +36,39 @@ router.get('/:id', async (req, res) => {
     });
   }
 });
+
+// Create a new stall
+router.post('/', async (req, res) => {
+  try {
+    // Check if the stall already exists
+    const stallData = await Stall.findOne({
+      where: {
+        stall_name: req.body.stall_name
+      },
+      individualHooks: true,
+    });
+
+    if (!stallData) {
+      // The company doesn't exist so create a new stall
+      const newStall = await Stall.create(req.body);
+
+      res.status(200).json({
+        data: newStall
+      });
+    }
+    else {
+      // The company exists, prevent creating another company with the same name
+      res.status(400).json({
+        message: "The stall's name has already been used!"
+      });
+    }
+  }
+    catch (err) {
+      res.status(400).json(err);
+    }
+  });
+
+
 
 // Update the Stall
 router.put('/:id', async (req, res) => {
@@ -80,4 +118,35 @@ router.delete('/:id', async (req, res) => {
       res.status(500).json(err);
     }
 });
+
+// Create a new stall
+router.post('/', async (req, res) => {
+  try {
+    // Check if the stall already exists
+    const stallData = await Stall.findOne({
+      where: {
+        stall_name: req.body.stall_name
+      },
+      individualHooks: true,
+    });
+    if (!stallData) {
+      // The stall doesn't exist so create a new stall
+      const newStall = await Stall.create(req.body);
+      res.status(200).json({
+        data: newStall
+      });
+    }
+    else {
+      // The stall exists
+      res.status(400).json({
+        message: "The stall name has already been used!"
+      });
+    }
+  }
+  catch (err) {
+    res.status(400).json(err);
+  }
+});
+
+
 module.exports = router;

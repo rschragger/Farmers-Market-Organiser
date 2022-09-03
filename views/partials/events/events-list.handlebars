@@ -1,0 +1,26 @@
+<div class="card mb-9">
+  <div class="card-body">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Market</th>
+          <th scope="col">Event Name</th>
+          <th scope="col">Times</th>
+    
+        </tr>
+      </thead>
+      <tbody>
+        {{#each eventsData as |events|}}
+        <tr>
+          <td>{{location.market_name}}</td>
+          <td><a href="/events/{{id}}">{{event_name}}</a></td>
+          <td>{{formatDateMulti timestamp_start "dayLong"}} - {{formatDateMulti timestamp_end "timeOnly"}}</td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+    {{!-- <button type="button" class="btn float-right no-padding"><a href="new">
+        <i class="fa fa-plus">Add Stall</i></a>
+    </button> --}}
+  </div>
+</div>

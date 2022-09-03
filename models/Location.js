@@ -19,6 +19,10 @@ Location.init(
         len: [0,32],
         },
     },
+    description: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+    },
     address: {
       type: DataTypes.STRING,
       //allowNull: false,
@@ -37,6 +41,10 @@ Location.init(
         type: DataTypes.STRING,
         allowNull: true,
         len: [0,32],
+    },
+    logo_filename: {
+      type: DataTypes.STRING,
+      //allowNull: false,
     },
   },
   {

@@ -1,0 +1,33 @@
+
+<div class="card mb-9">
+  <div class="card-body">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Stall</th>
+          <th scope="col">Description</th>
+          <th scope="col">Price</th>
+          <th scope="col">Location</th>
+        </tr>
+      </thead>
+      <tbody>
+      {{#each stalls as |stall|}}
+        <tr>
+          <td><a href="/stalls/{{id}}">{{stall_name}}</a></td>
+          <td>{{description}}</td>
+          <td>{{price}}</td>
+          <td>{{market_name}}</td>
+          <td><a href="../stalls/edit/{{id}}"><i class="fa fa-edit"></i></a></td>
+          <td><form action="../stalls/delete/{{id}}" method="POST">
+              <button type="submit" onclick="return confirm('Are you sure?')"><i class="fa fa-trash fa-fw"></i></button>
+            </form>
+          </td>
+        </tr>
+      {{/each}}
+      </tbody>
+    </table>
+    <button type="button" class="btn float-right no-padding"><a href="new">
+      <i class="fa fa-plus">Add Stall</i></a>
+    </button>
+  </div>
+</div>

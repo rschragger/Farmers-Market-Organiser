@@ -25,7 +25,9 @@ router.get('/', async (req, res) => {
 // Retrieve one user
 router.get('/:id', async (req, res) => {
   try {
-    const user = await User.findByPk(req.params.id);
+    const user = await User.findByPk(req.params.id,{
+      include: [{ model: Stallholder }, { model: Location }],
+    });
 
     res.status(200).json({
       data: user
@@ -44,14 +46,17 @@ router.post('/', async (req, res) => {
     // Check if the user already exists
     const userData = await User.findOne({
       where: {
-        email: req.body.email
+        username: req.body.username
       },
       individualHooks: true,
     });
 
     if (!userData) {
       // The user doesn't exist so create a new user
-      const newUser = await User.create(req.body);
+      const newUser = await User.create(req.body)
+      .catch(err => {
+        console.log(err);
+      });
 
       res.status(200).json({
         data: newUser
@@ -60,7 +65,7 @@ router.post('/', async (req, res) => {
     else {
       // The user exists, prevent creating another user with the same email
       res.status(400).json({
-        message: "The email has already been used!"
+        message: "The username has already been used!"
       });
     }
   }
