@@ -1,0 +1,10 @@
+
+{{!-- Display the default content if not searching --}}
+<div class="container">
+	{{#if eventsList}}
+		{{> events/events-list events=events}}
+	{{/if}}
+	{{#if eventsCard}}
+		{{> events/events-card events=events}}
+	{{/if}}
+</div>
