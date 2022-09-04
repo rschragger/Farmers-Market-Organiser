@@ -1,0 +1,12 @@
+{{!-- This is for displaying stalls that have produce in them. Not going to be showing stalls that are available --}}
+<div class="booked-stall-container">
+	{{#each bookedStalls as |bookedStall|}}
+	{{#each bookedStall.eventsbookings as |eventBooking|}}
+	{{#areDatesEqual eventBooking.booking.lease_start ../../currentDate}}
+	{{#each eventBooking.booking.stallholder.products as |product|}}
+	{{> market/productCard product=product stallholder=eventBooking.booking.stallholder}}
+	{{/each}}
+	{{/areDatesEqual}}
+	{{/each}}
+	{{/each}}
+</div>
