@@ -4,7 +4,6 @@ async function newFormHandler(event) {
     const description = document.querySelector('#description').value;
     const address = document.querySelector('#address').value;
     const website= document.querySelector('#website').value;
-    const logo_filename= document.querySelector('#image').value;
    // Send fetch request to add new stall
     const response = await fetch(`/api/locations/`, {
       method: 'POST',
@@ -13,7 +12,6 @@ async function newFormHandler(event) {
         description,
         address,
         website,
-        logo_filename,
       }),
       headers: {
         'Content-Type': 'application/json',
@@ -26,5 +24,4 @@ async function newFormHandler(event) {
       alert('Failed to add location');
     }
   }
-  
-  document.querySelector('.new-location-form').addEventListener('submit', newFormHandler);
+document.querySelector('.new-location-form').addEventListener('submit', newFormHandler);
