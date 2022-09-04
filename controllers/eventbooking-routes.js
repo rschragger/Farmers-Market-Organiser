@@ -15,7 +15,9 @@ router.get('/:event_id/:stall_id', async (req, res) => {
 
 		const stallData = await modelUtility.getStallById(req.params.stall_id)
 		
-		const eventBookingData = modelUtility.getEventBookingByEventStall(req.params.event_id,req.params.stall_id)
+		const eventBookingData = await modelUtility.getEventBookingByEventStall(req.params.event_id,req.params.stall_id)
+
+		
 
 		// const stallsWithBooking = modelUtility.getStallsWithBookingsAtMarket()
 
