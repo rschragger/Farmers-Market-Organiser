@@ -15,12 +15,15 @@
         {{#each ../stallData as |stall|}}
         <p class="card-text">Stall {{id}}. {{stall_name}} - {{description}}</p>
 
+
+
+        {{/each}}
         {{#each ../eventBookingData as |eventbooking|}}
         <p class="card-text">Booking Present{{id}}. {{description}}</p>
         {{/each}}
 
         <p class="card-text"><a href="/events/{{id}}">Back to stall booking list</a></p>
-        {{/each}}
+
       </div>
       {{/each}}
     </div>
