@@ -1,5 +1,6 @@
-const { Location, Events, Product, Stallholder, Stall, User } = require('../models');
+const { Location, Events, Product, Stallholder, Stall, User, EventsBooking, Booking } = require('../models');
 const { Op } = require("sequelize");
+const moment = require('moment');
 
 // Moved all these functions here to allow modularity and reusability
 
@@ -208,6 +209,66 @@ const getMarketById = async (id) => {
 	return marketData.get({ plain: true });
 }
 
+const getStallsWithBookingsAtMarket = async (marketId, eventDate) => {
+	// Retrieve all stalls with all the booking and market information
+	const bookedStallsData = await Stall.findAll({
+		include: [
+		{
+			model: EventsBooking,
+			include:
+			{
+				model: Booking,
+				include:
+				{
+					model: Stallholder,
+					include:
+					{
+						model: Product
+					}
+				}
+			}
+		},
+		{
+			model: Location,
+			include:
+			{
+				model: Events,
+			},
+		}],
+		where: {
+			location_id: marketId
+		}
+	})
+	.catch(err => {
+		console.log(err);
+		return null;
+	});
+	
+	let bookedStalls = bookedStallsData?.map(bookedStall => bookedStall.get({ plain: true })) ?? null;
+	
+	// Filter out stalls that don't have a booking
+	bookedStalls = bookedStalls.filter(bookedStall => {
+		const eventBookings = bookedStall.eventsbookings;
+		let isBooked = false;
+		
+		// go through all the event bookings to compare dates. If it matches the eventDate then it is booked on that day
+		for (let i = 0; i < eventBookings.length; i++) {
+			const d1 = moment(eventBookings[i].lease_start);
+			const d2 = moment(eventDate);
+			
+			if (d1.isSame(d2, "day") && d1.isSame(d2, "month") && d1.isSame(d2, "year")) {
+				isBooked = true;
+				
+				break;
+			}
+		}
+		
+		return isBooked;
+	});
+	
+	return bookedStalls;
+};
+
 module.exports = {
 	getLoggedInUser,
 	getAllUpcomingMarkets,
@@ -217,5 +278,6 @@ module.exports = {
 	getSimilarProductsSearch,
 	getMarketById,
 	getAllMarkets,
-	searchAll
+	searchAll,
+	getStallsWithBookingsAtMarket
 }

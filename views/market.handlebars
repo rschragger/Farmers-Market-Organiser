@@ -1,4 +1,20 @@
 <div class="container">
-	<h1>{{market.market_name}}</h1>
-	<img src="/images/logos/{{market.logo_filename}}" alt="{{market.market_name}} Logo">
+	<div class="row">
+		<div class="col-sm-12 col-md-4">
+			<img class="" src="/images/logos/{{market.logo_filename}}" alt="{{market.market_name}} Logo">
+		</div>
+		<div class="col-sm-12 col-md-8">
+			<h1>{{market.market_name}}</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-12 col-md-12">
+			<div class="market-description">
+				{{market.description}}
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		{{> market/market-stalls}}
+	</div>
 </div>

@@ -97,15 +97,14 @@ router.get('/stalls',async(req, res) => {
     stall.description,
     stall.price,
     location.market_name
- FROM
-     stall,
-     USER,
-     location
- WHERE
-     location.id = USER.location_id AND
-     USER.id =`+req.session.userId +`
- ORDER BY
-     stall.stall_name ASC`,{
+FROM
+    stall,
+    USER,
+    location
+WHERE
+    location.id = USER.location_id AND stall.location_id = USER.location_id AND USER.id =`+req.session.userId +`
+ORDER BY
+    stall.stall_name ASC`,{
       model: Stall,
       mapToModel: true
     });
@@ -276,6 +275,20 @@ router.get('/new', async (req, res) => {
     upcomingMarkets
   });
 });
+
+//locations (Markets)
+router.get('/locations', async (req, res) => {
+  const loggedInUser = await modelUtility.getLoggedInUser(req.session.loggedIn, req.session.userId);
+  // Get all the upcoming markets
+  const upcomingMarkets = await modelUtility.getAllUpcomingMarkets();
+  res.render('organiser',{
+    marketNew: true,
+    loggedInUser,
+    loggedIn: req.session.loggedIn,
+    upcomingMarkets
+  });
+});
+
 
 //Trying to use a withAuth, but need to login from the webPage as insomnia creates a different session
 //   router.get('/',withAuthStallholder, async (req, res) => {

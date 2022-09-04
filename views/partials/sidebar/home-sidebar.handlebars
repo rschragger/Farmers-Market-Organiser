@@ -1,11 +1,13 @@
 <div class="sidebar d-flex flex-column flex-shrink-0">
 	{{> sidebar/upcoming-markets upcomingMarkets=upcomingMarkets}}
 	{{> sidebar/search-sidebar products=products}}
-	 {{#if loggedInUser.role_type }}
+	{{#isOrganiser loggedInUser.role_type }}
 		<div class="navbar-text">
 			{{> sidebar/stalls-button}}
 		</div>
-	  {{/if}}
-
-	  {{> sidebar/stallholder-button stallholder=stallholder}}
+		<div class="navbar-text">
+			{{> sidebar/location-button}}
+		</div>
+	{{/isOrganiser}}
+	{{> sidebar/stallholder-button stallholder=stallholder}}
 </div> 
