@@ -259,6 +259,7 @@ const getStallsWithBookingsAtMarket = async (marketId, eventDate) => {
 			if (d1.isSame(d2, "day") && d1.isSame(d2, "month") && d1.isSame(d2, "year")) {
 				isBooked = true;
 				
+				// Can break out of loop since it is booked on the day
 				break;
 			}
 		}

@@ -11,14 +11,15 @@ router.get('/:id', async (req, res) => {
 	// Get the market data
 	const market = await modelUtility.getMarketById(req.params.id);
 	const eventDate = req.query["currDate"];
-	const eventsBooking = await modelUtility.getStallsWithBookingsAtMarket(req.params.id, eventDate);
+	const bookedStalls = await modelUtility.getStallsWithBookingsAtMarket(req.params.id, eventDate);
 	
     res.render('market', {
 		loggedInUser,
       	loggedIn: req.session.loggedIn,
       	upcomingMarkets,
 		market,
-		currentDate: eventDate
+		currentDate: eventDate,
+		bookedStalls
 	});
   }
   catch (err) {

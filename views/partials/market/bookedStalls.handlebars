@@ -1,0 +1,20 @@
+{{!-- This is for displaying stalls that have produce in them. Not going to be showing stalls that are available --}}
+<div class="accordion" id="accordionPanelsStayOpenExample">
+	{{#each bookedStalls as |bookedStall|}}
+	<div class="accordion-item">
+		<h2 class="accordion-header" id="panelsStayOpen-headingOne">
+			<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-{{bookedStall.id}}" aria-expanded="true" aria-controls="panelsStayOpen-{{bookedStall.id}}">
+				{{bookedStall.stall_name}}
+			</button>
+		</h2>
+		<div id="panelsStayOpen-{{bookedStall.id}}" class="accordion-collapse collapse show"
+			aria-labelledby="panelsStayOpen-{{bookedStall.id}}">
+			<div class="accordion-body">
+				{{#each bookedStall.eventsbookings.[0].booking.stallholder.products as |product|}}
+				{{> market/productCard product=product}}
+				{{/each}}
+			</div>
+		</div>
+	</div>
+	{{/each}}
+</div>
