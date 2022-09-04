@@ -289,6 +289,62 @@ router.get('/locations', async (req, res) => {
   });
 });
 
+// stats reports for Events
+router.get('/stats',async(req, res) => {
+  try {
+    const loggedInUser = await modelUtility.getLoggedInUser(req.session.loggedIn, req.session.userId);
+    // Get all the upcoming markets
+    const upcomingMarkets = await modelUtility.getAllUpcomingMarkets();
+    //stalls info
+    const marketsRevenue = await sequelize.query(`SELECT
+    SUM(eventsbooking.cost) AS total,
+    EVENTS.event_name,
+    EVENTS.timestamp_start,
+    EVENTS.timestamp_end,
+    EVENTS.id,
+    eventsbooking.events_id,
+    eventsbooking.cost,
+    eventsbooking.booking_id,
+    booking.id,
+    booking.lease_start,
+    booking.lease_expiry,
+    booking.stall_id AS bstallID,
+    EVENTS.location_id asevetLocationId
+FROM
+    events,
+    location,
+    stall,
+    eventsbooking,
+    booking
+WHERE EVENTS
+    .id = eventsbooking.events_id AND eventsbooking.booking_id = booking.id AND location.id = EVENTS.location_id AND booking.stall_id = stall.location_id AND(
+        EVENTS.timestamp_start BETWEEN booking.lease_start AND booking.lease_expiry OR EVENTS.timestamp_end BETWEEN booking.lease_start AND booking.lease_expiry
+    )
+GROUP BY
+    eventsbooking.events_id`,{
+            model: Events,
+            mapToModel: true
+          }
+    );
+    const results = marketsRevenue.map((result) =>
+    result.get({ plain: true })
+  );
+  //console.log(total[0].total); process.exit();
+   res.render('organiser', {
+        results,
+        statRevenue: true,
+        loggedInUser,
+        loggedIn: req.session.loggedIn,
+        upcomingMarkets
+    });
+  }
+  catch (err) {
+    res.status(500).json({
+      message: err
+    });
+  }
+});
+
 
 //Trying to use a withAuth, but need to login from the webPage as insomnia creates a different session
 //   router.get('/',withAuthStallholder, async (req, res) => {
