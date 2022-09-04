@@ -2,14 +2,13 @@ const moment = require('moment');
 
 // It is used to simply identify true or false
 const isOrganiser = (roleType, options) => {
-    if (roleType?.toLoserCase() === "organiser") {
-        return options.fn(this);
+    if (roleType?.toLowerCase() === "organiser") {
+        return options.fn(this)
     }
     else {
         return options.inverse(this);
     }
 };
-
 // It is used to simply identify true or false
 const isStallholder = (roleType, options) => {
     if (roleType?.toLowerCase() === "stallholder") {

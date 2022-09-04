@@ -8,23 +8,40 @@
         <h4 class="card-title">{{eventsData.location.market_name}}</h4>
         <h5>Stall Availability List for:</h5>
         <p class="card-text">{{formatDateMulti eventsData.timestamp_start "dayLong"}} - {{formatDateMulti eventsData.timestamp_end "timeOnly"}}</p>
-
       </div>
     </div>
   </div>
-</div>
+</div> 
 
 {{#if stallData}}
 <div class="card mb-3">
   <h4>Our Stall List</h4>
 </div>
 {{#each stallData as |stall|}}
-<div class="card search-result-card mb-2">
+<div class="card search-result-card mb-1">
   <div class="row g-0">
     <div class="col-md-10">
       <div class="card-body">
         <h5 class="card-title">{{incremented @index}}. {{stall.stall_name}}</h5>
         <p class="card-text">{{stall.description}}</p>
+
+          {{!-- ID{{../eventsData.id}}/{{stall.id}} --}}
+        <p class="card-text"><a href="/eventbooking/{{../eventsData.id}}/{{stall.id}}">Book for {{formatDateMulti ../eventsData.timestamp_start "dayLong"}}</a></p>
+         <p class="card-text">Booked{{../eventBookingData}}</p>
+
+{{!-- <p class="card-text">y{{bookedStalls.isBooked}}</p> --}}
+
+{{!-- <p class="card-text">{{getStallsWithBookingsAtMarket  location_id timestamp_start}}</p> --}}
+
+{{!-- {{#each eventBookingData.stall.id as |eventbooking| }}
+        <p class="card-text">TEST:{{description}}{{stall.eventsbookings.id}}
+          {{ eventsData.eventsbooking.stall_id}}{{ eventsData.eventsbooking.booking_id}}
+          </p>
+{{/each}} --}}
+{{!-- {{#with eventBookingData}}
+        <p class="card-text">TEST2:{{description}}</p>
+
+{{/with}} --}}
       </div>
     </div>
   </div>

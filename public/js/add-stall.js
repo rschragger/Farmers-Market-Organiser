@@ -3,13 +3,15 @@ async function newFormHandler(event) {
     const stall_name = document.querySelector('#stall_name').value;
     const description = document.querySelector('#description').value;
     const price = document.querySelector('#price').value;
+    const location_id= document.querySelector('#location_id option:checked').value;
     // Send fetch request to add new stall
-    const response = await fetch(`/api/`, {
+    const response = await fetch(`/api/stalls/`, {
       method: 'POST',
       body: JSON.stringify({
         stall_name,
         description,
         price,
+        location_id,
       }),
       headers: {
         'Content-Type': 'application/json',

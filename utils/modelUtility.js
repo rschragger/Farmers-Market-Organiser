@@ -209,6 +209,45 @@ const getMarketById = async (id) => {
 	return marketData.get({ plain: true });
 }
 
+const getEventById = async(id)=>{
+	// Get an Event's data
+	 const eventsData = await Events.findAll( {
+	include: [{ model: Location }, { model: EventsBooking }],
+	where:{'id':id}
+  })
+  //return eventsData.map((obj)=>obj.get({ plain: true }))
+  if(eventsData.length<1){return []}
+  const thisData= eventsData.map((obj)=>obj.get({ plain: true }));
+  return thisData
+  
+}
+
+const getStallById = async(id)=>{
+	// Get a Stall's data
+	 const stallData = await Stall.findAll( {
+	include: [{ model: Location }, { model: EventsBooking }],
+	where:{'id':id}
+  })
+  //return stallData.map((obj)=>obj.get({ plain: true }))
+
+  if(stallData.length<1){return []}
+  const thisData= stallData.map((obj)=>obj.get({ plain: true }));
+  return thisData
+}
+
+const getEventBookingByEventStall = async(eventId,stallId)=>{
+	const eventBookingData = await EventsBooking.findAll({
+		include: [{ model: Events }, { model: Stall }, { model: Booking }],
+		where: {
+		  events_id: eventId,
+		  stall_id: stallId
+		}
+	  })
+	  if(eventBookingData.length<1){return []}
+	 const thisData= eventBookingData.map((obj)=>obj.get({ plain: true }));
+	 return thisData
+}
+
 const getStallsWithBookingsAtMarket = async (marketId, eventDate) => {
 	// Retrieve all stalls with all the booking and market information
 	const bookedStallsData = await Stall.findAll({
@@ -270,6 +309,8 @@ const getStallsWithBookingsAtMarket = async (marketId, eventDate) => {
 	return bookedStalls;
 };
 
+
+
 module.exports = {
 	getLoggedInUser,
 	getAllUpcomingMarkets,
@@ -278,6 +319,9 @@ module.exports = {
 	getSimilarStallholdersSearch,
 	getSimilarProductsSearch,
 	getMarketById,
+	getEventById,
+	getStallById,
+	getEventBookingByEventStall,
 	getAllMarkets,
 	searchAll,
 	getStallsWithBookingsAtMarket

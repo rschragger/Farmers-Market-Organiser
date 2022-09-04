@@ -1,0 +1,28 @@
+<div class="card mb-3" style="max-width: 700px;">
+  <div class="row g-0">
+    <div class="col-md-1">
+      {{#each eventsData as |events|}}
+      <img src="/images/logos/{{location.logo_filename}}" class="img-fluid " style="width: auto; height: 40px;"
+        alt="Logo">
+    </div>
+    <div class="col-md-7  ">
+      <div class="card-body">
+        <h2>Stall Booking Form:</h2>
+
+        <h4 class="card-title">{{location.market_name}}</h4>
+        <p class="card-text">{{formatDateMulti timestamp_start "dayLong"}} - {{formatDateMulti timestamp_end
+          "timeOnly"}}</p>
+        {{#each ../stallData as |stall|}}
+        <p class="card-text">Stall {{id}}. {{stall_name}} - {{description}}</p>
+
+        {{#each ../eventBookingData as |eventbooking|}}
+        <p class="card-text">Booking Present{{id}}. {{description}}</p>
+        {{/each}}
+
+        <p class="card-text"><a href="/events/{{id}}">Back to stall booking list</a></p>
+        {{/each}}
+      </div>
+      {{/each}}
+    </div>
+  </div>
+</div>

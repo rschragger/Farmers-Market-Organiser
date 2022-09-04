@@ -29,7 +29,7 @@ Events.init(
         key: 'id',
       },
     },
-    timestamp_start: {
+    timestamp_start: { 
       type: DataTypes.DATE,
       allowNull: false,
     },
