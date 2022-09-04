@@ -17,7 +17,8 @@ router.get('/:event_id/:stall_id', async (req, res) => {
 		
 		const eventBookingData = await modelUtility.getEventBookingByEventStall(req.params.event_id,req.params.stall_id)
 
-		
+		const userStallholder = await modelUtility.getStallholderFromSession(req.session.userId);
+
 
 		// const stallsWithBooking = modelUtility.getStallsWithBookingsAtMarket()
 
@@ -25,6 +26,7 @@ router.get('/:event_id/:stall_id', async (req, res) => {
 			 eventBookingData,
 			stallData,
 			eventsData,
+			userStallholder,
 			loggedInUser,
 			loggedIn: req.session.loggedIn,
 			upcomingMarkets,

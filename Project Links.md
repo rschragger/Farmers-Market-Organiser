@@ -7,6 +7,7 @@ There are a number of items we are using that are cloud based and require access
 
 - `heroku create farmers-market-organiser` to initialise
 - `heroku git:remote -a farmers-market-organiser` to make it work from your git repository
+- get into your main branch and make sure it is current (pulled)
 - `git push heroku main` to push
 - to seed
 

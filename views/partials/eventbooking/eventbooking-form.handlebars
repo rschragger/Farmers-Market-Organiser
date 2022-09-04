@@ -13,10 +13,14 @@
         <p class="card-text">{{formatDateMulti timestamp_start "dayLong"}} - {{formatDateMulti timestamp_end
           "timeOnly"}}</p>
         {{#each ../stallData as |stall|}}
-        <p class="card-text">Stall {{id}}. {{stall_name}} - {{description}}</p>
+        <p class="card-text">No {{id}}. {{stall_name}} - {{description}}</p>
 
+<p class="card-text">Rental price: ${{price}}</p>
+        {{#each ../userStallholder as |user|}}
 
+<p class="card-text">Stallholder: {{user.stallholder.company_name}}</p>
 
+ {{/each}}
         {{/each}}
         {{#each ../eventBookingData as |eventbooking|}}
         <p class="card-text">Booking Present{{id}}. {{description}}</p>
