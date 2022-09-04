@@ -1,4 +1,22 @@
 const router = require('express').Router();
+const express = require('express');
+const path = require('path');
+const multer  = require('multer');
+/* storage image
+  some guide resources from https://stackoverflow.com/questions/56735734/how-to-save-file-with-its-original-name-in-public-folder
+  and  https://www.tabnine.com/code/javascript/functions/multer/File/fieldname */
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './public/images/Logos')
+  },
+  filename: function (req, file, cb) {
+    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
+    //get the extesion of the file for renaming the stored image so it has a unique name
+    let ext = path.extname(file.originalname);
+    cb(null, file.fieldname + '-' + uniqueSuffix+ext)
+  }
+})
+const upload = multer({storage: storage});
 const sequelize = require('../../config/connection');
 const { Location, Events, Stall } = require('../../models');
 
@@ -44,6 +62,18 @@ router.get('/:id', async (req, res) => {
 // Create a new location
 router.post('/', async (req, res) => {
   try {
+    if (!req.file) {
+      console.log("No file received333");
+    } else {
+      console.log('File received333');
+    }
+  //   //printing a console message checking if the file was loaded
+  //   if (!req.file) {
+  //     console.log("No file received");
+  //   } else {
+  //     console.log('File received');
+  //   }
+   ////
     const newLocation = await Location.create(req.body);
     const updateUser = sequelize.query(`Update user
         set location_id =`+newLocation.id +`
@@ -91,5 +121,38 @@ router.put('/:id', async (req, res) => {
 });
 
 //Do not add a DELETE as this would be a bit catastrophic and not required. You would want to retain historical info
+router.post('/upload', upload.single("image"), async (req, res) => {
+  //printing a console message checking if the file was loaded
+  if (!req.file) {
+    console.log("No file received");
+  } else {
+      console.log('File received'+req.file.filename);
+      const chekLocation = await sequelize.query(`SELECT
+            count(*) as total,
+            user.location_id
+        FROM
+            USER,
+            location
+        WHERE
+            location.id = USER.location_id AND
+            USER.id =`+req.session.userId,{
+              model: Location,
+              mapToModel: true
+            }
+      );
+      const total = chekLocation.map((location) =>
+        location.get({ plain: true })
+      );
+    //console.log(total[0].total); process.exit();
+    if(total[0].total > 0){
+      //update logo
+      const updateLocation = sequelize.query(`Update location
+          set logo_filename ="`+req.file.filename+`"
+          WHERE
+          location.id = `+total[0].location_id);
+          res.redirect('/stalls');
+      }
+   }
+});
 
 module.exports = router;
