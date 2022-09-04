@@ -13,6 +13,7 @@ router.get('/', async (req, res) => {
     const loggedInUser = await modelUtility.getLoggedInUser(req.session.loggedIn, req.session.userId);
     const upcomingMarkets = await modelUtility.getAllUpcomingMarkets();
 
+
     const dbEventsData = await Events.findAll({
       include: [{ model: Location }, { model: EventsBooking }],
       order: [["timestamp_start", "ASC"]]
@@ -36,7 +37,7 @@ router.get('/', async (req, res) => {
 
 
 
-//Get one stallholder's card
+//Get one Event's card
 router.get('/:id', async (req, res) => {
   try {
 
@@ -55,30 +56,38 @@ router.get('/:id', async (req, res) => {
       });
 
     const stallData = dbStallData.map((obj) =>
-      obj.get({ plain: true }),
-     // obj.isAvailable: eventsbooking ? "Booked":"Available",
+      obj.get({ plain: true })
+    )
 
-    );
+    // const stallData = stallDataClean.map((obj) =>
+    //   obj.set({ "isBooked":  modelUtility.getStallsWithBookingsAtMarket(eventsData.location_id, eventsData.timestamp_start)})
+    //  )
+
+    //const stallData = await modelUtility.getStallsWithBookingsAtMarket(eventsData.location_id, eventsData.timestamp_start);
+    
+    //const bookedStalls = await modelUtility.getStallsWithBookingsAtMarket(eventsData.location_id, eventsData.timestamp_start);
 
 
-    const dbEventBookingData = await EventsBooking.findAll({
-      where: {
-        //events_id: eventsData.id,
-       // stall_id: stallData.id
-      }
-    });
-    const eventBookingData = dbEventBookingData.map((pd) =>
-      pd.get({ plain: true })
-    );
+    // const dbEventBookingData = await EventsBooking.findAll({
+    //   where: {
+    //     events_id: eventsData.id,
+    //     stall_id: [ stallData.id ]
+    //   }
+    // });
+    // const eventBookingData = dbEventBookingData.map((pd) =>
+    //   pd.get({ plain: true })
+    // );
 
+//const eventBookingData = modelUtility.getEventBookingByEventStall(eventsData.id,stallData.id)
 
     res.render('events', {
       eventsData,
       stallData,
-      eventBookingData,
       eventsCard: true,
       upcomingMarkets,
-      //loggedInUser,
+      //eventBookingData,
+      // bookedStalls,
+      //loggedInUser, 
       loggedIn: req.session.loggedIn,
     });
   }

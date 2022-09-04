@@ -9,7 +9,7 @@ router.get('/', async (req, res) => {
     if (!eventsData) {
       res
         .status(400)
-        .json({ message: 'No data found for eventss' });
+        .json({ message: 'No data found for events' });
       return;
     }
     res.status(200).json(eventsData);
