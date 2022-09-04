@@ -6,17 +6,23 @@ There are a number of items we are using that are cloud based and require access
 [https://farmers-market-organiser.herokuapp.com/](https://farmers-market-organiser.herokuapp.com/) 
 
 - `heroku create farmers-market-organiser` to initialise
+
+If you are not yet connected, do this to connect to your git repository
 - `heroku git:remote -a farmers-market-organiser` to make it work from your git repository
+
+To upload to already deployed
 - get into your main branch and make sure it is current (pulled)
 - `git push heroku main` to push
-- to seed
 
-    `heroku run bash` - this enters a bash mode in heroku session
+To seed
 
-    `node seeds/seeds.js` - run seeds file in heroku
+ - `heroku run bash` - this enters a bash mode in heroku session
 
-    `exit` - come back to your CLI session
+- `node seeds/seeds.js` - run seeds file in heroku
 
+- `exit` - come back to your CLI session
+
+(remember to `checkout` back to your branch)
 
 
 ### Project Presentation

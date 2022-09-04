@@ -249,6 +249,7 @@ const getEventBookingByEventStall = async(eventId,stallId)=>{
 }
 
 const getStallholderFromSession = async(userId)=>{
+	if(!userId){return[]}
 	// if(req.sessions.role_type!= 'stallholder'){return}
 	const userData = await User.findAll({
 		include: [{ model: Stallholder }],

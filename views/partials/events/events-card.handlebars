@@ -25,20 +25,36 @@
       <div class="card-body">
         <h5 class="card-title">{{incremented @index}}. {{stall.stall_name}}</h5>
         <p class="card-text">{{stall.description}}</p>
-
         {{!-- ID{{../eventsData.id}}/{{stall.id}} --}}
-        <p class="card-text"><a href="/eventbooking/{{../eventsData.id}}/{{stall.id}}">Book for {{formatDateMulti
-            ../eventsData.timestamp_start "dayLong"}}</a></p>
-        <p class="card-text">Booked{{../eventBookingData}}</p>
+        {{!-- {{#each ../eventsData as |eventsData|}} --}}
+        {{!-- <p class="card-text">Booked: {{eventsData.eventsbooking.stall_id}}</p> --}}
+        {{!-- <p class="card-text"><a href="/eventbooking/{{../eventsData.id}}/{{stall.id}}">Book for {{formatDateMulti
+            ../eventsData.timestamp_start "dayLong"}}</a></p> --}}
+        {{!-- {{/each}} --}}
+        {{!-- end of ../EventsData --}}
 
         {{!-- https://axiacore.com/blog/check-if-item-array-handlebars-547/ --}}
+
         {{#ifIn id ../stallListIds}}
-        <h4>Is Booked</h4>
+        <h6 style="color:red;">Is Booked</h6>
+        {{!-- <h4>Is Booked</h4> --}}
+        {{else}}
+        {{!-- <p>book this</p> --}}
+
+        {{!-- {{#each ../eventsData as |eventsData|}} --}}
+        <p class="card-text"><a href="/eventbooking/{{../../eventsData.id}}/{{stall.id}}">Book for {{formatDateMulti
+            ../../eventsData.timestamp_start "dayLong"}}</a></p>
+
+        {{!-- {{/each}} --}}
+
         {{/ifIn}}
 
-        {{#each ../eventBookingData as |eventbooking|}}
-        <p class="card-text">Booking Present{{id}}. {{description}}</p>
-        {{/each}}
+        {{!-- {{#each ../eventsData as |eventsData|}}
+        <p class="card-text"><a href="/eventbooking/{{../eventsData.id}}/{{stall.id}}">Outside Book for
+            {{formatDateMulti
+            ../eventsData.timestamp_start "dayLong"}}</a></p>
+        {{/each}} --}}
+
 
       </div>
     </div>

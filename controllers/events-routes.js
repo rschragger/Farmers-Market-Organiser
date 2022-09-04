@@ -80,15 +80,22 @@ router.get('/:id', async (req, res) => {
     // const eventBookingData = dbEventBookingData.map((pd) =>
     //   pd.get({ plain: true })
     // );
-const stallListIds = stallData.map((obj)=>obj.id)
-const eventBookingData =await  modelUtility.getEventBookingByEventStall(req.params.id,[stallListIds])
+const stallListIds = stallData.map((obj)=>{
+ if( obj.eventsbookings.length >0 ){ return obj.id }
+ else{obj.null}  
+})
+.filter((element)=>(  element != null))
+
+
+
+//const eventBookingData =await  modelUtility.getEventBookingByEventStall(req.params.id,[stallListIds])
 
     res.render('events', {
       eventsData,
       stallData,
       eventsCard: true,
       upcomingMarkets,
-      eventBookingData,
+      //eventBookingData,
       stallListIds,
       // bookedStalls, 
       //loggedInUser, 
