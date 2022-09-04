@@ -253,7 +253,7 @@ const getStallsWithBookingsAtMarket = async (marketId, eventDate) => {
 		
 		// go through all the event bookings to compare dates. If it matches the eventDate then it is booked on that day
 		for (let i = 0; i < eventBookings.length; i++) {
-			const d1 = moment(eventBookings[i].lease_start);
+			const d1 = moment(eventBookings[i].booking.lease_start);
 			const d2 = moment(eventDate);
 			
 			if (d1.isSame(d2, "day") && d1.isSame(d2, "month") && d1.isSame(d2, "year")) {

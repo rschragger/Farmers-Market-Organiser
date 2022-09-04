@@ -3,6 +3,7 @@ const updateMarketDate = (e) => {
 	const marketId = values[0]
 	const date = moment(values[1]).format('DD-MMMM-YYYY');
 	
+	// Not the most elegant way but since this is a MVP, it will do for now
 	window.location = `/market/${marketId}?currDate=${date}`;
 };
 

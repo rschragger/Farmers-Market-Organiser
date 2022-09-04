@@ -1,3 +1,4 @@
+{{!-- Pass the stallholder to this product for this to work --}}
 <div class="card search-result-card mb-3">
 	<div class="row g-0">
 		<div class="col-sm-12 col-md-2">
@@ -7,7 +8,7 @@
 			<div class="card-body">
 				<h5 class="card-title">Product: {{product.name}}</h5>
 				<p class="card-text">{{product.description}}</p>
-				<p class="card-text">Stallholder: {{product.stallholder.company_name}}</p>
+				<p class="card-text">Stallholder: {{stallholder.company_name}}</p>
 			</div>
 		</div>
 	</div>

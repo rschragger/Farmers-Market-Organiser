@@ -97,6 +97,18 @@ const shouldBeSelectedDate = (date1, date2) => {
     return "";
 };
 
+const areDatesEqual = (date1, date2, options) => {
+    // Compare two dates and returns selected if true and false otherwise
+    let d1 = moment(date1);
+    let d2 = moment(date2);
+
+    if (d1.isSame(d2, "day") && d1.isSame(d2, "month") && d1.isSame(d2, "year")) {
+        return options.fn(this);
+    }
+
+    return options.inverse(this);
+};
+
 const generateMarketLink = (marketId) => {
     return `/market/${marketId}`;
 }
@@ -122,7 +134,8 @@ module.exports = {
     isResultAStallholder,
     generateMarketLogoUrl,
     generateMarketByIdUrl,
-    shouldBeSelectedDate };
+    shouldBeSelectedDate,
+    areDatesEqual };
 
 
 

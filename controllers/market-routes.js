@@ -11,7 +11,24 @@ router.get('/:id', async (req, res) => {
 	// Get the market data
 	const market = await modelUtility.getMarketById(req.params.id);
 	const eventDate = req.query["currDate"];
-	const bookedStalls = await modelUtility.getStallsWithBookingsAtMarket(req.params.id, eventDate);
+	let bookedStalls = await modelUtility.getStallsWithBookingsAtMarket(req.params.id, eventDate);
+	
+	// Filter any duplicate eventBookings
+	bookedStalls.forEach(bookedStall => {
+		let eventBookings = [];
+		let seenBookingIds = {};
+		
+		bookedStall.eventsbookings.forEach(eventBooking => {
+			const bookingId = eventBooking.booking.id;
+			
+			if (!(bookingId in seenBookingIds)) {
+				seenBookingIds[bookingId] = eventBooking.booking;
+				eventBookings.push(eventBooking);
+			}
+		});
+		
+		bookedStall.eventsbookings = eventBookings;
+	});
 	
     res.render('market', {
 		loggedInUser,
