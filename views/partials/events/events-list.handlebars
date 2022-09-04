@@ -3,6 +3,7 @@
     <table class="table">
       <thead>
         <tr>
+          <th scope="col"></th>
           <th scope="col">Market</th>
           <th scope="col">Event Name</th>
           <th scope="col">Times</th>
@@ -12,6 +13,7 @@
       <tbody>
         {{#each eventsData as |events|}}
         <tr>
+          <td><img src="/images/logos/{{location.logo_filename}}" class="img-fluid rounded-start " style="width: auto; height: 40px;" alt="Logo"></td>
           <td>{{location.market_name}}</td>
           <td><a href="/events/{{id}}">{{event_name}}</a></td>
           <td>{{formatDateMulti timestamp_start "dayLong"}} - {{formatDateMulti timestamp_end "timeOnly"}}</td>

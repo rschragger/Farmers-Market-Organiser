@@ -7,8 +7,8 @@
       <div class="card-body">
         <h4 class="card-title">{{eventsData.location.market_name}}</h4>
         <h5>Stall Availability List for:</h5>
-        <p class="card-text">{{formatDateMulti eventsData.timestamp_start "dayLong"}} - {{formatDateMulti eventsData.timestamp_end "timeOnly"}}</p>
-
+        <p class="card-text">{{formatDateMulti eventsData.timestamp_start "dayLong"}} - {{formatDateMulti
+          eventsData.timestamp_end "timeOnly"}}</p>
       </div>
     </div>
   </div>
@@ -19,12 +19,29 @@
   <h4>Our Stall List</h4>
 </div>
 {{#each stallData as |stall|}}
-<div class="card search-result-card mb-2">
+<div class="card search-result-card mb-1">
   <div class="row g-0">
     <div class="col-md-10">
       <div class="card-body">
         <h5 class="card-title">{{incremented @index}}. {{stall.stall_name}}</h5>
         <p class="card-text">{{stall.description}}</p>
+
+        {{!-- https://axiacore.com/blog/check-if-item-array-handlebars-547/ --}}
+
+        {{#ifIn id ../stallListIds}}
+        <h6 style="color:red;">Booked</h6>
+        {{else}}
+
+        <p class="card-text"><a href="/eventbooking/{{../../eventsData.id}}/{{stall.id}}">Book for {{formatDateMulti
+            ../../eventsData.timestamp_start "dayLong"}} - ${{stall.price}}</a></p>
+
+      
+
+        {{/ifIn}}
+
+       
+
+
       </div>
     </div>
   </div>

@@ -116,8 +116,55 @@ button a {
   font-size: 64px;
 }
 
+.market-icon {
+  margin-right: 25px;
+  width: 150px;
+}
+
+.market-title {
+  font-weight: bold;
+}
+
+.search-result-title {
+  font-size: 40px;
+}
+
+.search-result-subtitle {
+  font-weight: bold;
+}
+
+.market-description {
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.market-stalls-title {
+  font-size: 32px;
+  text-align: center;
+}
+
+.booked-stall-no-stalls {
+  margin-top: 25px;
+  font-weight: bolder;
+  text-align: center;
+}
+
+#market-date-select {
+  margin-bottom: 15px;
+}
+
+.search-filters {
+  margin-top: 25px;
+}
+
+.search-filters-title {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
 .upcoming-markets-title {
   text-align: center;
+  font-weight: bold;
 }
 
 .upcoming-markets-body {
@@ -133,6 +180,7 @@ button a {
 
 .search-title {
   text-align: center;
+  font-weight: bold;
 }
 
 .custom-card-form {
@@ -289,10 +337,6 @@ button a {
 		text-align: center;
 		margin-bottom: 10px;
 	}
-  
-  .search-result-card {
-    height: 8rem;
-  }
   
   .search-result-container {
     margin-left: 50px;

@@ -1,5 +1,6 @@
-const { Location, Events, Product, Stallholder, Stall, User } = require('../models');
+const { Location, Events, Product, Stallholder, Stall, User, EventsBooking, Booking } = require('../models');
 const { Op } = require("sequelize");
+const moment = require('moment');
 
 // Moved all these functions here to allow modularity and reusability
 
@@ -130,7 +131,7 @@ const searchAll = async (searchTerm, filters) => {
 };
 
 const getSimilarMarketsSearch = async (searchTerm) => {
-	// Find all products that include the word 'product'
+	// Find all products that include the word 'searchTerm'
 	if (searchTerm === "all") searchTerm = "";
 	
 	const marketData = await Location.findAll({
@@ -152,7 +153,7 @@ const getSimilarMarketsSearch = async (searchTerm) => {
 }
 
 const getSimilarStallholdersSearch = async (searchTerm) => {
-	// Find all products that include the word 'product'
+	// Find all products that include the word 'searchTerm'
 	if (searchTerm === "all") searchTerm = "";
 	
 	const stallholderData = await Stallholder.findAll({
@@ -174,24 +175,59 @@ const getSimilarStallholdersSearch = async (searchTerm) => {
 }
 
 const getSimilarProductsSearch = async (searchTerm) => {
-	// Find all products that include the word 'product'
+	// Find all products that include the word 'searchTerm'
+	// This will be only getting the products that are booked
 	if (searchTerm === "all") searchTerm = "";
 	
 	const productsData = await Product.findAll({
-		include: [{ model: Stallholder }],
+		include: [
+			{
+				model: Stallholder,
+				include: {
+					model: Booking,
+					include: {
+						model: EventsBooking,
+						include: {
+							model: Events,
+							include: {
+								model: Location
+							}
+						}
+					}
+				}
+			}
+		],
 		where: {
 			name: {
 				[Op.substring]: searchTerm
 			}
 		}
 	})
-		.catch(err => {
-			console.log(err);
-			return null;
+	.catch(err => {
+		console.log(err);
+		return null;
+	});
+		
+	
+
+	let products = productsData.map(product => product.get({ plain: true }));
+	
+	// Filter out any products that don't have a booking
+	products = products.filter(product => product.stallholder.bookings.length > 0);
+	
+	// Add all the markets that the products are located at
+	products.forEach(product => {
+		let markets = [];
+		
+		product.stallholder.bookings.forEach(booking => {
+			booking.eventsbookings.forEach(eventBooking => {
+				markets.push([eventBooking.event.location.id, eventBooking.event.location.market_name]);
+			});
 		});
-
-	const products = productsData.map(product => product.get({ plain: true }));
-
+		
+		product.markets = Array.from(new Set(markets.map(JSON.stringify)), JSON.parse);
+	});
+	
 	return products;
 }
 
@@ -208,6 +244,122 @@ const getMarketById = async (id) => {
 	return marketData.get({ plain: true });
 }
 
+const getEventById = async(id)=>{
+	// Get an Event's data
+	 const eventsData = await Events.findAll( {
+	include: [{ model: Location }, { model: EventsBooking }],
+	where:{'id':id}
+  })
+  //return eventsData.map((obj)=>obj.get({ plain: true }))
+  if(eventsData.length<1){return []}
+  const thisData= eventsData.map((obj)=>obj.get({ plain: true }));
+  return thisData
+  
+}
+
+const getStallById = async(id)=>{
+	// Get a Stall's data
+	 const stallData = await Stall.findAll( {
+	include: [{ model: Location }, { model: EventsBooking }],
+	where:{'id':id}
+  })
+  //return stallData.map((obj)=>obj.get({ plain: true }))
+
+  if(stallData.length<1){return []}
+  const thisData= stallData.map((obj)=>obj.get({ plain: true }));
+  return thisData
+}
+
+const getEventBookingByEventStall = async(eventId,stallId)=>{
+	const eventBookingData = await EventsBooking.findAll({
+		include: [{ model: Events }, { model: Stall }, { model: Booking }],
+		where: {
+		  events_id: eventId,
+		  stall_id: [stallId]
+		}
+	  })
+	  if(eventBookingData.length<1){return []}
+	 const thisData= eventBookingData.map((obj)=>obj.get({ plain: true }));
+	 return thisData
+}
+
+const getStallholderFromSession = async(userId)=>{
+	if(!userId){return[]}
+	// if(req.sessions.role_type!= 'stallholder'){return}
+	const userData = await User.findAll({
+		include: [{ model: Stallholder }],
+		where: {
+		  id:userId
+		}
+	  })
+	  if(userData.length<1){return []}
+	 const thisData= userData.map((obj)=>obj.get({ plain: true }));
+	 return thisData
+}
+
+const getStallsWithBookingsAtMarket = async (marketId, eventDate) => {
+	// Retrieve all stalls with all the booking and market information
+	const bookedStallsData = await Stall.findAll({
+		include: [
+		{
+			model: EventsBooking,
+			include:
+			{
+				model: Booking,
+				include:
+				{
+					model: Stallholder,
+					include:
+					{
+						model: Product
+					}
+				}
+			}
+		},
+		{
+			model: Location,
+			include:
+			{
+				model: Events,
+			},
+		}],
+		where: {
+			location_id: marketId
+		}
+	})
+	.catch(err => {
+		console.log(err);
+		return null;
+	});
+	
+	let bookedStalls = bookedStallsData?.map(bookedStall => bookedStall.get({ plain: true })) ?? null;
+	
+	// Filter out stalls that don't have a booking
+	bookedStalls = bookedStalls.filter(bookedStall => {
+		const eventBookings = bookedStall.eventsbookings;
+		let isBooked = false;
+		
+		// go through all the event bookings to compare dates. If it matches the eventDate then it is booked on that day
+		for (let i = 0; i < eventBookings.length; i++) {
+			const d1 = moment(eventBookings[i].booking.lease_start);
+			const d2 = moment(eventDate);
+			
+			if (d1.isSame(d2, "day") && d1.isSame(d2, "month") && d1.isSame(d2, "year")) {
+				isBooked = true;
+				
+				// Can break out of loop since it is booked on the day
+				break;
+			}
+		}
+		
+		return isBooked;
+	});
+	
+	return bookedStalls;
+};
+
+
+
 module.exports = {
 	getLoggedInUser,
 	getAllUpcomingMarkets,
@@ -216,6 +368,11 @@ module.exports = {
 	getSimilarStallholdersSearch,
 	getSimilarProductsSearch,
 	getMarketById,
+	getEventById,
+	getStallById,
+	getEventBookingByEventStall,
 	getAllMarkets,
-	searchAll
+	searchAll,
+	getStallsWithBookingsAtMarket,
+	getStallholderFromSession
 }

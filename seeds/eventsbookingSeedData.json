@@ -58,5 +58,20 @@
     "events_id": 42,
     "stall_id": 42,
     "booking_id": 6
+  },
+  {
+    "events_id": 5,
+    "stall_id": 1,
+    "booking_id": 7
+  },
+  {
+    "events_id": 5,
+    "stall_id": 2,
+    "booking_id": 8
+  },
+  {
+    "events_id": 5,
+    "stall_id": 3,
+    "booking_id": 9
   }
  ]
