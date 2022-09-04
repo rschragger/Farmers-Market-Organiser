@@ -345,6 +345,18 @@ GROUP BY
   }
 });
 
+//locations add logo
+router.get('/upload', async (req, res) => {
+  const loggedInUser = await modelUtility.getLoggedInUser(req.session.loggedIn, req.session.userId);
+  // Get all the upcoming markets
+  const upcomingMarkets = await modelUtility.getAllUpcomingMarkets();
+  res.render('organiser',{
+    locationLogo: true,
+    loggedInUser,
+    loggedIn: req.session.loggedIn,
+    upcomingMarkets
+  });
+});
 
 //Trying to use a withAuth, but need to login from the webPage as insomnia creates a different session
 //   router.get('/',withAuthStallholder, async (req, res) => {
