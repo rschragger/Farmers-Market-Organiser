@@ -131,7 +131,7 @@ const searchAll = async (searchTerm, filters) => {
 };
 
 const getSimilarMarketsSearch = async (searchTerm) => {
-	// Find all products that include the word 'product'
+	// Find all products that include the word 'searchTerm'
 	if (searchTerm === "all") searchTerm = "";
 	
 	const marketData = await Location.findAll({
@@ -153,7 +153,7 @@ const getSimilarMarketsSearch = async (searchTerm) => {
 }
 
 const getSimilarStallholdersSearch = async (searchTerm) => {
-	// Find all products that include the word 'product'
+	// Find all products that include the word 'searchTerm'
 	if (searchTerm === "all") searchTerm = "";
 	
 	const stallholderData = await Stallholder.findAll({
@@ -175,24 +175,59 @@ const getSimilarStallholdersSearch = async (searchTerm) => {
 }
 
 const getSimilarProductsSearch = async (searchTerm) => {
-	// Find all products that include the word 'product'
+	// Find all products that include the word 'searchTerm'
+	// This will be only getting the products that are booked
 	if (searchTerm === "all") searchTerm = "";
 	
 	const productsData = await Product.findAll({
-		include: [{ model: Stallholder }],
+		include: [
+			{
+				model: Stallholder,
+				include: {
+					model: Booking,
+					include: {
+						model: EventsBooking,
+						include: {
+							model: Events,
+							include: {
+								model: Location
+							}
+						}
+					}
+				}
+			}
+		],
 		where: {
 			name: {
 				[Op.substring]: searchTerm
 			}
 		}
 	})
-		.catch(err => {
-			console.log(err);
-			return null;
+	.catch(err => {
+		console.log(err);
+		return null;
+	});
+		
+	
+
+	let products = productsData.map(product => product.get({ plain: true }));
+	
+	// Filter out any products that don't have a booking
+	products = products.filter(product => product.stallholder.bookings.length > 0);
+	
+	// Add all the markets that the products are located at
+	products.forEach(product => {
+		let markets = [];
+		
+		product.stallholder.bookings.forEach(booking => {
+			booking.eventsbookings.forEach(eventBooking => {
+				markets.push([eventBooking.event.location.id, eventBooking.event.location.market_name]);
+			});
 		});
-
-	const products = productsData.map(product => product.get({ plain: true }));
-
+		
+		product.markets = Array.from(new Set(markets.map(JSON.stringify)), JSON.parse);
+	});
+	
 	return products;
 }
 
