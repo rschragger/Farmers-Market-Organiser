@@ -5,7 +5,7 @@
 	{{#isResultAProduct searchResult.[0]}}
 	<div class="card search-result-card mb-3">
 		<div class="row g-0">
-			<div class="col-sm-12 col-md-2">
+			<div class="col-sm-12 col-md-2 overflow-hidden">
 				<img src={{searchResult.[1].image}} class="img-fluid rounded-start search-result-card-image">
 			</div>
 			<div class="col-sm-12 col-md-10">
@@ -13,6 +13,11 @@
 					<h5 class="card-title"><span class="search-result-subtitle">Product</span>: {{searchResult.[1].name}}</h5>
 					<p class="card-text">{{searchResult.[1].description}}</p>
 					<p class="card-text">Stallholder: {{searchResult.[1].stallholder.company_name}}</p>
+					{{#each searchResult.[1].markets as |market|}}
+					<a href="/market/{{market.[0]}}">
+						<p class="card-text">{{market.[1]}}</p>
+					</a>
+					{{/each}}
 				</div>
 			</div>
 		</div>
@@ -22,9 +27,8 @@
 	<a href={{generateMarketByIdUrl searchResult.[1].id}}>
 		<div class="card search-result-card mb-3">
 			<div class="row g-0">
-				<div class="col-sm-12 col-md-2">
-					<img src={{generateMarketLogoUrl searchResult.[1].logo_filename}}
-						class="img-fluid rounded-start search-result-card-logo">
+				<div class="col-sm-12 col-md-2 overflow-hidden">
+					<img src={{generateMarketLogoUrl searchResult.[1].logo_filename}} class="img-fluid rounded-start search-result-card-logo">
 				</div>
 				<div class="col-sm-12 col-md-10">
 					<div class="card-body">
@@ -39,9 +43,8 @@
 	{{#isResultAStallholder searchResult.[0]}}
 	<div class="card search-result-card mb-3">
 		<div class="row g-0">
-			<div class="col-sm-12 col-md-2">
-				<img src={{searchResult.[1].image}}
-					class="img-fluid rounded-start search-result-card-logo">
+			<div class="col-sm-12 col-md-2 overflow-hidden">
+				<img src={{searchResult.[1].image}} class="img-fluid rounded-start search-result-card-image">
 			</div>
 			<div class="col-sm-12 col-md-10">
 				<div class="card-body">

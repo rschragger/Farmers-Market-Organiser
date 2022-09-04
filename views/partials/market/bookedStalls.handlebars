@@ -5,7 +5,7 @@
 	{{#each bookedStall.eventsbookings as |eventBooking|}}
 	{{#areDatesEqual eventBooking.booking.lease_start ../../currentDate}}
 	{{#each eventBooking.booking.stallholder.products as |product|}}
-	{{> market/productCard product=product stallholder=eventBooking.booking.stallholder}}
+	{{> market/productCard product=product stallholder=eventBooking.booking.stallholder stallName=bookedStall.stall_name}}
 	{{/each}}
 	{{/areDatesEqual}}
 	{{/each}}
