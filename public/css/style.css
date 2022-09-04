@@ -116,6 +116,32 @@ button a {
   font-size: 64px;
 }
 
+.market-icon {
+  margin-right: 25px;
+  width: 150px;
+}
+
+.market-description {
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.market-stalls-title {
+  font-size: 32px;
+  text-align: center;
+}
+
+.booked-stall-no-stalls {
+  margin-top: 25px;
+  font-weight: bolder;
+  text-align: center;
+}
+
+#market-date-select {
+  margin-bottom: 15px;
+  
+}
+
 .upcoming-markets-title {
   text-align: center;
 }
