@@ -16,14 +16,13 @@ To upload to already deployed
 
 To seed
 
- - `heroku run bash` - this enters a bash mode in heroku session
+- `heroku run bash` - this enters a bash mode in heroku session
 
 - `node seeds/seeds.js` - run seeds file in heroku
 
 - `exit` - come back to your CLI session
 
 (remember to `checkout` back to your branch)
-
 
 ### Project Presentation
 We were asked to make a copy of the presentation. This is now in google docs formt and is at

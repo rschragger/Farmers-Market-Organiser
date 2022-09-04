@@ -1,0 +1,25 @@
+
+<div class="card mb-9">
+  <div class="card-body">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Event</th>
+          <th scope="col">Date</th>
+          <th scope="col">Revenue</th>
+          <th scope="col">Ocupancy</th>
+        </tr>
+      </thead>
+      <tbody>
+      {{#each results as |result|}}
+        <tr>
+          <td>{{result.event_name}}</td>
+          <td>{{formatDateMulti result.timestamp_start "dayLong"}} - {{formatDateMulti result.timestamp_end "timeOnly"}}</td>
+          <td>${{result.total}}AUD</td>
+          <td>12%</td>
+        </tr>
+      {{/each}}
+      </tbody>
+    </table>
+  </div>
+</div>
