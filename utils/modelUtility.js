@@ -275,11 +275,25 @@ const getEventBookingByEventStall = async(eventId,stallId)=>{
 		include: [{ model: Events }, { model: Stall }, { model: Booking }],
 		where: {
 		  events_id: eventId,
-		  stall_id: stallId
+		  stall_id: [stallId]
 		}
 	  })
 	  if(eventBookingData.length<1){return []}
 	 const thisData= eventBookingData.map((obj)=>obj.get({ plain: true }));
+	 return thisData
+}
+
+const getStallholderFromSession = async(userId)=>{
+	if(!userId){return[]}
+	// if(req.sessions.role_type!= 'stallholder'){return}
+	const userData = await User.findAll({
+		include: [{ model: Stallholder }],
+		where: {
+		  id:userId
+		}
+	  })
+	  if(userData.length<1){return []}
+	 const thisData= userData.map((obj)=>obj.get({ plain: true }));
 	 return thisData
 }
 
@@ -359,5 +373,6 @@ module.exports = {
 	getEventBookingByEventStall,
 	getAllMarkets,
 	searchAll,
-	getStallsWithBookingsAtMarket
+	getStallsWithBookingsAtMarket,
+	getStallholderFromSession
 }
