@@ -30,13 +30,16 @@ router.get('/:id', async (req, res) => {
 		bookedStall.eventsbookings = eventBookings;
 	});
 	
+	let hasBookedStalls = bookedStalls.length !== 0;
+	
     res.render('market', {
 		loggedInUser,
       	loggedIn: req.session.loggedIn,
       	upcomingMarkets,
 		market,
 		currentDate: eventDate,
-		bookedStalls
+		bookedStalls,
+		hasBookedStalls
 	});
   }
   catch (err) {

@@ -1,5 +1,6 @@
 {{!-- This is for displaying stalls that have produce in them. Not going to be showing stalls that are available --}}
 <div class="booked-stall-container">
+	{{#if hasBookedStalls}}
 	{{#each bookedStalls as |bookedStall|}}
 	{{#each bookedStall.eventsbookings as |eventBooking|}}
 	{{#areDatesEqual eventBooking.booking.lease_start ../../currentDate}}
@@ -9,4 +10,9 @@
 	{{/areDatesEqual}}
 	{{/each}}
 	{{/each}}
+	{{else}}
+	<div class="booked-stall-no-stalls">
+		Sorry, no stalls have booked at this time!
+	</div>
+	{{/if}}
 </div>
