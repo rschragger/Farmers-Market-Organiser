@@ -78,12 +78,12 @@ router.post('/', async (req, res) => {
 
     if (!bookingData) {
       // The booking doesn't exist so create a new booking
-      const newBooking = await Booking.create(req.body).then((booking) => {
-        res.booking_id = booking.id
-      })
+      const newBooking = await Booking.create(req.body);
+      const bookingId = newBooking.id;
 
       res.status(200).json({
-        data: newBooking
+        data: newBooking,
+        bookingId
       })
       // .then((data)=>{return data}
       // );

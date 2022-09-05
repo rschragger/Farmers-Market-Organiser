@@ -15,7 +15,6 @@ async function ebFormHandler(event) {
   const cost = document.getElementById('stall-id').getAttribute("data-stallId");
 const description = `Stall ${stall_id} booked to ${document.getElementById('stallholder-id').textContent} for ${document.getElementById('events-id').textContent}`;
 
-  /*
     // we need to make a booking and then an eventbooking
     const bookingResponse = await fetch(`/api/booking/`, {
       method: 'POST',
@@ -30,7 +29,6 @@ const description = `Stall ${stall_id} booked to ${document.getElementById('stal
       },
     })
     .then(response => response.json())
-    .then(response => console.log(response))
     .catch(err => console.error(err));
     //   .then((response)=> {return response.json(); })
     //  .then((data) => {bookingResponse.booking_id = data.id});
@@ -52,10 +50,9 @@ const description = `Stall ${stall_id} booked to ${document.getElementById('stal
     //   document.location.replace(`../${events_id}/${stall_id}`);
   
     //   }
-  */
 
   // const booking_id = bookingRepsonse.id
-  const booking_id = 5;
+  const booking_id = bookingResponse.bookingId;
   // Send fetch request to add new eventbooking
   const response = await fetch(`/api/eventsbooking/`, {
     method: 'POST',
