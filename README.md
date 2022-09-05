@@ -56,16 +56,19 @@
 </p>
   
 ####   Third Party Assets
-- bcript
+- bCrypt
 - connect-session-sequelize
 - dotenv
-- express
+- expressjs
 - express-handlebars
 - express-session
+- bootstrap
 - mysql2
 - nodemon
 - sequelize
 - multer
+- validator
+- swiper
 - mockaroo.com
 - momentjs
 </p>
