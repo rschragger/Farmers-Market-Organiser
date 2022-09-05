@@ -1,0 +1,43 @@
+<div class="card mb-9">
+  <div class="card-body">
+    <div class="new-event-container">
+        <form class="new-event-form">
+             <input type="hidden" name="_method" value="put">
+            <div class="row g-3">
+                <div class="form-group col-md-6">
+                    <label for="name">Event Name</label>
+                    <input type="text" class="form-control" id="event_name" name="event_name" placeholder="Event Name" value="{{event.event_name}}">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="location">Location</label>
+                    <select id="location_id" class="form-control">
+                        <option selected>Choose...</option>
+                        {{#each locations as |location|}}
+                            <option value="{{location.id}}">{{location.market_name}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+            </div>
+            <div class="row g-3 card-body">
+                <div class="form-group col-md-4">
+                    <label for="timestamp_start">Start</label>
+                    <input type="datetime-local" id="timestamp_start" name="timestamp_start">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="timestamp_end">End</label>
+                    <input type="datetime-local" id="timestamp_end" name="timestamp_end">
+                </div>
+                <div class="form-group col-md-4 ">
+                <button type="submit" class="btn btn-primary no-padding">Save</button>
+                </div>
+            </div>
+            {{!-- <div class="row g-3">
+                <div class="form-group col-md-4 ">
+                <button type="submit" class="btn btn-primary no-padding">Save</button>
+                </div>    
+            </div> --}}
+        </form>
+        <script src="/js/add-events.js"></script>
+    </div>
+  </div>
+</div>
