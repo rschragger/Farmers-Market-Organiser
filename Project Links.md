@@ -16,7 +16,7 @@ To upload to already deployed
 
 To seed
 
- - `heroku run bash` - this enters a bash mode in heroku session
+- `heroku run bash` - this enters a bash mode in heroku session
 
 - `node seeds/seeds.js` - run seeds file in heroku
 

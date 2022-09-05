@@ -45,10 +45,10 @@ router.post('/', async (req, res) => {
     // Check if the eventbooking already exists
     const eventsbookingData = await EventsBooking.findOne({
       where: {
-        event_id: req.body.event_id,
+        events_id: req.body.events_id,
         stall_id: req.body.stall_id,
       },
-      individualHooks: true,
+      //individualHooks: true,
     });
 
     if (!eventsbookingData) {
@@ -61,7 +61,7 @@ router.post('/', async (req, res) => {
     }
     else {
       // The eventsbooking exists for this stallholder, prevent creating another company with the same name
-      res.status(400).json({
+      res.status(401).json({
         message: "This event has already been created!"
       });
     }

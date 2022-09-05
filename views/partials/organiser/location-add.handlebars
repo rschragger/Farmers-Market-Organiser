@@ -2,7 +2,6 @@
   <div class="card-body">
     <div class="new-location-container">
         <form class="new-location-form">
-            <input type="hidden" name="_method" value="put">
             <div class="row g-3">
                 <div class="form-group col-md-6">
                 <label for="name">Market Name</label>
@@ -23,19 +22,19 @@
                     <input type="text" class="form-control" id="website" name="website" placeholder="Website" value="{{location.website}}">
                 </div>
             </div>
-            <div class="row g-3">
-                <div class="form-group col-md-6">
-                    <input type="file" name="image" id="image">
-                </div>
-                <div class="form-group col-md-6">
-                    <button type="submit" class="btn btn-primary">Save</button>
-                </div>
-            </div>
             {{!-- <div class="row g-3">
+                    <div class="form-group col-md-6">
+                        <input type="file" name="image" id="image">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <button type="submit" class="btn btn-primary">Upload</button>
+                    </div>
+            </div> --}}
+            <div class="row g-3">
                 <div class="form-group col-md-6 ">
                 <button type="submit" class="btn btn-primary no-padding">Save</button>
                 </div>    
-            </div> --}}
+            </div>
         </form>
         <script src="/js/add-location.js"></script>
     </div>

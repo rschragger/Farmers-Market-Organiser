@@ -42,7 +42,10 @@ router.get('/:id', async (req, res) => {
   try {
 
     const upcomingMarkets = await modelUtility.getAllUpcomingMarkets();
+    const loggedInUser = await modelUtility.getLoggedInUser(req.session.loggedIn, req.session.userId);
 
+
+    
     // Get this Event's data
     const dbEventsData = await Events.findByPk(req.params.id, {
       include: [{ model: Location }, { model: EventsBooking }],
@@ -77,8 +80,15 @@ router.get('/:id', async (req, res) => {
     // const eventBookingData = dbEventBookingData.map((pd) =>
     //   pd.get({ plain: true })
     // );
+const stallListIds = stallData.map((obj)=>{
+ if( obj.eventsbookings.length >0 ){ return obj.id }
+ else{obj.null}  
+})
+.filter((element)=>(  element != null))
 
-//const eventBookingData = modelUtility.getEventBookingByEventStall(eventsData.id,stallData.id)
+
+
+//const eventBookingData =await  modelUtility.getEventBookingByEventStall(req.params.id,[stallListIds])
 
     res.render('events', {
       eventsData,
@@ -86,7 +96,8 @@ router.get('/:id', async (req, res) => {
       eventsCard: true,
       upcomingMarkets,
       //eventBookingData,
-      // bookedStalls,
+      stallListIds,
+      // bookedStalls, 
       //loggedInUser, 
       loggedIn: req.session.loggedIn,
     });

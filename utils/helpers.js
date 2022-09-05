@@ -57,9 +57,9 @@ const generateMarketByIdUrl = (id) => {
 
 const formatDate = (date) => {
     const dateObj = moment(date).format('Do MMM YYYY, h:mm a');
-    
+
     return dateObj;
-    
+
     //return `${new Date(date).getMonth()}/${new Date(date).getDate()}/${new Date(date).getFullYear()}`;
 }
 
@@ -68,32 +68,40 @@ https://stackoverflow.com/questions/18580495/format-a-date-from-inside-a-handleb
 var DateFormats = {
     short: "DD/MM/YYYY",
     short2: "DD-MMMM-YYYY",
-    long:'Do MMM YYYY, h:mm a',
-    dayLong:'ddd Do MMM YYYY, h:mm a',
-    timeOnly:'hh:mm a',
+    long: 'Do MMM YYYY, h:mm a',
+    dayLong: 'ddd Do MMM YYYY, h:mm a',
+    timeOnly: 'hh:mm a',
 };
 
-const formatDateMulti = (datetime,format) => {
+const formatDateMulti = (datetime, format) => {
     if (moment) {
         // can use other formats like 'lll' too
         format = DateFormats[format] || format;
         return moment(datetime).format(format);
-      }
-      else {
+    }
+    else {
         return datetime;
-      }
+    }
 }
 
 const shouldBeSelectedDate = (date1, date2) => {
     // Compare two dates and returns selected if true and false otherwise
     let d1 = moment(date1);
     let d2 = moment(date2);
-    
+
     if (d1.isSame(d2, "day") && d1.isSame(d2, "month") && d1.isSame(d2, "year")) {
         return "selected";
     }
-    
+
     return "";
+};
+
+// https://axiacore.com/blog/check-if-item-array-handlebars-547/
+const ifIn = (elem, array, options) => {
+    if (array.indexOf(elem) > -1) {
+        return options.fn(this);
+    }
+    return options.inverse(this);
 };
 
 const areDatesEqual = (date1, date2, options) => {
@@ -113,10 +121,10 @@ const generateMarketLink = (marketId) => {
 }
 
 // This will help handlebars start an index at 1 insteadmof 0
-  const incremented = (index)=>{
+const incremented = (index) => {
     index++;
     return index;
-  }
+}
 
 
 
@@ -134,7 +142,9 @@ module.exports = {
     generateMarketLogoUrl,
     generateMarketByIdUrl,
     shouldBeSelectedDate,
-    areDatesEqual };
+    ifIn,
+    areDatesEqual
+};
 
 
 
