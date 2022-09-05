@@ -8,9 +8,9 @@ router.get('/:id', async (req, res) => {
 	const loggedInUser = await modelUtility.getLoggedInUser(req.session.loggedIn, req.session.userId);
     // Get all the upcoming markets
     const upcomingMarkets = await modelUtility.getAllUpcomingMarkets();
+	  const eventDate = req.query["currDate"];
 	// Get the market data
-	const market = await modelUtility.getMarketById(req.params.id);
-	const eventDate = req.query["currDate"];
+	const market = await modelUtility.getMarketById(req.params.id, eventDate);
 	let bookedStalls = await modelUtility.getStallsWithBookingsAtMarket(req.params.id, eventDate);
 	
 	// Filter any duplicate eventBookings
@@ -27,7 +27,9 @@ router.get('/:id', async (req, res) => {
 			}
 		});
 		
-		bookedStall.eventsbookings = eventBookings;
+		bookedStall.eventsbookings = eventBookings.sort((a, b) => {
+			return new Date(a.booking.lease_start) - new Date(b.booking.lease_start);
+		});
 	});
 	
 	let hasBookedStalls = bookedStalls.length !== 0;
