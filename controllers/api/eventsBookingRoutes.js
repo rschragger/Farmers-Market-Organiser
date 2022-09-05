@@ -54,7 +54,7 @@ router.post('/', async (req, res) => {
     if (!eventsbookingData) {
       // The eventsbooking doesn't exist so create a new eventsbooking
       const newEventsBooking = await EventsBooking.create(req.body);
-
+      
       res.status(200).json({
         data: newEventsBooking
       });
