@@ -33,7 +33,8 @@
    
   Usage Instructions:
 - Go to deployed location in your browser
-- 
+- Users can search, eplore and interact with the website
+- Signup and login to administer a market or to administer a stall, to advertise your product and book at market events
 </p>
   
   ## Credits
@@ -41,8 +42,8 @@
  #### Collaborators
 - Sean Genge
 - Nancy Mile
--  Ravi Velaga
--  Reeve Schragger
+- Reeve Schragger
+
 </p>
 
 ####   Languages
@@ -63,12 +64,16 @@
 - mysql2
 - nodemon
 - sequelize
+- multer
+- mockaroo.com
+- momentjs
 </p>
   
 ####   Tutorials
 - stack overflow
 - sequelize.org
 - w3Schools 
+- documentation from each technology used
 </p>
   
   ## License
@@ -78,20 +83,22 @@
   CC0
   
   ## Features
-  - Different logins for organiser and stallholder
+  - Please see presentation at https://docs.google.com/presentation/d/1yFOVaY0zANTY05HVmSNk55MZ4g-kL4LGhfnJW1tMnd4/edit?usp=sharing
+  - Different logins and capabilities for organiser and stallholder
+  - Shopper has a rich un-logged experience
+  - Complex booking made easy for stallholders
+  - Easy to configure, update and customise experience for your clients, including upload of images and additions to database
+
   
   ## Contributions
    
   Contribution guidelines: Consult with organising group listed in contributors
   
-  ## Tests
-  
-   Test1
+
   
   ## Questions
    
-- Q1
-   - A1
+
 </p>
   
   ### Contacts
