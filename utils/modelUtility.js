@@ -47,7 +47,26 @@ const getAllUpcomingMarkets = async () => {
 	// Search for operators
 	try {
 		const upcomingMarketsData = await Events.findAll({
-			include: [{ model: Location }],
+			include: [
+				{
+					model: Location
+				},
+				{
+					model: EventsBooking,
+					include:
+					{
+						model: Booking,
+						include:
+						{
+							model: Stallholder,
+							include:
+							{
+								model: Product
+							}
+						}
+					}
+				}
+			],
 			where: {
 				timestamp_start: {
 					[Op.gte]: new Date()
@@ -59,6 +78,11 @@ const getAllUpcomingMarkets = async () => {
 			});
 
 		let upcomingMarkets = upcomingMarketsData?.map(upcomingMarket => upcomingMarket.get({ plain: true })) ?? null;
+		
+		// Only get the upcoming markets with booked stalls that have products
+		// upcomingMarkets = upcomingMarkets.filter(upcomingMarket => {
+		// 	return upcomingMarket.eventbookings.length !== 0;
+		// });
 
 		// Sort the upcoming markets by their date and only retrieve the first 5
 		upcomingMarkets = upcomingMarkets.sort((a, b) => {
@@ -231,17 +255,57 @@ const getSimilarProductsSearch = async (searchTerm) => {
 	return products;
 }
 
-const getMarketById = async (id) => {
+const getMarketById = async (id, eventDate) => {
 	// Returns a market (Location) by the id
 	const marketData = await Location.findByPk(id, {
-		include: [{ model: Events }, { model: Stall }, { model: User }],
+		include: [
+			{
+				model: Events,
+				include:
+				{
+					model: EventsBooking,
+					include:
+					{
+						model: Booking,
+						include:
+						{
+							model: Stallholder,
+							include:
+							{
+								model: Product
+							}
+						}
+					}
+				}
+			},
+			{
+				model: Stall
+			},
+			{
+				model: User
+			}],
 	})
-		.catch(err => {
-			console.log(err);
-			return null;
-		});
+	.catch(err => {
+		console.log(err);
+		return null;
+	});
 
-	return marketData.get({ plain: true });
+	let market = marketData.get({ plain: true });
+	
+	market.events = market.events.sort((a, b) => {
+		return new Date(a.timestamp_start) - new Date(b.timestamp_start);
+	});
+	
+	// Only get dates where there are any booked stalls
+	// market.events = market.events.filter(event => {
+	// 	return event.eventsbookings?.some(eventBooking => {
+	// 		const booking = eventBooking?.booking ?? null;
+			
+	// 		return booking?.stallholder?.products.length !== 0 ?? false;
+	// 	}) ?? false;
+	// });
+	
+	return market;
 }
 
 const getEventById = async(id)=>{
