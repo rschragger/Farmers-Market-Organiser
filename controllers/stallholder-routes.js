@@ -45,7 +45,7 @@ router.get('/', async (req, res) => {
 //Get one stallholder's card
 router.get('/:id', async (req, res) => {
   try {
-    // const loggedInUser = await modelUtility.getLoggedInUser(req.session.loggedIn, req.session.userId);
+    const loggedInUser = await modelUtility.getLoggedInUser(req.session.loggedIn, req.session.userId);
     const upcomingMarkets = await modelUtility.getAllUpcomingMarkets();
 
     // Get this stallholder's data
@@ -68,7 +68,7 @@ router.get('/:id', async (req, res) => {
       stallholderCard: true,
       upcomingMarkets,
       products,
-      //loggedInUser,
+      loggedInUser,
       loggedIn: req.session.loggedIn,
 
     });

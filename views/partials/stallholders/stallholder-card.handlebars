@@ -7,8 +7,8 @@
       <div class="card-body">
         <h5 class="card-title">{{stallholderData.company_name}}</h5>
         <p class="card-text">{{stallholderData.description}}</p>
-          <p class="card-text"><a href="tel:{{stallholderData.mobile}}"></a>{{stallholderData.mobile}}</p>
-       <p class="card-text"><a href="{{stallholderData.website}}" target="_blank">{{stallholderData.website}}</a></p>
+        <p class="card-text"><a href="tel:{{stallholderData.mobile}}"></a>{{stallholderData.mobile}}</p>
+        <p class="card-text"><a href="{{stallholderData.website}}" target="_blank">{{stallholderData.website}}</a></p>
         {{!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> --}}
       </div>
     </div>
@@ -16,9 +16,10 @@
 </div>
 
 
-{{!-- <div class="card mb-9"> 
+{{!-- <div class="card mb-9">
 
-      <img src="{{stallholderData.image}}"  class="card-img col-md-6"  alt="Picture describing {{stallholderData.company_name}}">
+  <img src="{{stallholderData.image}}" class="card-img col-md-6"
+    alt="Picture describing {{stallholderData.company_name}}">
 
   <div class="card-body col-md-6">
 
@@ -31,27 +32,114 @@
 
     </div>
   </div> --}}
-
-
-{{#if products}}
-<div class="card mb-3">
-  <h4>Our Product List</h4>
+  {{#if loggedInUser.id}}
+  <br>
+  <div class="card mb-1">
+    <h4>Edit Company Data</h4>
   </div>
-{{#each products as |product|}}
-<div class="card search-result-card mb-3">
-	<div class="row g-0">
-		<div class="col-md-2">
-		<img src={{product.image}} class="img-fluid rounded-start search-result-card-image">
-		</div>
-		<div class="col-md-10">
-		<div class="card-body">
-			<h5 class="card-title">{{product.name}}</h5>
-			<p class="card-text">{{product.description}}</p>
-		</div>
-		</div>
-	</div>
-</div>
-{{/each}}
-{{else}}
-Sorry, no products were found containing {{searchedProduct}}
-{{/if}}
+  <form class="edit-stallholder-form">
+    <input type="hidden" name="_method" value="put">
+    <div class="row g-3">
+      <div class="form-group col-md-6">
+        <label for="name">Company Name</label>
+        <input type="text" class="form-control" id="company_name" name="name" placeholder="Company Name"
+          value="{{stallholderData.company_name}}">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="description">Description</label>
+        <input type="textarea" class="form-control" id="description" name="description" placeholder="Description"
+          value="{{stallholderData.description}}"></textarea>
+      </div>
+    </div>
+    <div class="row g-3">
+      <div class="form-group col-md-6">
+        <label for="price">Website</label>
+        <input type="text" class="form-control" id="website" name="website" placeholder="Website url"
+          value="{{stallholderData.website}}">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="mobile">Mobile</label>
+        <input type="phone" class="form-control" id="mobile" value="{{stallholderData.mobile}}">
+      </div>
+    </div>
+    {{!-- <br> --}}
+    <div class="row g-3">
+      <div class="form-group col-md-6">
+        <button type="submit" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+    <br>
+  </form>
+  <div class="row g-3">
+    <h5>Add Company Photo</h5>
+    <form action="/api/locations/upload/xxx" enctype="multipart/form-data" method="post">
+      <div class="form-group col-md-6">
+        <input type="file" name="image" id="image">
+        <button type="submit" class="btn btn-primary btn-sm">Upload</button>
+      </div>
+  </div>
+  <br>
+  </form>
+
+  {{!-- add product --}}
+  <div class="card mb-1">
+    <h4>Add Products</h4>
+  </div>
+  <form class="add-product-form">
+    <input type="hidden" name="_method" value="put">
+    <div class="row g-3">
+      <div class="form-group col-md-6">
+        <label for="name">Product Name</label>
+        <input type="text" class="form-control" id="product_name" name="name" placeholder="Product Name"
+          value="{{products.name}}">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="description">Description</label>
+        <input type="textarea" class="form-control" id="description" name="description" placeholder="Description"
+          value="{{products.description}}"></textarea>
+      </div>
+    </div>
+    <div class="row g-3">
+      <div class="form-group col-md-6">
+        <button type="submit" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+    <br>
+  </form>
+<div class="row g-3">
+    <h5>Add Product Photo</h5>
+    <form action="/api/locations/upload/xxx" enctype="multipart/form-data" method="post">
+      <div class="form-group col-md-6">
+        <input type="file" name="image" id="image">
+        <button type="submit" class="btn btn-primary btn-sm">Upload</button>
+      </div>
+      <br>
+  </div>
+
+  {{/if}}
+
+  {{#if products}}
+  <div class="card mb-3">
+    <h4>Our Product List</h4>
+  </div>
+  {{#each products as |product|}}
+  <div class="card search-result-card mb-3">
+    <div class="row g-0">
+      <div class="col-md-2">
+        <img src={{product.image}} class="img-fluid rounded-start search-result-card-image">
+      </div>
+      <div class="col-md-10">
+        <div class="card-body">
+          <h5 class="card-title">{{product.name}}</h5>
+          <p class="card-text">{{product.description}}</p>
+          {{#if ../loggedInUser.id}} <button type="edit" class="btn btn-primary">Edit</button>{{/if}}
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+  {{/each}}
+  {{else}}
+  Sorry, no products were found containing {{searchedProduct}}
+  {{/if}}
