@@ -98,7 +98,7 @@ const stallListIds = stallData.map((obj)=>{
       //eventBookingData,
       stallListIds,
       // bookedStalls, 
-      //loggedInUser, 
+      loggedInUser, 
       loggedIn: req.session.loggedIn,
     });
   }

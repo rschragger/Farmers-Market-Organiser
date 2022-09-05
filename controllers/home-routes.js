@@ -345,6 +345,46 @@ GROUP BY
   }
 });
 
+//locations add logo
+router.get('/upload', async (req, res) => {
+  const loggedInUser = await modelUtility.getLoggedInUser(req.session.loggedIn, req.session.userId);
+  // Get all the upcoming markets
+  const upcomingMarkets = await modelUtility.getAllUpcomingMarkets();
+  res.render('organiser',{
+    locationLogo: true,
+    loggedInUser,
+    loggedIn: req.session.loggedIn,
+    upcomingMarkets
+  });
+});
+//create new Event
+router.get('/new-event', async (req, res) => {
+  const loggedInUser = await modelUtility.getLoggedInUser(req.session.loggedIn, req.session.userId);
+  // Get all the upcoming markets
+  const upcomingMarkets = await modelUtility.getAllUpcomingMarkets();
+  const listLocations = await sequelize.query(`SELECT
+        location.market_name,
+        location.id
+        FROM
+        location,
+        USER
+        WHERE
+        location.id = USER.location_id AND USER.id =`+req.session.userId,{
+        model: Location,
+        mapToModel: true});
+  //const listLocations = await Location.findAll();
+  const locations = listLocations.map((location) =>
+       location.get({ plain: true })
+     );
+  res.render('organiser',{
+    locations,
+    eventNew: true,
+    loggedInUser,
+    loggedIn: req.session.loggedIn,
+    upcomingMarkets
+  });
+});
+
 
 //Trying to use a withAuth, but need to login from the webPage as insomnia creates a different session
 //   router.get('/',withAuthStallholder, async (req, res) => {
