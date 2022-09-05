@@ -35,6 +35,7 @@
 - Go to deployed location in your browser
 - Users can search, eplore and interact with the website
 - Signup and login to administer a market or to administer a stall, to advertise your product and book at market events
+![Screenshot](instructions/FMO_Screenshot.png)
 </p>
   
   ## Credits
