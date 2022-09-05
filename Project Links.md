@@ -3,12 +3,12 @@
 There are a number of items we are using that are cloud based and require access for all. please see below a collection of links
 
 ## Heroku deployment
-[https://farmers-market-organiser.herokuapp.com/](https://farmers-market-organiser.herokuapp.com/) 
+[https://farmers-market-organiser-app.herokuapp.com/](https://farmers-market-organiser-app.herokuapp.com/) 
 
-- `heroku create farmers-market-organiser` to initialise
+- `heroku create farmers-market-organiser-app` to initialise
 
 If you are not yet connected, do this to connect to your git repository
-- `heroku git:remote -a farmers-market-organiser` to make it work from your git repository
+- `heroku git:remote -a farmers-market-organiser-app` to make it work from your git repository
 
 To upload to already deployed
 - get into your main branch and make sure it is current (pulled)
