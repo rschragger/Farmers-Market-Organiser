@@ -6,7 +6,7 @@
   
   This application will provide organisational services to companies that conduct Farmers Market operations. It will allow them to organise the rental of their stores online and utilise their clients' details to help inform the general public and help advertise the markets.
 
-[https://farmers-market-organiser.herokuapp.com/](https://farmers-market-organiser.herokuapp.com/) 
+[https://farmers-market-organiser-app.herokuapp.com/](https://farmers-market-organiser-app.herokuapp.com/) 
  
   ## Table of Contents
   
@@ -99,8 +99,11 @@
   You can reach us for additional questions at:
   - Email: [reeveschragger@gmail.com](mailto:reeveschragger@gmail.com)
 
-  - GitHub: [GitHub page](https://github.com/rschragger/Farmers-Market-Organiser/)
-
+  - GitHub: 
+   - [Farmers Market Organiser](https://github.com/rschragger/Farmers-Market-Organiser/)
+   - [Reeve Schragger](https://github.com/rschragger/)
+   - [Sean Genge](https://github.com/SeanGenge)
+   - [NancyMile](https://github.com/NancyMile)
   
   <div class="footer" style="text-align:right; font-size:smaller"><hr>
   &copy; Copyright 2022 Farmers Market Organising Group
